@@ -10,7 +10,7 @@ module.exports = class extends thinkorm {
         // 模型名称
         this.modelName = 'message';
         // 是否开启迁移(migrate方法可用)
-        // this.safe = false;
+        this.safe = false;
         // 数据表字段信息
         this.fields = {
             id: {
@@ -32,6 +32,12 @@ module.exports = class extends thinkorm {
             status: {
                 type: 'integer',
                 defaultsTo: 1
+            },
+            openid: {//第三方平台用户识别ID
+                type: 'string',
+                index: true,
+                size: 50,
+                defaultsTo: ''
             }
         };
         // 数据验证

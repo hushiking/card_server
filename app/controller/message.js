@@ -44,4 +44,9 @@ module.exports = class extends controller {
         await this.usrModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
         return this.ok('success');
     }
+    async messageListAction (){
+        let openid = this.param('openid');
+        let messageList = await this.Model.where({ openid: openid }).select().catch(e => { });
+        return this.ok('success', messageList);
+    }
 };

@@ -68,6 +68,10 @@ module.exports = class extends thinkorm {
             group_num: {
                 type: 'integer',
                 defaultsTo: 0
+            },
+            status: {
+                type: 'integer',
+                defaultsTo: 1
             }
         };
         // 数据验证
