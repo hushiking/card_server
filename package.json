@@ -1,0 +1,32 @@
+{
+  "name": "thinkkoa-application",
+  "description": "application created by thinkkoa",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npm run eslint",
+    "start": "supervisor -w app -q index",
+    "eslint": "eslint app"
+  },
+  "engines": {
+    "node": ">8.0.0"
+  },
+  "dependencies": {
+    "file-type": "^7.6.0",
+    "mime-type": "^3.0.5",
+    "read-chunk": "^2.1.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "think_model": "^2.0.1",
+    "think_view": "^2.0.1",
+    "thinkkoa": "^2.x.x",
+    "thinkorm": "^2.1.1",
+    "thinkorm_adapter_mysql": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "istanbul": "^1.1.0-alpha.1",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0",
+    "supervisor": "^0.12.0"
+  }
+}
