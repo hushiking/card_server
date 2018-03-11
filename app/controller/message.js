@@ -47,6 +47,9 @@ module.exports = class extends controller {
     async messageListAction (){
         let openid = this.param('openid');
         let messageList = await this.Model.where({ openid: openid }).select().catch(e => { });
+        messageList.forEach((item)=>{
+            item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
+        })
         return this.ok('success', messageList);
     }
 };
