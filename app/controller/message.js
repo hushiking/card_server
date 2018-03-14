@@ -44,4 +44,13 @@ module.exports = class extends controller {
         await this.usrModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
         return this.ok('success');
     }
+    async messageListAction (){
+        let openid = this.param('openid');
+        let messageList = await this.Model.where({ openid: openid }).select().catch(e => { });
+        messageList.forEach((item)=>{
+            item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
+        })
+        return this.ok('success', messageList);
+    }
+
 };

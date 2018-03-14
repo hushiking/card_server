@@ -59,6 +59,7 @@ module.exports = class extends controller {
             data.avatar_url = userInfo.avatarUrl;
             data.gender = userInfo.gender;
             data.openid = JSON.parse(result).openid;
+            data.create_time = helper.datetime()
             await this.Model.where({nickname: userInfo.nickName}).update(data).catch(e => this.error(e.message));
             result = JSON.parse(result);
         } catch (error) {
