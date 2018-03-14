@@ -39,9 +39,13 @@ module.exports = class extends controller {
     }
     async saveCardAction () {
         let cardData = this.param();
+        let openid = this.param('openid');
+        let userData = await this.useModel.where({openid: openid}).find();
         console.log(cardData);
         cardData.support = [];
         cardData.comment = [];
+        cardData.nickname = userData.nickname;
+        cardData.avatar_url = userData.avatar_url;
         cardData.img_url = '/asserts/image/home/content.png';
         //TODO： 要改user表的card里面
         await this.Model.add(cardData);
