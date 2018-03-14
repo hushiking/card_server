@@ -10,7 +10,7 @@ module.exports = class extends thinkorm {
         // 模型名称
         this.modelName = 'comment';
         // 是否开启迁移(migrate方法可用)
-        // this.safe = false;
+        this.safe = false;
         // 数据表字段信息
         this.fields = {
             id: {
@@ -44,6 +44,10 @@ module.exports = class extends thinkorm {
                 index: true,
                 size: 50,
                 defaultsTo: ''
+            },
+            group: {
+                type: 'integer',
+                defaultsTo: 0
             },
             nickname: {
                 type: 'string',

@@ -10,7 +10,7 @@ module.exports = class extends thinkorm {
         // 模型名称
         this.modelName = 'card';
         // 是否开启迁移(migrate方法可用)
-        // this.safe = false;
+        this.safe = false;
         // 数据表字段信息
         this.fields = {
             id: {
@@ -68,10 +68,6 @@ module.exports = class extends thinkorm {
             group_num: {
                 type: 'integer',
                 defaultsTo: 0
-            },
-            status: {
-                type: 'integer',
-                defaultsTo: 1
             }
         };
         // 数据验证

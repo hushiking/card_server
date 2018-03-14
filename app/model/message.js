@@ -32,12 +32,6 @@ module.exports = class extends thinkorm {
             status: {
                 type: 'integer',
                 defaultsTo: 1
-            },
-            openid: {//第三方平台用户识别ID
-                type: 'string',
-                index: true,
-                size: 50,
-                defaultsTo: ''
             }
         };
         // 数据验证

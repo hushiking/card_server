@@ -1,0 +1,425 @@
+[2018-02-22 10:28:36] [ERROR] NotFoundError: Controller not found.
+    at Object.throw (/Users/zening/Desktop/card_server/node_modules/koa/lib/context.js:93:11)
+    at exec (/Users/zening/Desktop/card_server/node_modules/think_controller/index.js:36:22)
+    at /Users/zening/Desktop/card_server/node_modules/think_controller/index.js:87:16
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_router/index.js:286:20
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_model/index.js:52:16
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_payload/index.js:119:16
+    at <anonymous>
+[2018-02-22 10:28:36] [ERROR]  GET  404  /consumers  56ms
+[2018-02-22 10:37:18] [ERROR] NotFoundError: Controller not found.
+    at Object.throw (/Users/zening/Desktop/card_server/node_modules/koa/lib/context.js:93:11)
+    at exec (/Users/zening/Desktop/card_server/node_modules/think_controller/index.js:36:22)
+    at /Users/zening/Desktop/card_server/node_modules/think_controller/index.js:87:16
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_router/index.js:286:20
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_model/index.js:52:16
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_payload/index.js:119:16
+    at <anonymous>
+[2018-02-22 10:37:18] [ERROR]  GET  404  /consumers  8ms
+[2018-02-22 11:03:34] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:34] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:34] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:34] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:35] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:35] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:35] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:35] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:35] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:36] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:36] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:36] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:36] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:36] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:37] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:37] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:37] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:37] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:38] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:38] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:38] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:38] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:38] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:38] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:03:39] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/card.js: Error: Cannot find module '../../model/card'
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-22 11:07:11] [ERROR] Error: support值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 11:07:11] [ERROR] Error: support值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 11:07:11] [ERROR]  GET  500  /card/saveUser  493ms
+[2018-02-22 16:55:50] [ERROR] Error: support值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 16:55:50] [ERROR] Error: support值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 16:55:50] [ERROR]  GET  500  /card/saveUser  464ms
+[2018-02-22 16:56:22] [ERROR] Error: comment值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 16:56:22] [ERROR] Error: comment值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 16:56:22] [ERROR]  GET  500  /card/saveUser  409ms
+[2018-02-22 16:56:41] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 16:56:41] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 16:56:41] [ERROR]  GET  500  /card/saveUser  391ms
+[2018-02-22 23:18:49] [ERROR] Error: tag值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 23:18:49] [ERROR] Error: tag值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-02-22 23:18:49] [ERROR]  POST  500  /card/saveCard  15ms

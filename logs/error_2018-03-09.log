@@ -1,0 +1,315 @@
+[2018-03-09 09:44:53] [ERROR] select * from `card` as `card` where `card`.`id` = '1' limit 1
+[2018-03-09 09:44:53] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 09:44:53] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 09:44:53] [ERROR]  GET  500  /card/getList  49ms
+[2018-03-09 09:46:16] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 09:46:16] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 09:46:16] [ERROR]  POST  500  /comment/saveComment  13ms
+[2018-03-09 09:46:48] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:46:48] [ERROR]  GET  500  /badge/getDate  13ms
+[2018-03-09 09:46:50] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:46:50] [ERROR]  GET  500  /badge/getDate  5ms
+[2018-03-09 09:48:44] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:48:44] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:48:46] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:48:46] [ERROR]  GET  500  /badge/getDate  7ms
+[2018-03-09 09:53:16] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:53:16] [ERROR]  GET  500  /badge/getDate  12ms
+[2018-03-09 09:53:23] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:53:23] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:53:35] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:53:35] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:53:36] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:53:36] [ERROR]  GET  500  /badge/getDate  5ms
+[2018-03-09 09:53:47] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:53:47] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:55:03] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:55:03] [ERROR]  GET  500  /badge/getDate  8ms
+[2018-03-09 09:55:04] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:55:04] [ERROR]  GET  500  /badge/getDate  7ms
+[2018-03-09 09:55:53] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:55:53] [ERROR]  GET  500  /badge/getDate  9ms
+[2018-03-09 09:55:54] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:55:54] [ERROR]  GET  500  /badge/getDate  5ms
+[2018-03-09 09:55:55] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:55:55] [ERROR]  GET  500  /badge/getDate  3ms
+[2018-03-09 09:55:56] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:55:56] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:56:07] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:56:07] [ERROR]  GET  500  /badge/getDate  8ms
+[2018-03-09 09:57:30] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:57:30] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:58:29] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:58:29] [ERROR]  GET  500  /badge/getDate  5ms
+[2018-03-09 09:58:31] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:58:31] [ERROR]  GET  500  /badge/getDate  7ms
+[2018-03-09 09:58:33] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:58:33] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:58:34] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:58:34] [ERROR]  GET  500  /badge/getDate  7ms
+[2018-03-09 09:58:54] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:58:54] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 09:58:57] [ERROR] TypeError: Cannot read property '0' of undefined
+    at module.exports.getDateAction (/Users/zening/Desktop/card_server/app/controller/badge.js:42:69)
+    at <anonymous>
+[2018-03-09 09:58:57] [ERROR]  GET  500  /badge/getDate  6ms
+[2018-03-09 10:03:50] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 10:03:50] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 10:03:50] [ERROR]  POST  500  /comment/saveComment  9ms
+[2018-03-09 13:54:42] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 13:56:45] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 13:56:54] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:04:46] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:08:00] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:08:30] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 14:08:30] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 14:08:30] [ERROR]  POST  500  /comment/saveComment  15ms
+[2018-03-09 14:14:48] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:16:35] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:18:03] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:20:37] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 14:23:31] [ERROR] Error: real_name值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.update (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:523:27)
+    at <anonymous>
+[2018-03-09 15:19:22] [ERROR] select * from `user` as `user` where `user`.`nickname` = '红心K丶釒' limit 1
+[2018-03-09 15:19:22] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 15:34:16] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 15:34:16] [ERROR] Error: nickname值类型错误!
+    at Object.validData (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/validation.js:364:23)
+    at module.exports.add (/Users/zening/Desktop/card_server/node_modules/thinkorm/lib/model.js:406:27)
+    at <anonymous>
+[2018-03-09 15:34:16] [ERROR]  POST  500  /comment/saveComment  12ms
+[2018-03-09 16:11:31] [ERROR] select * from `user` as `user` where `user`.`nickname` = '红心K丶釒' limit 1
+[2018-03-09 16:11:31] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 16:47:37] [ERROR] select * from `user` as `user` where `user`.`nickname` = '红心K丶釒' limit 1
+[2018-03-09 16:47:37] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 17:37:30] [ERROR] select * from `card` as `card` where `card`.`id` = '11' limit 1
+[2018-03-09 17:37:30] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 17:37:30] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-09 17:37:30] [ERROR]  GET  500  /card/getList  10ms

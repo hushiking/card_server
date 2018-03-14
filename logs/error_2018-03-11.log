@@ -1,0 +1,99 @@
+[2018-03-11 00:35:20] [ERROR] select count(`card`.`id`) as `count` from `card` as `card` limit 1
+[2018-03-11 00:35:20] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-11 01:44:01] [ERROR] select count(`card`.`id`) as `count` from `card` as `card` limit 1
+[2018-03-11 01:44:01] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-11 02:19:08] [ERROR] NotFoundError: Controller not found.
+    at Object.throw (/Users/zening/Desktop/card_server/node_modules/koa/lib/context.js:93:11)
+    at exec (/Users/zening/Desktop/card_server/node_modules/think_controller/index.js:36:22)
+    at /Users/zening/Desktop/card_server/node_modules/think_controller/index.js:87:16
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_router/index.js:286:20
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_model/index.js:52:16
+    at dispatch (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:42:32)
+    at next (/Users/zening/Desktop/card_server/node_modules/koa-compose/index.js:43:18)
+    at /Users/zening/Desktop/card_server/node_modules/think_payload/index.js:119:16
+    at <anonymous>
+[2018-03-11 02:19:08] [ERROR]  POST  404  /feedback/saveFeedback  20ms
+[2018-03-11 09:42:02] [ERROR] select * from `card` as `card` where `card`.`id` = 21 limit 1
+[2018-03-11 09:42:02] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)
+[2018-03-11 10:12:16] [ERROR] select count(`card`.`id`) as `count` from `card` as `card` limit 1
+[2018-03-11 10:12:16] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues [as _onImmediate] (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)
+    at tryOnImmediate (timers.js:751:5)
+    at processImmediate [as _immediateCallback] (timers.js:722:5)

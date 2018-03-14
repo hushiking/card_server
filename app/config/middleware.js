@@ -14,7 +14,7 @@ module.exports = {
             db_port: 3306, // 端口
             db_name: 'card_server', // 数据库名
             db_user: 'root', // 用户名
-            db_pwd: '123456', // 密码
+            db_pwd: 'richenlin', // 密码
             db_prefix: '', // 数据库表前缀
             db_nums_per_page: 20, //查询分页每页显示的条数
             db_ext_config: { //数据库连接时候额外的参数

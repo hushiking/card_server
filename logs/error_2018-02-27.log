@@ -1,0 +1,589 @@
+[2018-02-27 09:48:18] [ERROR] select count(`card`.`id`) as `count` from `card` as `card` limit 1
+[2018-02-27 09:48:18] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+[2018-02-27 10:10:49] [ERROR] select count(`card`.`id`) as `count` from `card` as `card` limit 1
+[2018-02-27 10:10:49] [ERROR] Error: Cannot enqueue Query after fatal error.
+    at Protocol._validateEnqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:201:16)
+    at Protocol._enqueue (/Users/zening/Desktop/card_server/node_modules/mysql/lib/protocol/Protocol.js:139:13)
+    at PoolConnection.query (/Users/zening/Desktop/card_server/node_modules/mysql/lib/Connection.js:208:25)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:572:16
+    at Promise._execute (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/debuggability.js:303:9)
+    at Promise._resolveFromExecutor (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:79:10)
+    at /Users/zening/Desktop/card_server/node_modules/think_lib/index.js:571:16
+    at connect.then.conn (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/index.js:142:20)
+    at tryCatcher (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromiseCtx (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/promise.js:606:10)
+    at Async._drainQueue (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:138:12)
+    at Async._drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/zening/Desktop/card_server/node_modules/bluebird/js/release/async.js:17:14)
+[2018-02-27 22:50:20] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:50:20] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:50:20] [ERROR]  GET  500  /card/getList  462ms
+[2018-02-27 22:50:46] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:50:46] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:50:46] [ERROR]  GET  500  /card/getList  6ms
+[2018-02-27 22:51:33] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:51:33] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:51:33] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 22:52:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:52:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:52:51] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 22:54:12] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:54:12] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:54:12] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 22:55:22] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:55:22] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:55:22] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 22:59:45] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:59:45] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 22:59:45] [ERROR]  GET  500  /card/getList  451ms
+[2018-02-27 23:01:45] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:01:45] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:01:45] [ERROR]  GET  500  /card/getList  6ms
+[2018-02-27 23:03:49] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:03:49] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:03:49] [ERROR]  GET  500  /card/getList  5ms
+[2018-02-27 23:05:38] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:05:38] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:05:38] [ERROR]  GET  500  /card/getList  2ms
+[2018-02-27 23:07:26] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:26] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:26] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:07:47] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:47] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:47] [ERROR]  GET  500  /card/getList  5ms
+[2018-02-27 23:07:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:51] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:07:59] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:59] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:07:59] [ERROR]  GET  500  /card/getList  6ms
+[2018-02-27 23:13:27] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:13:27] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:13:27] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:14:08] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:14:08] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:14:08] [ERROR]  GET  500  /card/getList  2ms
+[2018-02-27 23:14:30] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:14:30] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:14:30] [ERROR]  GET  500  /card/getList  5ms
+[2018-02-27 23:15:18] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:15:18] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:15:18] [ERROR]  GET  500  /card/getList  5ms
+[2018-02-27 23:20:01] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:01] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:01] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:01] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:02] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:02] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:02] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:02] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:02] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:03] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:03] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:03] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:03] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:03] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:04] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:04] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:04] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:04] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:20:05] [ERROR] Error: /Users/zening/Desktop/card_server/app/controller/comment.js: SyntaxError: Unexpected identifier
+    at load (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:126:15)
+    at loader (/Users/zening/Desktop/card_server/node_modules/think_loader/index.js:31:17)
+    at Object.loadControllers (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/util/loader.js:114:40)
+    at ThinkKoa.listen (/Users/zening/Desktop/card_server/node_modules/thinkkoa/lib/thinkkoa.js:239:16)
+    at Object.<anonymous> (/Users/zening/Desktop/card_server/index.js:19:5)
+    at Module._compile (module.js:643:30)
+    at Object.Module._extensions..js (module.js:654:10)
+    at Module.load (module.js:556:32)
+    at tryModuleLoad (module.js:499:12)
+    at Function.Module._load (module.js:491:3)
+    at Function.Module.runMain (module.js:684:10)
+    at startup (bootstrap_node.js:187:16)
+    at bootstrap_node.js:608:3
+[2018-02-27 23:27:37] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:27:37] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:27:37] [ERROR]  GET  500  /card/getList  439ms
+[2018-02-27 23:31:24] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:31:24] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:31:24] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:31:35] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:31:35] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:31:35] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:33:09] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:33:09] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:33:09] [ERROR]  GET  500  /card/getList  7ms
+[2018-02-27 23:36:57] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:36:57] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:36:57] [ERROR]  GET  500  /card/getList  397ms
+[2018-02-27 23:37:26] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:37:26] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:37:26] [ERROR]  GET  500  /card/getList  7ms
+[2018-02-27 23:38:07] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:38:07] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:38:07] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:38:17] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:38:17] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:38:17] [ERROR]  GET  500  /card/getList  442ms
+[2018-02-27 23:39:16] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:39:16] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:39:16] [ERROR]  GET  500  /card/getList  427ms
+[2018-02-27 23:40:00] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:40:00] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:40:00] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:43:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:43:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:43:51] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:47:18] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:47:18] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:47:18] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:50:03] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:50:03] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:50:03] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:50:38] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:50:38] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:50:38] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:51:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:51:51] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:51:51] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:52:40] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:52:40] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:52:40] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:52:44] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:52:44] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:52:44] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:52:47] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:52:47] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:52:47] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:54:34] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:54:34] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:54:34] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:56:18] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:56:18] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:56:18] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:57:06] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:57:06] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:57:06] [ERROR]  GET  500  /card/getList  3ms
+[2018-02-27 23:57:28] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:57:28] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:57:28] [ERROR]  GET  500  /card/getList  4ms
+[2018-02-27 23:58:38] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:58:38] [ERROR] Error: Error: Undefined binding(s) detected when compiling SELECT query: select * from `card` as `card` where `card`.`id` = ? limit ?
+    at module.exports.parseSql (/Users/zening/Desktop/card_server/node_modules/thinkorm_adapter_mysql/lib/sqlbuilder.js:465:19)
+    at <anonymous>
+[2018-02-27 23:58:38] [ERROR]  GET  500  /card/getList  4ms

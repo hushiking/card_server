@@ -68,7 +68,7 @@ module.exports = class extends controller {
     async saveCommentAction() {
         let commentData = this.param();
         let curUser = await this.useModel.where({ openid: commentData.openid }).find().catch(e => this.error(e.message))
-        commentData.create_time = helper.datetime();
+        commentData.create_time = helper.datetime()
         commentData.card_id = Number(commentData.card_id)
         commentData.support = []
         // console.log(helper.datetime())
@@ -76,30 +76,15 @@ module.exports = class extends controller {
             commentData.nickname = curUser.nickname
             commentData.gender = curUser.gender
             commentData.avatar_url = curUser.avatar_url
+            commentData.group = curUser.group
         }
         await this.Model.add(commentData);
         // console.log(commentData)
-        return this.ok('success', {'a': 1})    
+        return this.ok('success', {'a': 1})
+        
+        
     }
-    async userCommentAction() {
-        let openid = this.param('openid');
-        let comentList = await this.Model.where({openid: openid}).select();
-        let suportSum = 0;
-        let commentSum = comentList.length;
-        comentList.forEach((item)=>{
-            suportSum += item.support.length;
-        })
-        let commentData = {suportSum: suportSum, commentSum: commentSum};
-        return this.ok('success',commentData) 
-    }
-    async commentListAction() {
-        let openid = this.param('openid');
-        let comentList = await this.Model.where({openid: openid}).select();
-        comentList.forEach((item)=>{
-            item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
-        })
-        return this.ok('success', comentList) 
-    }
+    
 };
 // commentList: [
 //     {avatar: 'title.png', name: '就在那天', number: 'No.232', supportCount: 222, commentContent: '就卡死覅四分五裂萨菲立刻来了', time: '五分钟前'},

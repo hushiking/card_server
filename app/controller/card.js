@@ -5,7 +5,6 @@
 const {controller, helper} = require('thinkkoa');
 const cardModel = require('../model/card');
 const userModel = require('../model/user');
-const commentModel = require('../model/comment');
 const logicService = require('../service/common/logic');
 
 module.exports = class extends controller {
@@ -21,7 +20,6 @@ module.exports = class extends controller {
         // logic service
         this.logicService = new logicService();
         this.useModel = new userModel(this.app.config('config.model', 'middleware'));
-        this.commentModel = new commentModel(this.app.config('config.model', 'middleware'));
     }
     //所有该控制器(含子类)方法前置方法
     __before(){
@@ -43,7 +41,6 @@ module.exports = class extends controller {
         let cardData = this.param();
         console.log(cardData);
         cardData.support = [];
-        cardData.create_time = helper.datetime();
         cardData.comment = [];
         cardData.img_url = '/asserts/image/home/content.png';
         //TODO： 要改user表的card里面
@@ -58,9 +55,7 @@ module.exports = class extends controller {
     async getUserCardAction() {
         let openid = this.param('openid');
         let data = await this.Model.where({openid: openid}).select();
-        data.forEach((item)=>{
-            item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
-        })
+        echo(data);
         return this.ok('success', data);
     }
     async curentAction() {
@@ -85,13 +80,9 @@ module.exports = class extends controller {
         }
         
     }
-    async deleteAction(){
+    async deleteAction() {
         let id = this.param('id');
-        let commentList = await this.Model.where({id: id}).find();
-        commentList = commentList.comment;
-        echo(commentList);
         await this.Model.where({id: id}).delete();
-        await this.commentModel.where({id: commentList}).delete();
         return this.ok('delete success');
     }
 };
