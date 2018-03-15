@@ -55,7 +55,6 @@ module.exports = class extends controller {
         });
         try {
             let data = await this.Model.where({phonenum: userInfo.phonenum}).find();
-            echo();
             if(Object.keys(data).length<=0){
                 console.log(11111); 
                 return this.fail('您没有访问权限，请联系管理员');
@@ -73,7 +72,6 @@ module.exports = class extends controller {
                 data.create_time = helper.datetime()
                 await this.Model.where({id: data.id}).update(data).catch(e => this.error(e.message));
                 result = JSON.parse(result);
-                console.log(111111);
             }else{
                 result = {openid: data.openid};
             }
