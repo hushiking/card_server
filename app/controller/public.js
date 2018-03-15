@@ -53,15 +53,30 @@ module.exports = class extends controller {
         }).catch(e => {
             helper.addLogs('wx', JSON.stringify(e));
         });
-
         try {
-            let data = await this.Model.where({nickname: userInfo.nickName}).find();
-            data.avatar_url = userInfo.avatarUrl;
-            data.gender = userInfo.gender;
-            data.openid = JSON.parse(result).openid;
-            data.create_time = helper.datetime()
-            await this.Model.where({nickname: userInfo.nickName}).update(data).catch(e => this.error(e.message));
-            result = JSON.parse(result);
+            let data = await this.Model.where({phonenum: userInfo.phonenum}).find();
+            echo();
+            if(Object.keys(data).length<=0){
+                console.log(11111); 
+                return this.fail('您没有访问权限，请联系管理员');
+            }
+            // 如果不存在openid 创建user
+            if(!data.openid){
+                data.avatar_url = userInfo.avatarUrl;
+                data.gender = userInfo.gender;
+                data.nickname = userInfo.nickName;
+                data.real_name = userInfo.nickName;
+                data.card = [];
+                data.message = [];
+                data.badge = [1];
+                data.openid = JSON.parse(result).openid;
+                data.create_time = helper.datetime()
+                await this.Model.where({id: data.id}).update(data).catch(e => this.error(e.message));
+                result = JSON.parse(result);
+                console.log(111111);
+            }else{
+                result = {openid: data.openid};
+            }
         } catch (error) {
             result = {};
         }
