@@ -6,8 +6,8 @@ const { controller, helper } = require('thinkkoa');
 const cardModel = require('../model/card');
 const userModel = require('../model/user');
 const logicService = require('../service/common/logic');
-
-module.exports = class extends controller {
+const admin_base = require('../common/admin_base.js');
+module.exports = class extends admin_base {
     //构造方法
     init(ctx, app) {
         //调用父类构造方法
@@ -21,14 +21,6 @@ module.exports = class extends controller {
         // logic service
         this.logicService = new logicService();
     }
-    //所有该控制器(含子类)方法前置方法
-    __before() {
-        console.log('__before');
-    }
-    //URI定位到该控制器,如果该控制器不存在某个方法时自动调用
-    __empty() {
-        return this.json('can\'t find action');
-    }
     //indexAction前置方法
     _before_index() {
         console.log('_before_index');
@@ -38,9 +30,10 @@ module.exports = class extends controller {
         return this.ok('success');
     }
     async userAction() {
-        let openid = this.param('openid');
-        let data = await this.userModel.where({openid: openid}).find();
-        return this.ok('success', data);
+        // let openid = this.param('openid');
+        // let data = await this.userModel.where({openid: openid}).find();
+        echo(this._userInfo);
+        return this.ok('success', this._userInfo);
     }
     async getListAction() {
         let openid = this.param('openid');

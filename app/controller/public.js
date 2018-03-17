@@ -6,8 +6,8 @@ let func = require('../util/func');
 let requestp = require('request-promise');
 const {controller, helper} = require('thinkkoa');
 const userModel = require('../model/user');
-const admin_base = require('./admin_base.js');
-module.exports = class extends admin_base {
+// const admin_base = require('../common/admin_base.js');
+module.exports = class extends controller {
     //构造方法
     init(ctx, app){
         //调用父类构造方法
@@ -76,13 +76,14 @@ module.exports = class extends admin_base {
                 data.openid = result.openid;
                 data.create_time = helper.datetime();
                 await this.Model.where({id: data.id}).update(data).catch(e => this.error(e.message));
-                await this.app.cache(ranStr, {openid: result.openid, session_key: result.session_key, nickname: data.avatar_url, group: data.group, avatar_url: data.avatar_url});
+                await this.app.cache(ranStr, {openid: result.openid, session_key: result.session_key, nickname: data.nickname, group: data.group, avatar_url: data.avatar_url});
                 return this.ok('success', {session_key: ranStr});
             }else{
+                await this.app.cache(ranStr, {openid: result.openid, session_key: result.session_key, nickname: data.nickname, group: data.group, avatar_url: data.avatar_url});
                 return this.ok('success', {session_key: ranStr});
             }
         } else {
-            return this.fail('获取微信session_key失败');
+            return this.fail('您没有登录权限请重新登录');
         }
     }
     
