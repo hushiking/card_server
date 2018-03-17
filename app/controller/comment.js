@@ -33,10 +33,9 @@ module.exports = class extends admin_base {
     }
     // 点赞
     async supportAction() {
-        let openid = this.param('openid')
         let id = Number(this.param('id'))
         let data = await this.Model.where({ id: id }).find().catch(e => this.error(e.message));
-        let userData = await this.useModel.where({ openid: openid }).find().catch(e => this.error(e.message))
+        let userData = await this.useModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message))
         // console.log(userData)
         // console.log(data)
         if (data.support.indexOf(userData.id) === -1) {
@@ -49,8 +48,7 @@ module.exports = class extends admin_base {
 
     }
     async userCommentAction() {
-        let openid = this.param('openid');
-        let comentList = await this.Model.where({ openid: openid }).select();
+        let comentList = await this.Model.where({ openid: this._userInfo.openid }).select();
         let suportSum = 0;
         let commentSum = comentList.length;
         comentList.forEach((item) => {
@@ -60,8 +58,7 @@ module.exports = class extends admin_base {
         return this.ok('success', commentData)
     }
     async commentListAction() {
-        let openid = this.param('openid');
-        let comentList = await this.Model.where({ openid: openid }).select();
+        let comentList = await this.Model.where({ openid: this._userInfo.openid }).select();
         comentList.forEach((item) => {
             item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
         })

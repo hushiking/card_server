@@ -31,13 +31,11 @@ module.exports = class extends admin_base {
     }
     async userAction() {
         // let openid = this.param('openid');
-        // let data = await this.userModel.where({openid: openid}).find();
-        echo(this._userInfo);
-        return this.ok('success', this._userInfo);
+        let data = await this.userModel.where({openid: this._userInfo.openid}).find();
+        return this.ok('success', data);
     }
     async getListAction() {
-        let openid = this.param('openid');
-        let data = await this.Model.where({openid: openid}).select();
+        let data = await this.Model.where({openid: this._userInfo.openid}).select();
         let suport = 0;
         let comment = 0;
         data.map((item)=>{
