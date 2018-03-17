@@ -80,21 +80,19 @@ module.exports = class extends admin_base {
     }
     // 保存评论
     async saveCommentAction() {
-        let commentData = this.param();
-        let curUser = await this.useModel.where({ openid: commentData.openid }).find().catch(e => this.error(e.message))
+        let commentData = this.param('commentData');
+        // let curUser = await this.useModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message))
         commentData.create_time = helper.datetime()
         commentData.card_id = Number(commentData.card_id)
-        commentData.support = []
+        commentData.support = [];
+        commentData.nickname = this._userInfo.nickname;
+        commentData.openid = this._userInfo.openid;
+        commentData.avatar_url = this._userInfo.avatar_url;
+        commentData.group = this._userInfo.group;
         // console.log(helper.datetime())
-        if (JSON.stringify(curUser) != "{}") {
-            commentData.nickname = curUser.nickname
-            commentData.gender = curUser.gender
-            commentData.avatar_url = curUser.avatar_url
-            commentData.group = curUser.group
-        }
         await this.Model.add(commentData);
         // console.log(commentData)
-        return this.ok('success', { 'a': 1 })
+        return this.ok('success')
 
 
     }

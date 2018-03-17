@@ -47,7 +47,6 @@ module.exports = class extends admin_base {
         echo('success');
         let cardData = this.param();
         let file = this.file();
-
         // co(async function(stream) {
         //     let result = await store.putStream('images', fs.createReadStream(file));
         //     // let result = await store.put('object-key', new Buffer('hello world'));
@@ -71,8 +70,7 @@ module.exports = class extends admin_base {
         return this.ok('success', data);
     }
     async getUserCardAction() {
-        let openid = this.param('openid');
-        let data = await this.Model.where({ openid: openid }).select();
+        let data = await this.Model.where({ openid: this._userInfo.openid  }).select();
         echo(data);
         return this.ok('success', data);
     }
@@ -83,18 +81,17 @@ module.exports = class extends admin_base {
     }
     // 点赞
     async supportAction() {
-        let openid = this.param('openid')
         let id = Number(this.param('id'))
         let data = await this.Model.where({ id: id }).find().catch(e => this.error(e.message));
-        let userData = await this.useModel.where({ openid: openid }).find().catch(e => this.error(e.message))
+        let userData = await this.useModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message))
         // console.log(userData)
         // console.log(data)
         if (data.support.indexOf(userData.id) === -1) {
             data.support.push(userData.id);
             await this.Model.where({ id: id }).update({ support: data.support }).catch(e => this.error(e.message));
-            return this.ok('success', { status: 1 })
+            return this.ok('success')
         } else {
-            return this.ok('success', { status: 0 })
+            return this.fail('success')
         }
 
     }
