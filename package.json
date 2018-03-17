@@ -11,6 +11,8 @@
     "node": ">8.0.0"
   },
   "dependencies": {
+    "ali-oss": "^4.13.2",
+    "co": "^4.6.0",
     "file-type": "^7.6.0",
     "mime-type": "^3.0.5",
     "read-chunk": "^2.1.0",
