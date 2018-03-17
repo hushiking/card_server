@@ -44,21 +44,21 @@ module.exports = class extends admin_base {
     }
 
     async saveCardAction() {
-        echo('success');
-        let cardData = this.param();
-        let file = this.file();
+        let cardData = JSON.parse(this.param('data'));
+        // let file = this.file();
         // co(async function(stream) {
         //     let result = await store.putStream('images', fs.createReadStream(file));
         //     // let result = await store.put('object-key', new Buffer('hello world'));
         // }).catch( (err) => {
         //     echo(err);
         // })
-        let userData = await this.useModel.where({ openid: this._userInfo.openid }).find();
+        // let userData = await this.useModel.where({ openid: this._userInfo.openid }).find();
         cardData.support = [];
         cardData.comment = [];
-        cardData.nickname = userData.nickname;
-        cardData.avatar_url = userData.avatar_url;
-        cardData.group = userData.group;
+        cardData.nickname = this._userInfo.nickname;
+        cardData.avatar_url = this._userInfo.avatar_url;
+        cardData.group = this._userInfo.group;
+        cardData.openid = this._userInfo.openid;
         cardData.img_url = '/asserts/image/home/content.png';
         //TODO： 要改user表的card里面
         await this.Model.add(cardData);
@@ -71,7 +71,6 @@ module.exports = class extends admin_base {
     }
     async getUserCardAction() {
         let data = await this.Model.where({ openid: this._userInfo.openid  }).select();
-        echo(data);
         return this.ok('success', data);
     }
     async curentAction() {
