@@ -7,6 +7,7 @@
  */
 const crypto = require('crypto');
 const requestp = require('request-promise');
+const {controller, helper} = require('thinkkoa');
 
 let lib = {};
 /**
@@ -211,7 +212,7 @@ lib.getRandomNumber = function (length) {
  * @returns {string}
  */
 lib.getRandomString = function (length) {
-    if (!think.isNumber(length) || length < 1) {
+    if (!helper.isNumber(length) || length < 1) {
         return '';
     }
 

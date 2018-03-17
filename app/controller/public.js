@@ -6,7 +6,8 @@ let func = require('../util/func');
 let requestp = require('request-promise');
 const {controller, helper} = require('thinkkoa');
 const userModel = require('../model/user');
-module.exports = class extends controller {
+const admin_base = require('./admin_base.js');
+module.exports = class extends admin_base {
     //构造方法
     init(ctx, app){
         //调用父类构造方法
@@ -34,7 +35,6 @@ module.exports = class extends controller {
     async wxLoginAction() {
         let code = this.param('code');
         let userInfo = JSON.parse(this.param('userInfo'));
-        echo(userInfo);
         if (helper.isEmpty(code)) {
             return this.fail('缺少参数：code' );
         }
@@ -54,12 +54,17 @@ module.exports = class extends controller {
             helper.addLogs('wx', JSON.stringify(e));
         });
         try {
+            result = JSON.parse(result);
+        } catch (error) {
+            result = {};
+        }
+        if (result.openid && result.session_key) {
             let data = await this.Model.where({phonenum: userInfo.phonenum}).find();
             if(Object.keys(data).length<=0){
-                console.log(11111); 
                 return this.fail('您没有访问权限，请联系管理员');
             }
             // 如果不存在openid 创建user
+            let ranStr = await func.getRandomString(32);
             if(!data.openid){
                 data.avatar_url = userInfo.avatarUrl;
                 data.gender = userInfo.gender;
@@ -68,25 +73,17 @@ module.exports = class extends controller {
                 data.card = [];
                 data.message = [];
                 data.badge = [1];
-                data.openid = JSON.parse(result).openid;
-                data.create_time = helper.datetime()
+                data.openid = result.openid;
+                data.create_time = helper.datetime();
                 await this.Model.where({id: data.id}).update(data).catch(e => this.error(e.message));
-                result = JSON.parse(result);
+                await this.app.cache(ranStr, {openid: result.openid, session_key: result.session_key, nickname: data.avatar_url, group: data.group, avatar_url: data.avatar_url});
+                return this.ok('success', {session_key: ranStr});
             }else{
-                result = {openid: data.openid};
+                return this.ok('success', {session_key: ranStr});
             }
-        } catch (error) {
-            result = {};
+        } else {
+            return this.fail('获取微信session_key失败');
         }
-        return this.ok('success', result);
-        //保存openid和session_key
-        // if (result.openid && result.session_key) {
-        //     let ranStr = await func.getRandomString(32);
-        //     await helper.cache(ranStr, {openid: result.openid, session_key: result.session_key});
-        //     return this.ok('success', {session_key: ranStr});
-        // } else {
-        //     return this.fail('获取微信session_key失败');
-        // }
     }
     
     /**

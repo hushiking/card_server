@@ -24,5 +24,25 @@ module.exports = {
         max_file_size: 100 * 1024 * 1024, //上传文件大小限制，默认100M
         file_allow_type: 'jpg|jpeg|png|gif|xlsx|xls|csv|doc|ppt|mp3', //允许上传的文件类型
         file_save_path: process.env.ROOT_PATH + '/nfs/'
+    },
+    store_option: {
+        type: 'redis', //数据缓存类型 file,redis,memcache
+        key_prefix: 'BackgroundCheck:', //缓存key前置
+
+        redis_host: '127.0.0.1',
+        redis_port: 6379,
+        redis_password: '',
+        redis_db: '0',
+        redis_timeout: 5000, //try connection timeout
+    },
+    //queue config
+    queue_option: {
+        redis_host: '127.0.0.1',
+        redis_port: 6379,
+        redis_password: '',
+        redis_db: '1',
+        redis_timeout: 5000, //try connection timeout
+        queue_blocktimeout: 60,
+        queue_maxretry: 3
     }
 };
