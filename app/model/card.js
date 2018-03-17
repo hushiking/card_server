@@ -62,12 +62,12 @@ module.exports = class extends thinkorm {
                 defaultsTo: ''
             },
             group: {
-                type: 'integer',
-                defaultsTo: 0
+                type: 'string',
+                defaultsTo: '001'
             },
-            group_num: {
-                type: 'integer',
-                defaultsTo: 0
+            group_name: {
+                type: 'string',
+                defaultsTo: ''
             },
             status: {
                 type: 'integer',
