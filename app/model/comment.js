@@ -46,8 +46,8 @@ module.exports = class extends thinkorm {
                 defaultsTo: ''
             },
             group: {
-                type: 'integer',
-                defaultsTo: 0
+                type: 'string',
+                defaultsTo: '001'
             },
             nickname: {
                 type: 'string',

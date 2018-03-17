@@ -61,8 +61,8 @@ module.exports = class extends thinkorm {
                 defaultsTo: 0
             },
             group: {
-                type: 'integer',
-                defaultsTo: 0
+                type: 'string',
+                defaultsTo: '001'
             },
             card: {
                 type: 'array'
