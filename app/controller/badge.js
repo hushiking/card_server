@@ -13,7 +13,7 @@ module.exports = class extends admin_base {
         //调用父类构造方法
         super.init(ctx, app);
         this.Model = new badgeModel(this.app.config('config.model', 'middleware'));
-        this.useModel = new userModel(this.app.config('config.model', 'middleware'));
+        this.userModel = new userModel(this.app.config('config.model', 'middleware'));
     }
     //所有该控制器(含子类)方法前置方法
     //indexAction前置方法
@@ -28,22 +28,19 @@ module.exports = class extends admin_base {
 
     // 获取数据
     async getDateAction() {
-        let openid = this.param('openid');
-        let userData = await this.useModel.where({openid:openid}).find().catch(e => this.error(e.message))
-        let personTotal = 0
-        let teamTotal = 0
+        let personTotal = 0;
+        let teamTotal = 0;             
+        let userData = await this.userModel.where({openid: this._userInfo.openid}).find().catch(e => this.error(e.message))
+        personTotal = userData.personal_achivement;
+        teamTotal = userData.team_achivement;
+        echo(userData.badge);
         //TODO: 以后改成循环
         // userData.badge[0]
-        let badgeData =  await this.Model.where({ id: 1}).find().catch(e => this.error(e.message))
-        personTotal += badgeData.Personal
-        teamTotal += badgeData.team
-        // userData.badge.forEach((value) => {
-        //     console.log(value)
-        //     let badgeData =  this.Model.where({ id: value }).find().catch(e => this.error(e.message))
-        //     console.log(badgeData)
-        //     personTotal += badgeData.Personal
-        //     teamTotal += badgeData.team
-        // })
+        // let badgeData =  await this.Model.where({ id: userData.badge}).select().catch(e => this.error(e.message))
+        // echo(badgeData);
+        // personTotal += badgeData.Personal
+        // teamTotal += badgeData.team
+        // let badgeData =  this.Model.where({ id: value }).find().catch(e => this.error(e.message));
         return this.ok('success', {
             personTotal,
             teamTotal,
@@ -51,34 +48,29 @@ module.exports = class extends admin_base {
         })
     }
     async getDateListAction() {
-        let openid = this.param('openid');
-        let userList = await this.useModel.where().select().catch(e => this.error(e.message))
-        let personTotal = 0
-        let teamTotal = 0
-        //TODO: 以后改成循环
-        // userData.badge[0]
-        let badgeData =  await this.Model.where({ id: 1}).find().catch(e => this.error(e.message))
-        personTotal += badgeData.Personal;
-        teamTotal += badgeData.team;
+        //存入过信息的user;
+        let hasLoginUser = [];
+        let userList = await this.userModel.where().select().catch(e => this.error(e.message))
+        let personTotal = 0;
+        let teamTotal = 0;
         userList.forEach(item => {
-            item.personTotal = 135;
+            if(item.openid === this._userInfo.openid){
+                personTotal = item.personal_achivement;
+                teamTotal = item.team_achivement;
+            }
+            if(item.openid){
+                hasLoginUser.push(item);
+            }
         });
-        // userData.badge.forEach((value) => {
-        //     console.log(value)
-        //     let badgeData =  this.Model.where({ id: value }).find().catch(e => this.error(e.message))
-        //     console.log(badgeData)
-        //     personTotal += badgeData.Personal
-        //     teamTotal += badgeData.team
-        // })
         return this.ok('success', {
+            hasLoginUser,
             personTotal,
-            teamTotal,
-            userList
-        })
+            teamTotal
+        })     
     }
     async getTeamListAction() {
         let openid = this.param('openid');
-        let userList = await this.useModel.where().select().catch(e => this.error(e.message))
+        let userList = await this.userModel.where().select().catch(e => this.error(e.message))
         let personTotal = 0
         let teamTotal = 0
         //TODO: 以后改成循环

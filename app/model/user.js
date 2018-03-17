@@ -10,7 +10,7 @@ module.exports = class extends thinkorm {
         // 模型名称
         this.modelName = 'user';
         // 是否开启迁移(migrate方法可用)
-        // this.safe = false;
+        this.safe = false;
         // 数据表字段信息
         this.fields = {
             id: {
@@ -39,6 +39,14 @@ module.exports = class extends thinkorm {
             gender: {
                 type: 'integer',
                 defaultsTo: 2
+            },
+            personal_achivement: {
+                type: 'integer',
+                defaultsTo: 0
+            },
+            team_achivement: {
+                type: 'integer',
+                defaultsTo: 0
             },
             avatar_url: {
                 type: 'text',
