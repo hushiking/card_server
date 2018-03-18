@@ -1,5 +1,6 @@
 .vscode
 /logs
+/web
 /nfs
 /node_modules
 .DS_Store
