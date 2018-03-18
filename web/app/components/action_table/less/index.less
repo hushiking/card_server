@@ -1,0 +1,61 @@
+@gray-1  : #aaa;
+@gray-2  : #999;
+@gray-3  : #666;
+
+@yellow-1 : #ffd154;
+@yellow-2 : #fabf40;
+@yellow-3 : #eba12b;
+
+@blue-1   :  #3ec6ff;
+@blue-2   :  #31beff;
+@blue-3   :  #1eaaf1;
+
+@green-1   :  #71c883;
+@green-2   :  #63be70;
+@green-3   :  #50ae55;
+
+@red-1   :  #ff835d;
+@red-2   :  #ff6e52;
+@red-3   :  #f1453d;
+
+@bg-line-1   :  #f4f4f4;
+@bg-line-2   :  #e6e6e6;
+
+@pre-flexible : ~"action-table";
+
+.@{pre-flexible} {
+    cursor: pointer;
+    &-edit{
+        color: @red-2
+    }
+    &-text{
+        margin-left:6px; 
+    }
+    &-edit:hover{
+        color: @red-3
+    }
+    &-retweet{
+        color: @yellow-2   
+    }
+    &-retweet:hover{
+        color: @yellow-3 
+    }
+    &-eye-o{
+        color: @yellow-2   
+    }
+    &-eye-o:hover{
+        color: @yellow-3 
+    }
+    &-tag{
+        color: #999  
+    }
+    &-tag:hover{
+        color: #666
+    }
+    &-cloud-upload-o{
+        color: @green-2 
+    }
+    &-cloud-upload-o:hover{
+        color: @green-3
+    }
+}

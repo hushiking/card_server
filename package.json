@@ -5,7 +5,12 @@
   "scripts": {
     "test": "npm run eslint",
     "start": "supervisor -w app -q index",
-    "eslint": "eslint app"
+    "eslint": "eslint app",
+    "web_install": "cd web && npm install",
+    "init": "npm install && cd web && npm install",
+    "web": "cd web && npm run dev",
+    "package": "rm -fr static && cd web && npm run build",
+    "build": "cd web && npm install && npm run build"
   },
   "engines": {
     "node": ">8.0.0"
