@@ -27,44 +27,12 @@ module.exports = class extends admin_base {
     indexAction() {
         return this.ok('success');
     }
-    async addAction() {
-        echo(this.param());
-        let userData = this.param();
-        userData.nickname = '';
-        userData.role = parseInt(userData.role);
-        userData.group = parseInt(userData.group);
-        userData.badge = [];
-        userData.message = [];
-        userData.card = [];
-        await this.Model.add(userData);
-        return this.ok('存储成功');
-    }
+  
     async getListAction() {
         this.Mo.page = this.param('page') || 1;
         this.Model = helper.isEmpty(this.Model) ? new (require(`${this.ctx.group}/${this.ctx.controller}`))(this.modelConfig) : this.Model;
         let data = await this.logicService.list(this.Model, this.Map, this.Mo);
         return this.ok('success', data);
     }
-    async delAction() {
-        let curDel = this.param();
-        await this.Model.where(curDel).delete();
-        return this.ok('delete success');
-    }
-    async viewAction() {
-        let id = this.param('id');
-        let pk = await this.Model.getPk();
-        let data = await this.Model.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
-        echo(data);
-        return this.ok('success', data);
-    }
-    async editAction() {
-        let id = this.param('id');
-        let upData = this.post();
-        upData.role = parseInt(upData.role);
-        upData.group = parseInt(upData.group);
-        // console.log(upData);
-        let data = await this.Model.where({ id: id }).update(upData).catch(e => this.error(e.message));
-        echo(data);
-        return this.ok('success', data);
-    }
+   
 };

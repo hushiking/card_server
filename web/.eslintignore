@@ -1,0 +1,10 @@
+doc/
+lib/
+node_modules/
+test/
+layout/
+*.MD/
+*.less/
+app/skit_ui/
+dev-config/
+app/utils/

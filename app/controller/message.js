@@ -22,21 +22,7 @@ module.exports = class extends admin_base {
     indexAction () {
         return this.ok('success');
     }
-    async addAction (){
-        let Data = this.param();
-        let messageData = {};
-        let userId = this.param('id');
-        for (let key in Data){
-            if(key !== 'id'){
-                messageData[key] = Data[key];
-            }
-        } 
-        let msgId = await this.Model.add(messageData);
-        let userData = await this.usrModel.where({ id: userId }).find().catch(e => { });
-        userData.message.push(msgId);
-        await this.usrModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
-        return this.ok('success');
-    }
+   
     async messageListAction (){
         let openid = this.param('openid');
         let messageList = await this.Model.where({ openid: openid }).select().catch(e => { });
