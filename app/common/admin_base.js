@@ -14,11 +14,11 @@ module.exports = class extends controller {
     async __before(){
         let beidiao_session_key = this.param('session_key');
         if (helper.isEmpty(beidiao_session_key)) {
-            return this.fail('缺少参数：session_key');
+            return this.fail('缺少参数：session_key', {islogin: true});
         }
         let userInfo = await this.app.cache(beidiao_session_key);
         if (helper.isEmpty(userInfo)) {
-            return this.fail('session失效，请重新登录');
+            return this.fail('session失效，请重新登录', {islogin: true});
         }
         this._userInfo = userInfo;
         this._beidiao_session_key = beidiao_session_key;
