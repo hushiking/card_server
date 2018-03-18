@@ -38,8 +38,8 @@ module.exports = class extends admin_base {
         return this.ok('success');
     }
     async messageListAction (){
-        let openid = this.param('openid');
-        let messageList = await this.Model.where({ openid: openid }).select().catch(e => { });
+        let curUser = await this.userModel.where({ openid: this._userInfo.openid }).find().catch(e => { });
+        let messageList = await this.Model.where({ id: curUser.message }).select().catch(e => { });
         messageList.forEach((item)=>{
             item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
         })
