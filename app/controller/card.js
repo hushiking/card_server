@@ -19,6 +19,7 @@ const store = oss({
     accessKeySecret: 'xL0n36PhdE9i4xsRuHg8kkjzKVhcRT',
     bucket: 'lzkj-card',
     region: 'oss-cn-shanghai',
+    endpoint: 'oss-cn-beijing.aliyuncs.com'
 });
 module.exports = class extends admin_base {
     //构造方法
@@ -43,26 +44,30 @@ module.exports = class extends admin_base {
         return this.ok('success');
     }
 
-    async saveCardAction() {
+    saveCardAction() {
         let cardData = JSON.parse(this.param('data'));
-        // let file = this.file();
-        // co(async function(stream) {
-        //     let result = await store.putStream('images', fs.createReadStream(file));
-        //     // let result = await store.put('object-key', new Buffer('hello world'));
-        // }).catch( (err) => {
-        //     echo(err);
-        // })
-        // let userData = await this.useModel.where({ openid: this._userInfo.openid }).find();
-        cardData.support = [];
-        cardData.comment = [];
-        cardData.nickname = this._userInfo.nickname;
-        cardData.avatar_url = this._userInfo.avatar_url;
-        cardData.group = this._userInfo.group;
-        cardData.openid = this._userInfo.openid;
-        cardData.img_url = '/asserts/image/home/content.png';
-        //TODO： 要改user表的card里面
-        await this.Model.add(cardData);
-        return this.ok('success');
+        let file = this.file('file');
+        // let _base64file = this.param('_base64file') || '';
+        let imageKey = this._userInfo.nickname + helper.datetime();
+        // const root = path.resolve(__dirname, './images');
+        // let imagesPath = root + '/hah.jpeg';
+        let that = this;
+        co(function* () {
+            // var result = yield store.put(imageKey, file.path);
+            var result = yield store.put(imageKey, file.path);
+            cardData.img_url = result.url;
+            cardData.support = [];
+            cardData.comment = [];
+            cardData.nickname = that._userInfo.nickname;
+            cardData.avatar_url = that._userInfo.avatar_url;
+            cardData.group = that._userInfo.group;
+            cardData.openid = that._userInfo.openid;
+            echo(cardData.img_url );
+            yield that.Model.add(cardData);
+            return that.ok('success');
+        }).catch(function (err) {
+            console.log(err);
+        });
     }
     async getListAction() {
         this.Mo.page = this.param('page') || 1;
@@ -70,7 +75,7 @@ module.exports = class extends admin_base {
         return this.ok('success', data);
     }
     async getUserCardAction() {
-        let data = await this.Model.where({ openid: this._userInfo.openid  }).select();
+        let data = await this.Model.where({ openid: this._userInfo.openid }).select();
         return this.ok('success', data);
     }
     async curentAction() {

@@ -5,7 +5,6 @@
 const { controller, helper } = require('thinkkoa');
 const badgeModel = require('../model/badge');
 const userModel = require('../model/user');
-const logicService = require('../service/common/logic');
 const admin_base = require('../common/admin_base.js');
 module.exports = class extends admin_base {
     //构造方法
@@ -66,7 +65,7 @@ module.exports = class extends admin_base {
             hasLoginUser,
             personTotal,
             teamTotal
-        })
+        });
     }
     async getTeamListAction() {
         //存入过信息的user;
@@ -95,13 +94,12 @@ module.exports = class extends admin_base {
                 groupList[item.group]['member'].push(item);
                 groupList[item.group]['sub'] += item.team_achivement;
             }
-        })
-        echo(groupList);
+        });
         return this.ok('success', {
             personTotal,
             teamTotal,
             groupList
-        })
+        });
     }
 
 };
