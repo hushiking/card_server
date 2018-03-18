@@ -74,6 +74,7 @@ module.exports = class extends controller {
         let Data = this.param();
         let messageData = {};
         let userId = this.param('id');
+        messageData.create_time = helper.datetime();
         userId = parseInt(userId);
         for (let key in Data){
             if(key !== 'id'){

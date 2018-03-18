@@ -12,7 +12,7 @@ module.exports = class extends admin_base {
         //调用父类构造方法
         super.init(ctx, app);
         this.Model = new messageModel(this.app.config('config.model', 'middleware'));
-        this.usrModel = new userModel(this.app.config('config.model', 'middleware'));
+        this.userModel = new userModel(this.app.config('config.model', 'middleware'));
     }
     //indexAction前置方法
     _before_index(){
@@ -25,8 +25,12 @@ module.exports = class extends admin_base {
    
     async messageListAction (){
         let curUser = await this.userModel.where({ openid: this._userInfo.openid }).find().catch(e => { });
-        let messageList = await this.Model.where({ id: curUser.message }).select().catch(e => { });
-        messageList.forEach((item)=>{
+        let messageList
+        if(curUser && curUser.message.length > 0){
+            messageList = await this.Model.where({ id: curUser.message }).select().catch(e => { });
+            echo(messageList);
+        }
+        messageList.forEach(item => {
             item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
         })
         return this.ok('success', messageList);
