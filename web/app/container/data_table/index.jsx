@@ -35,8 +35,8 @@ class ConDataTable extends Component {
         this.refreshPage();
     }
     componentWillReceiveProps(nextProps){
-        if (this.props.reducerRefreshTable !== nextProps.reducerRefreshTable){
-            let params = nextProps.reducerRefreshTable.toJS().data;
+        if (this.props.refrehTableAction !== nextProps.refrehTableAction){
+            let params = nextProps.refrehTableAction.toJS().data;
             // 触发带参数的搜索
             this.refreshPage(params);
         }
@@ -241,7 +241,7 @@ class ConDataTable extends Component {
 const mapStateToProps = state => {
     return {
         router :state.getIn(['router']),
-        reducerRefreshTable :state.getIn(['reducerRefreshTable'])
+        refrehTableAction :state.getIn(['refrehTableAction'])
     };
 };
 export default connect(mapStateToProps)(ConDataTable);

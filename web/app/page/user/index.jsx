@@ -20,12 +20,13 @@ class UpCluePage extends Component {
     }
     render() {
         return (
-            <Tabs
-                defaultActiveKey="customer" onChange={(key) => { }}>
-                <TabPane tab="联通" key="customer">
-                    <ModSearchSheet dataConfig={UserConfig} />
-                </TabPane>
-            </Tabs>
+            // <Tabs
+            //     defaultActiveKey="customer" onChange={(key) => { }}>
+            //     <TabPane tab="联通" key="customer">
+            //     </TabPane>
+            // </Tabs>
+            <ModSearchSheet dataConfig={UserConfig} />
+            
         );
     }
 }

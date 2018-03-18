@@ -9,7 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 // import reducerExample from './reducer_example';
 import reducerModal from './reducer_modal';
 import reducerLogin from './reducer_login';
-import reducerRefreshTable from './reducer_refresh_table';
+import refrehTableAction from './reducer_refresh_table';
 import reducerSavePublic from './reducer_save_public';
 
 let initialState = I.fromJS({
@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
     router,
     reducerModal,
     reducerLogin,
-    reducerRefreshTable,
+    refrehTableAction,
     reducerSavePublic
 });
 
