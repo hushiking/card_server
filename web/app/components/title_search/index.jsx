@@ -13,16 +13,21 @@ class TitleSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-        }
+            status: true
+        };
     }
     componentWillMount() {
     }
     componentDidMount() {
+        let { status } = this.props;
+        this.setState({
+            status
+        });
     }
-    addAction(){
+    addAction() {
         const { query } = hashHistory.getCurrentLocation();
         const { dispatch } = this.props;
-        dispatch(modalStatusAction( {
+        dispatch(modalStatusAction({
             modalParams: query,
             curForm: this.props.data.addForm.curForm,
             modalTitle: this.props.data.addForm.modalTitle,
@@ -31,21 +36,20 @@ class TitleSearch extends Component {
         }));
     };
     render() {
+        let AddBtnStatus;
+        let { status } = this.state;
+        status ? AddBtnStatus = <Button onClick={() => { this.addAction() }} type="success" icon="plus" className="spaceRight">新增</Button> : null;
         return (
             <div className="titleSearchContainer">
                 <div className="title">{this.props.data.title}</div>
                 <div className="searchContainer">
-                        {/* <Search
+                    {/* <Search
                             placeholder="input search text"
                             onSearch={value => console.log(value)}
                             style={{ width: 200 }}
                             className="spaceRight"
                         /> */}
-                        <Button onClick={()=>{
-                            this.addAction();
-                        }} type="success" icon="plus"  className="spaceRight">
-                            新增
-                        </Button>
+                    {AddBtnStatus}
                 </div>
             </div>
         )

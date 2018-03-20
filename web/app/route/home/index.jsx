@@ -26,18 +26,10 @@ export default {
             }
         },
         {
-            path: 'subject',
+            path: 'comment',
             getComponent(location, cb) {
                 require.ensure([], (require) => {
-                    cb(null, require('../../page/subject'));
-                });
-            }
-        },
-        {
-            path: 'class_monitor',
-            getComponent(location, cb) {
-                require.ensure([], (require) => {
-                    cb(null, require('../../page/class_monitor'));
+                    cb(null, require('../../page/comment'));
                 });
             }
         }

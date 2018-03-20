@@ -9,7 +9,7 @@ export default {
     tableUrl: USER_TAABLE,
     tableUrlDel: USER_TAABLE_DEL,
     title: '用户管理',
-    addForm:{
+    addForm: {
         curForm: 'USER_ADD',
         modalTitle: '添加用户'
     },
@@ -69,8 +69,8 @@ export default {
             width: '20%'
         }, {
             title: '群组名',
-            dataIndex: 'group',
-            key: 'group',
+            dataIndex: 'group_name',
+            key: 'group_name',
             width: '20%'
         },{
             title: '操作',

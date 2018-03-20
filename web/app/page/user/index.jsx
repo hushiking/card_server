@@ -6,7 +6,7 @@ import ModSearchSheet from '../../module/search_sheet';
 import { UserConfig } from '../../config';
 import { Button, Tabs } from '../../skit_ui';
 const TabPane = Tabs.TabPane;
-class UpCluePage extends Component {
+class UserPage extends Component {
     static defaultProps = {
     }
     constructor(props) {
@@ -25,12 +25,9 @@ class UpCluePage extends Component {
             //     <TabPane tab="联通" key="customer">
             //     </TabPane>
             // </Tabs>
-            <ModSearchSheet dataConfig={UserConfig} />
+            <ModSearchSheet dataConfig={UserConfig} status={true} />
             
         );
     }
 }
-export default UpCluePage;
-UpCluePage.propTypes = {
-    dispatch: PropTypes.object
-};
+export default UserPage;

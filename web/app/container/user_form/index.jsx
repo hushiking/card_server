@@ -86,7 +86,6 @@ class ConConsumersForm extends React.Component {
         const formState = this.props.curStatus;
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log
                 let _url = '';
                 let _method = '';
                 switch (formState) {
@@ -104,13 +103,12 @@ class ConConsumersForm extends React.Component {
                     break;
                 }
                 fetchSelf(_method, _url, values, {}).then(res => {
-                    console.log(res);
                     if (res.status === 1) {
                         Message.success(res.errmsg);
                         dispatch(modalStatusAction({
                             status: false
                         }));
-                        dispatch(refrehTableAction());
+                        dispatch(refrehTableAction({rodam: Math.random(0, 1)}));
                     } else {
                         Message.error(res.errmsg);
                     }
@@ -218,40 +216,6 @@ class ConConsumersForm extends React.Component {
                         <Input placeholder="请输入组名称" />
                     )}
                 </FormItem>
-                {/* <FormItem
-                    {...formItemLayout}
-                    label="role">
-                    {getFieldDecorator('role', {
-                        rules: [{
-                            required: true, message: 'please input group'
-                        }]
-                    })(
-                        <Select
-                            showSearch
-                            style={{ width: '100%' }}
-                            placeholder="please select role"
-                            optionFilterProp="children"
-                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                            {
-                                this.state.roleSelect.map((item) => {
-                                    return (<Option value={item.id} key={item.id}>{item.name}</Option>)
-                                })
-                            }
-                        </Select>
-                    )}
-                </FormItem> */}
-
-                {/* <FormItem
-                    {...formItemLayout}
-                    label="achivement">
-                    {getFieldDecorator('achivement', {
-                        // rules: [{
-                        //     required: true, message: 'please input phonenum'
-                        // }]
-                    })(
-                        <Input disabled={true} placeholder="achivement" />
-                    )}
-                </FormItem> */}
                 <FormItem {...tailFormItemLayout}>
                     <Button type="info" htmlType="submit">{this.state.saveBtn}</Button>
                 </FormItem>

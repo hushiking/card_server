@@ -46,6 +46,16 @@ class Home extends React.Component {
                     text: '用户管理',
                     icon: 'user',
                     key: '/home/user'
+                },
+                {
+                    text: '评论管理',
+                    icon: 'form',
+                    key: '/home/comment'
+                },
+                {
+                    text: '徽章管理',
+                    icon: 'star-o',
+                    key: '/home/achivement'
                 }
                 // {
                 //     text: '班长管理',

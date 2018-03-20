@@ -19,7 +19,6 @@ class ModSearchSheet extends React.Component {
             }
         }
     }
-
     // 处理 SearchSheet Container行为
     handleSearch() {
     }
@@ -28,11 +27,11 @@ class ModSearchSheet extends React.Component {
     }
     
     render(){
-        const { dataConfig } = this.props;
+        const { dataConfig, status } = this.props;
         const { columns } = dataConfig;
         return (
             <div>
-                <TitleSearch data={dataConfig} />
+                <TitleSearch data={dataConfig} status={status} />
                 <DataTable dataColumn={columns} restfulApi={dataConfig.tableUrl} deleteUrl={dataConfig.tableUrlDel}/>
             </div>
         )

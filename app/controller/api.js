@@ -6,7 +6,7 @@ const { controller, helper } = require('thinkkoa');
 // const badgeModel = require('../model/badge');
 const userModel = require('../model/user');
 const messageModel = require('../model/message');
-const admin_base = require('../common/admin_base.js');
+const commentModel = require('../model/comment');
 const logicService = require('../service/common/logic');
 module.exports = class extends controller {
     //构造方法
@@ -17,6 +17,7 @@ module.exports = class extends controller {
         this.logicService = new logicService();
         this.userModel = new userModel(this.app.config('config.model', 'middleware'));
         this.messageModel = new messageModel(this.app.config('config.model', 'middleware'));
+        this.commentModel = new commentModel(this.app.config('config.model', 'middleware'));
 
         this.Map = {};
         // index列表分页查询SQL数组参数
@@ -60,13 +61,11 @@ module.exports = class extends controller {
         let id = this.param('id');
         let pk = await this.userModel.getPk();
         let data = await this.userModel.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
-        echo(data);
         return this.ok('success', data);
     }
 
     async userDelAction() {
         let curId = this.param('id');
-        echo(curId);
         await this.userModel.where({id: parseInt(curId)}).delete();
         return this.ok('delete success');
     }
@@ -86,6 +85,35 @@ module.exports = class extends controller {
         userData.message.push(msgId);
         await this.userModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
         return this.ok('success');
+    }
+    // comment 的增删改查方法
+    async getCommentListAction(){
+        let result = await this.logicService.list(this.commentModel, this.Map, this.Mo);
+        if(result && result.data && result.data.length>0){
+            result.data.forEach(item => {
+                item.support = item.support.length;
+                item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
+            });
+        }
+        return this.ok('success', result);
+    }
+    async commentDelAction() {
+        let curId = this.param('id');
+        await this.commentModel.where({id: parseInt(curId)}).delete();
+        return this.ok('delete success');
+    }
+    async viewCommentAction() {
+        let id = this.param('id');
+        let pk = await this.commentModel.getPk();
+        let data = await this.commentModel.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
+        return this.ok('success', data);
+    }
+    async editCommentAction() {
+        let id = this.param('id');
+        let upData = this.post();
+        // console.log(upData);
+        let data = await this.commentModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
+        return this.ok('success', data);
     }
 };
 

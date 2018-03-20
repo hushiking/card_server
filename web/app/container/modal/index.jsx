@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon, Button, Row, Col, Tabs, Divider, Modal, Message } from '../../skit_ui';
 // Customer
 // import ConCustomerEditForm from './customer_edit_form';
-import {UserForm, MessageForm} from '../../container'
+import { UserForm, MessageForm, CommentForm } from '../../container'
 import { modalStatusAction } from '../../redux/actions';
 // // Contact
 // import ConContactForm from './contact_form';
@@ -32,39 +32,36 @@ class ConModal extends Component {
     }
     componentDidMount() {
     }
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         const { status, modalTitle, curForm, modalParams } = nextProps.data;
         this.setState({
             visible: status,
             modalTitle: modalTitle,
             curComponent: <div />
         });
-        let curId;
         switch (curForm) {
-            case 'USER_ADD':
+        case 'USER_ADD':
             this.setState({
                 curComponent: <UserForm curStatus="add" />
             });
             break;
-            case 'USER_EDIT':{
-                curId = modalParams.id;
-                this.setState({
-                    curComponent: <UserForm curStatus="edit" id={curId} />
-                });
-            }
-                break;
-            case 'MESSAGE_SHOW':
-            {
-                curId = modalParams.id;
-                this.setState({
-                    curComponent: <MessageForm  id={curId} />
-                });
-                break;
-            }
-                
-     
-            default:
-                break;
+        case 'USER_EDIT': 
+            this.setState({
+                curComponent: <UserForm curStatus="edit" id={modalParams.id} />
+            });
+            break;
+        case 'MESSAGE_SHOW':
+            this.setState({
+                curComponent: <MessageForm id={modalParams.id} />
+            });
+        break;
+        case 'COMMENT_EDIT':
+            this.setState({
+                curComponent: <CommentForm curStatus="edit" id={modalParams.id} />
+            });
+        break;
+        default:
+        break;
         }
     }
     handleOk = (e) => {
@@ -91,7 +88,7 @@ class ConModal extends Component {
                     this.state.curComponent
                 }
             </Modal>
-        )
+        );
     }
 }
 
