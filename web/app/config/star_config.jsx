@@ -2,12 +2,15 @@ import React, { Component, ProTypes } from 'react';
 import {Divider} from '../skit_ui';
 import { ActionTable } from '../components';
 import Filter from '../utils/filter';
-import { COMMENT_TABLE, COMMENT_TABLE_DEL } from '../redux/api/config';
+import { BADGE_TABLE, COMMENT_TABLE_DEL } from '../redux/api/config';
 
 export default {
     selectUrl: '',
-    tableUrl: COMMENT_TABLE,
-    tableUrlDel: COMMENT_TABLE_DEL,
+    tableUrl: BADGE_TABLE,
+    addForm: {
+        curForm: 'BADGE_ADD',
+        modalTitle: '添加用户'
+    },
     title: '评论管理',
     columns: [
         {
@@ -21,14 +24,26 @@ export default {
             key: 'name',
             width: '12%'
         }, {
-            title: '评论内容',
-            dataIndex: 'content',
+            title: '个人分数',
+            dataIndex: 'personal',
             key: 'content',
             width: '12%'
         }, {
-            title: '群编号',
-            dataIndex: 'group',
-            key: 'group',
+            title: '团队分数',
+            dataIndex: 'team',
+            key: 'team',
+            width: '12%'
+        },
+        {
+            title: '获得次数',
+            dataIndex: 'times',
+            key: 'times',
+            width: '12%'
+        },
+        {
+            title: '徽章类型',
+            dataIndex: 'type',
+            key: 'type',
             width: '12%'
         }, {
             title: '操作',
@@ -38,19 +53,10 @@ export default {
                 {
                     id: 1,
                     type: 'edit',
-                    curForm: 'COMMENT_EDIT',
+                    curForm: 'BADGE_EDIT',
                     text: '编辑',
                     modalTitle: '编辑',
                     method: 'modal'
-                },
-                {
-                    id: 3,
-                    type: 'delete',
-                    curForm: 'COMMENT_DEL',
-                    modalTitle: '删除',
-                    text: '删除',
-                    method: 'delete'
-                    
                 }
             ]
         }

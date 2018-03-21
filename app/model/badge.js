@@ -25,7 +25,7 @@ module.exports = class extends thinkorm {
             icon_url: {
                 type: 'string'
             },
-            Personal: {
+            personal: {
                 type: 'integer',
                 defaultsTo: 0
             },

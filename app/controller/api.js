@@ -133,27 +133,31 @@ module.exports = class extends controller {
         return this.ok('success', data);
     }
     // badge 的增删改查方法
+    async addBadgeAction() {
+        echo(this.param());
+        let addBadge = this.param();
+        addBadge.team = parseInt(addBadge.team);
+        addBadge.personal = parseInt(addBadge.personal);
+        await this.badgeModel.add(addBadge);
+        return this.ok('存储成功');
+    }
     async getBadgeListAction(){
         let result = await this.logicService.list(this.badgeModel, this.Map, this.Mo);
-        if(result && result.data && result.data.length>0){
-            result.data.forEach(item => {
-                item.support = item.support.length;
-                item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
-            });
-        }
         return this.ok('success', result);
     }
-    async viewCommentAction() {
+    async viewBadgeAction() {
         let id = this.param('id');
         let pk = await this.badgeModel.getPk();
         let data = await this.badgeModel.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
         return this.ok('success', data);
     }
-    async editCommentAction() {
+    async editBadgeAction() {
         let id = this.param('id');
-        let upData = this.post();
+        let addBadge = this.post();
+        addBadge.team = parseInt(addBadge.team);
+        addBadge.personal = parseInt(addBadge.personal);
         // console.log(upData);
-        let data = await this.badgeModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
+        let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
 };
