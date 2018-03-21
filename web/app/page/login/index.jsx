@@ -1,4 +1,5 @@
-import React, { Component, ProTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LoginForm from '../../container/login_form';
 import { push } from 'react-router-redux';
 import './less/index.less';
@@ -6,7 +7,8 @@ import token from '../../utils/token';
 import { connect } from 'react-redux';
 class Login extends Component {
     // static contextTypes = { router: React.PropTypes.object };
-    static proTypes = {
+    static propTypes = {
+        dispatch: PropTypes.func
     }
     static defaultProps = {
     }
@@ -18,9 +20,9 @@ class Login extends Component {
     componentWillMount() {
     }
     componentDidMount() {
-        let isToken = token.getToken(), 
-        { dispatch } = this.props; 
-        if(isToken){
+        let isToken = token.getToken();
+        let { dispatch } = this.props; 
+        if (isToken){
             // this.context.router.push(`/home`);
             dispatch(push('/home'));
         }

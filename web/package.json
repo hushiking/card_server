@@ -39,6 +39,7 @@
     "dependencies": {
         "array-tree-filter": "^2.1.0",
         "cross-fetch": "^1.1.1",
+        "prop-types": "^15.6.1",
         "rc-cascader": "^0.12.2",
         "rc-progress": "^2.2.5",
         "rc-switch": "^1.6.0",
