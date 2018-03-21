@@ -7,6 +7,7 @@ const { controller, helper } = require('thinkkoa');
 const userModel = require('../model/user');
 const messageModel = require('../model/message');
 const commentModel = require('../model/comment');
+const badgeModel = require('../model/badge');
 const logicService = require('../service/common/logic');
 module.exports = class extends controller {
     //构造方法
@@ -18,10 +19,11 @@ module.exports = class extends controller {
         this.userModel = new userModel(this.app.config('config.model', 'middleware'));
         this.messageModel = new messageModel(this.app.config('config.model', 'middleware'));
         this.commentModel = new commentModel(this.app.config('config.model', 'middleware'));
+        this.badgeModel = new badgeModel(this.app.config('config.model', 'middleware'));
 
         this.Map = {};
         // index列表分页查询SQL数组参数
-        this.Mo = { rel: false, sortby: {}, field: [], ispage: true, pagesize: 1 };
+        this.Mo = { rel: false, sortby: {}, field: [], ispage: true, pagesize: 5 };
     }
     //所有该控制器(含子类)方法前置方法
     //indexAction前置方法
@@ -128,6 +130,30 @@ module.exports = class extends controller {
         let upData = this.post();
         // console.log(upData);
         let data = await this.commentModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
+        return this.ok('success', data);
+    }
+    // badge 的增删改查方法
+    async getBadgeListAction(){
+        let result = await this.logicService.list(this.badgeModel, this.Map, this.Mo);
+        if(result && result.data && result.data.length>0){
+            result.data.forEach(item => {
+                item.support = item.support.length;
+                item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
+            });
+        }
+        return this.ok('success', result);
+    }
+    async viewCommentAction() {
+        let id = this.param('id');
+        let pk = await this.badgeModel.getPk();
+        let data = await this.badgeModel.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
+        return this.ok('success', data);
+    }
+    async editCommentAction() {
+        let id = this.param('id');
+        let upData = this.post();
+        // console.log(upData);
+        let data = await this.badgeModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
 };
