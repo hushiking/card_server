@@ -25,7 +25,7 @@ module.exports = class extends controller {
     }
     //所有该控制器(含子类)方法前置方法
     //indexAction前置方法
-    _before_index() {
+    __before() {
         console.log('_before_index');
         this.Mo.page = this.param('page') || 1;
     }
