@@ -47,8 +47,6 @@ class ConDataTable extends Component {
         this.refreshPage();
     }
     componentWillReceiveProps(nextProps) {
-        console.log(111111111111111111);
-
         if (this.props.reducerRefreshTable !== nextProps.reducerRefreshTable) {
             let params = nextProps.reducerRefreshTable.toJS().data;
             // 触发带参数的搜索
@@ -57,7 +55,6 @@ class ConDataTable extends Component {
     }
     refreshPage(params = undefined) {
         const { restfulApi, dispatch, router } = this.props;
-        console.log(restfulApi);
         let query = {};
         // 判断是否存在路由对象
         if (router) {

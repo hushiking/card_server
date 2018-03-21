@@ -21,12 +21,13 @@ module.exports = class extends controller {
 
         this.Map = {};
         // index列表分页查询SQL数组参数
-        this.Mo = { rel: false, sortby: {}, field: [], ispage: true, pagesize: 5 };
+        this.Mo = { rel: false, sortby: {}, field: [], ispage: true, pagesize: 1 };
     }
     //所有该控制器(含子类)方法前置方法
     //indexAction前置方法
     _before_index() {
         console.log('_before_index');
+        this.Mo.page = this.param('page') || 1;
     }
 
     //控制器默认方法
