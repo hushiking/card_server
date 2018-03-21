@@ -32,6 +32,14 @@ export default {
                     cb(null, require('../../page/comment'));
                 });
             }
+        },
+        {
+            path: 'star',
+            getComponent(location, cb) {
+                require.ensure([], (require) => {
+                    cb(null, require('../../page/star'));
+                });
+            }
         }
     ]
     // childRoutes: [

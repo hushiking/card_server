@@ -33,6 +33,16 @@ module.exports = class extends thinkorm {
                 type: 'integer',
                 defaultsTo: 0
 
+            },
+            type: {
+                type: 'string',
+                defaultsTo: ''
+
+            },
+            times: {
+                type: 'string',
+                defaultsTo: ''
+
             }
         };
         // 数据验证

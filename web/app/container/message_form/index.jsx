@@ -53,8 +53,15 @@ class ConMessageForm extends React.Component {
         // const formState = this.props.reducerModal.toJS().data.curForm;
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-
-                let _url = '/api/messageAdd/id/' + this.props.id;
+                let _url;
+                let selectedRows = window.LS.get("selectedRows");
+                selectedRows = JSON.parse(selectedRows);
+                if(selectedRows.length>0){
+                    _url = '/api/messageAdd/id/multiSelect';
+                    values.selectedRows = selectedRows;
+                }else{
+                    _url = '/api/messageAdd/id/' + this.props.id;
+                }
                 let _method = 'POST';
                 fetchSelf(_method, _url, values, {}).then(res => {
                     if (res.status === 1) {

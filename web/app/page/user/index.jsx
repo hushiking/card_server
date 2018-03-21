@@ -25,7 +25,7 @@ class UserPage extends Component {
             //     <TabPane tab="联通" key="customer">
             //     </TabPane>
             // </Tabs>
-            <ModSearchSheet dataConfig={UserConfig} status={true} />
+            <ModSearchSheet dataConfig={UserConfig} rowSelectionRow={true} status={true} />
             
         );
     }

@@ -25,7 +25,7 @@ module.exports = class extends admin_base {
    
     async messageListAction (){
         let curUser = await this.userModel.where({ openid: this._userInfo.openid }).find().catch(e => { });
-        let messageList
+        let messageList;
         if(curUser && curUser.message.length > 0){
             messageList = await this.Model.where({ id: curUser.message }).select().catch(e => { });
             echo(messageList);

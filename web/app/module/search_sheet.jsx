@@ -27,12 +27,13 @@ class ModSearchSheet extends React.Component {
     }
     
     render(){
+        let {rowSelectionRow} = this.props;
         const { dataConfig, status } = this.props;
         const { columns } = dataConfig;
         return (
             <div>
                 <TitleSearch data={dataConfig} status={status} />
-                <DataTable dataColumn={columns} restfulApi={dataConfig.tableUrl} deleteUrl={dataConfig.tableUrlDel}/>
+                <DataTable dataColumn={columns} restfulApi={dataConfig.tableUrl} deleteUrl={dataConfig.tableUrlDel} rowSelectionRow={rowSelectionRow}/>
             </div>
         )
     }

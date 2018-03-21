@@ -70,21 +70,35 @@ module.exports = class extends controller {
         return this.ok('delete success');
     }
     async messageAddAction (){
-        let Data = this.param();
         let messageData = {};
         let userId = this.param('id');
         messageData.create_time = helper.datetime();
-        userId = parseInt(userId);
-        for (let key in Data){
-            if(key !== 'id'){
-                messageData[key] = Data[key];
-            }
-        } 
+        messageData.title = this.param('title');
+        messageData.content = this.param('content');
         let msgId = await this.messageModel.add(messageData);
-        let userData = await this.userModel.where({ id: userId}).find().catch(e => { });
-        userData.message.push(msgId);
-        await this.userModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
+        userId = parseInt(userId);
+        // 发送单一 和发送多条
+        if(userId){
+            let userData = await this.userModel.where({ id: userId}).find().catch(e => { });
+            userData.message.push(msgId);
+            await this.userModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
+        }else{
+            let selectedRows = this.param('selectedRows');
+            let userList = await this.userModel.where({ id: selectedRows}).select().catch(e => { });
+            let promiseList = [];
+            userList.forEach((item)=>{
+                item.message.push(msgId);
+
+                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message}).catch(e => this.error(e.message)));
+            });
+            Promise.all(promiseList).then(function(values) {
+                console.log(values);
+            });
+            // selectedRows = userData.message.concat(selectedRows);
+        }
         return this.ok('success');
+        
+      
     }
     // comment 的增删改查方法
     async getCommentListAction(){
