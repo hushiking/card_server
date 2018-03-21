@@ -80,6 +80,10 @@ module.exports = class extends thinkorm {
             },
             message: {
                 type: 'array'
+            },
+            notice: {
+                type: 'integer',
+                defaultsTo: 0  
             }
         };
         // 数据验证

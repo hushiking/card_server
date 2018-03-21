@@ -34,6 +34,10 @@ module.exports = class extends admin_base {
         let data = await this.userModel.where({openid: this._userInfo.openid}).find();
         return this.ok('success', data);
     }
+    async changeNoticeAction(){
+        await this.userModel.where({openid: this._userInfo.openid}).update({notice: 0});
+        return this.ok('success');
+    }
     async getListAction() {
         let data = await this.Model.where({openid: this._userInfo.openid}).select();
         let suport = 0;

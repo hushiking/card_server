@@ -5,6 +5,7 @@
 const { controller, helper } = require('thinkkoa');
 const commentModel = require('../model/comment');
 const userModel = require('../model/user');
+const cardModel = require('../model/card');
 const logicService = require('../service/common/logic');
 const admin_base = require('../common/admin_base.js');
 module.exports = class extends admin_base {
@@ -13,7 +14,8 @@ module.exports = class extends admin_base {
         //调用父类构造方法
         super.init(ctx, app);
         this.Model = new commentModel(this.app.config('config.model', 'middleware'));
-        this.useModel = new userModel(this.app.config('config.model', 'middleware'));
+        this.userModel = new userModel(this.app.config('config.model', 'middleware'));
+        this.cardModel = new cardModel(this.app.config('config.model', 'middleware'));
     }
     
     //indexAction前置方法
@@ -35,7 +37,7 @@ module.exports = class extends admin_base {
     async supportAction() {
         let id = Number(this.param('id'))
         let data = await this.Model.where({ id: id }).find().catch(e => this.error(e.message));
-        let userData = await this.useModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message))
+        let userData = await this.userModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message))
         // console.log(userData)
         // console.log(data)
         if (data.support.indexOf(userData.id) === -1) {
@@ -53,7 +55,7 @@ module.exports = class extends admin_base {
         let commentSum = comentList.length;
         comentList.forEach((item) => {
             suportSum = item.support.length;
-        })
+        });
         let commentData = { suportSum: suportSum, commentSum: commentSum };
         return this.ok('success', commentData)
     }
@@ -78,9 +80,12 @@ module.exports = class extends admin_base {
     // 保存评论
     async saveCommentAction() {
         let commentData = this.param('commentData');
-        // let curUser = await this.useModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message))
-        commentData.create_time = helper.datetime()
-        commentData.card_id = Number(commentData.card_id)
+        // 通过card_id 查找创建卡片的人
+        let cardUser = await this.cardModel.where({ id: commentData.card_id}).find().catch(e => this.error(e.message));
+        echo(cardUser);
+        await this.userModel.where({ openid: cardUser.openid}).update({notice: 1}).catch(e => this.error(e.message));
+        commentData.create_time = helper.datetime();
+        commentData.card_id = Number(commentData.card_id);
         commentData.support = [];
         commentData.nickname = this._userInfo.nickname;
         commentData.openid = this._userInfo.openid;
@@ -89,9 +94,7 @@ module.exports = class extends admin_base {
         // console.log(helper.datetime())
         await this.Model.add(commentData);
         // console.log(commentData)
-        return this.ok('success')
-
-
+        return this.ok('success');
     }
 
 };
