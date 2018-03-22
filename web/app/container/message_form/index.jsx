@@ -22,7 +22,7 @@ class ConMessageForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comm_time: '',
+            comm_time: ''
         };
     }
     componentDidMount() {

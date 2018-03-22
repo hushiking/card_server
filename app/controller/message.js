@@ -35,5 +35,4 @@ module.exports = class extends admin_base {
         })
         return this.ok('success', messageList);
     }
-
 };

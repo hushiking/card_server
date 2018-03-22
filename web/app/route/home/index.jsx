@@ -42,6 +42,14 @@ export default {
             }
         },
         {
+            path: 'message',
+            getComponent(location, cb) {
+                require.ensure([], (require) => {
+                    cb(null, require('../../page/message'));
+                });
+            }
+        },
+        {
             path: 'feedback',
             getComponent(location, cb) {
                 require.ensure([], (require) => {

@@ -74,7 +74,13 @@ module.exports = class extends controller {
         await this.userModel.where({id: parseInt(curId)}).delete();
         return this.ok('delete success');
     }
-    async messageAddAction (){
+
+    // message 的增删改查
+    async getMessageListAction() {
+        let data = await this.logicService.list(this.messageModel, this.Map, this.Mo);
+        return this.ok('success', data);
+    }
+    async messageAddAction () {
         let messageData = {};
         let userId = this.param('id');
         messageData.create_time = helper.datetime();
@@ -93,7 +99,6 @@ module.exports = class extends controller {
             let promiseList = [];
             userList.forEach((item)=>{
                 item.message.push(msgId);
-
                 promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message}).catch(e => this.error(e.message)));
             });
             Promise.all(promiseList).then(function(values) {
@@ -101,10 +106,28 @@ module.exports = class extends controller {
             });
             // selectedRows = userData.message.concat(selectedRows);
         }
-        return this.ok('success');
-        
-      
+        return this.ok('success');    
     }
+    async editMessageAction() {
+        let id = this.param('id');
+        let upData = this.post();
+        // console.log(upData);
+        let data = await this.messageModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
+        return this.ok('success', data);
+    }
+    async viewMessageAction() {
+        let id = this.param('id');
+        let pk = await this.messageModel.getPk();
+        let data = await this.messageModel.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
+        return this.ok('success', data);
+    }
+    async messageDelAction() {
+        let curId = this.param('id');
+        await this.messageModel.where({id: parseInt(curId)}).delete();
+        return this.ok('delete success');
+    }
+
+
     // comment 的增删改查方法
     async getCommentListAction(){
         let result = await this.logicService.list(this.commentModel, this.Map, this.Mo);

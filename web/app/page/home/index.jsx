@@ -58,15 +58,15 @@ class Home extends React.Component {
                     key: '/home/star'
                 },
                 {
+                    text: '通知管理',
+                    icon: 'message',
+                    key: '/home/message'
+                },
+                {
                     text: '意见反馈',
                     icon: 'rollback',
                     key: '/home/feedback'
                 }
-                // {
-                //     text: '班长管理',
-                //     icon: 'user',
-                //     key: '/home/class_monitor'
-                // }
             ]
         };
     }
