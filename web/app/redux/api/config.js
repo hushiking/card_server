@@ -12,6 +12,9 @@ export const COMMENT_TABLE = '/api/getCommentList';
 export const COMMENT_TABLE_DEL = '/api/commentDel';
 // 徽章接口
 export const BADGE_TABLE = '/api/getBadgeList';
+// 徽章接口
+export const FEEDBACK_TABLE = '/api/getFeedBackList';
+export const FEEDBACK_TAABLE_DEL = '/api/FeedBackDel';
 
 
 // export const PROVINCE_LIST = '/api/public/provinceList';

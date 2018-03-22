@@ -9,6 +9,7 @@ const messageModel = require('../model/message');
 const commentModel = require('../model/comment');
 const badgeModel = require('../model/badge');
 const logicService = require('../service/common/logic');
+const feedbackModel = require('../model/feed_back');
 module.exports = class extends controller {
     //构造方法
     init(ctx, app) {
@@ -20,6 +21,7 @@ module.exports = class extends controller {
         this.messageModel = new messageModel(this.app.config('config.model', 'middleware'));
         this.commentModel = new commentModel(this.app.config('config.model', 'middleware'));
         this.badgeModel = new badgeModel(this.app.config('config.model', 'middleware'));
+        this.feedbackModel = new feedbackModel(this.app.config('config.model', 'middleware'));
 
         this.Map = {};
         // index列表分页查询SQL数组参数
@@ -160,6 +162,33 @@ module.exports = class extends controller {
         let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
+    // badge 的增删改查方法
+    async getFeedBackListAction(){
+        let result = await this.logicService.list(this.feedbackModel, this.Map, this.Mo);
+        result.data.map((item)=>{
+            item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
+        });
+        return this.ok('success', result);
+    }
+    async feedBackViewAction() {
+        let id = this.param('id');
+        let data = await this.feedbackModel.where({ id: id }).rel(this.Mo.rel || false).find().catch(e => { });
+        return this.ok('success', data);
+    }
+    async FeedBackDelAction() {
+        let id = this.param('id');
+        await this.feedbackModel.where({id: id}).delete();
+        return this.ok('delete success');
+    }
+    // async editBadgeAction() {
+    //     let id = this.param('id');
+    //     let addBadge = this.post();
+    //     addBadge.team = parseInt(addBadge.team);
+    //     addBadge.personal = parseInt(addBadge.personal);
+    //     // console.log(upData);
+    //     let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
+    //     return this.ok('success', data);
+    // }
 };
 
 

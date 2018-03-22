@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon, Button, Row, Col, Tabs, Divider, Modal, Message } from '../../skit_ui';
 // Customer
 // import ConCustomerEditForm from './customer_edit_form';
-import { UserForm, MessageForm, CommentForm, StarForm} from '../../container'
+import { UserForm, MessageForm, CommentForm, StarForm, FeedbackForm} from '../../container'
 import { modalStatusAction } from '../../redux/actions';
 // // Contact
 // import ConContactForm from './contact_form';
@@ -68,6 +68,11 @@ class ConModal extends Component {
         case 'BADGE_EDIT':
             this.setState({
                 curComponent: <StarForm curStatus="edit" id={modalParams.id} />
+            });
+            break;
+        case 'FEEDBACK_VIEW':
+            this.setState({
+                curComponent: <FeedbackForm id={modalParams.id} />
             });
             break;
         default:

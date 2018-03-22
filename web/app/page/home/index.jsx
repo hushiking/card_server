@@ -56,6 +56,11 @@ class Home extends React.Component {
                     text: '徽章管理',
                     icon: 'star-o',
                     key: '/home/star'
+                },
+                {
+                    text: '意见反馈',
+                    icon: 'rollback',
+                    key: '/home/feedback'
                 }
                 // {
                 //     text: '班长管理',

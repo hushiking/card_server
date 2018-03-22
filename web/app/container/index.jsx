@@ -10,3 +10,4 @@ export {default as UserForm} from './user_form';
 export {default as MessageForm} from './message_form';
 export {default as CommentForm} from './comment_form';
 export {default as StarForm} from './star_form';
+export {default as FeedbackForm} from './feedback_form';

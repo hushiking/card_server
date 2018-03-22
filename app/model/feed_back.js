@@ -26,8 +26,8 @@ module.exports = class extends thinkorm {
                 defautsTo: ''
             },
             phonenum: {
-                type: 'integer',
-                defaultsTo: 0
+                type: 'string',
+                defaultsTo: ''
             },
             create_time: {
                 type: 'integer',
@@ -38,6 +38,10 @@ module.exports = class extends thinkorm {
                 defaultsTo: '001'
             },
             group_name: {
+                type: 'string',
+                defaultsTo: ''
+            },
+            content: {
                 type: 'string',
                 defaultsTo: ''
             }

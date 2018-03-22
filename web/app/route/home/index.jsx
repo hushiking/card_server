@@ -40,6 +40,14 @@ export default {
                     cb(null, require('../../page/star'));
                 });
             }
+        },
+        {
+            path: 'feedback',
+            getComponent(location, cb) {
+                require.ensure([], (require) => {
+                    cb(null, require('../../page/feedback'));
+                });
+            }
         }
     ]
     // childRoutes: [
