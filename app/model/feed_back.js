@@ -8,40 +8,44 @@ module.exports = class extends thinkorm {
     init(config){
         super.init(config);
         // 模型名称
-        this.modelName = 'auth_role';
+        this.modelName = 'feed_back';
         // 是否开启迁移(migrate方法可用)
-        // this.safe = false;
+        this.safe = false;
         // 数据表字段信息
         this.fields = {
             id: {
                 type: 'integer',
                 primaryKey: true
             },
-            desc: {
+            name: {
                 type: 'string',
-                unique: true,
-                required: true,
-                size: 100,
-                defaultsTo: ''
+                default: ''
             },
-            status: {
+            nickname: {
+                type: 'string',
+                defautsTo: ''
+            },
+            phonenum: {
                 type: 'integer',
-                required: true,
-                index: true,
                 defaultsTo: 0
             },
-            rule_ids: {
-                type: 'array',
-                // defaultsTo: []
+            create_time: {
+                type: 'integer',
+                defaultsTo: 0
             },
-            ext: {
-                type: 'json',
-                // defaultsTo: {}
+            group: {
+                type: 'string',
+                defaultsTo: '001'
+            },
+            group_name: {
+                type: 'string',
+                defaultsTo: ''
             }
         };
         // 数据验证
         this.validations = {};
         // 关联关系
-        this.relation = {};
+        this.relation = {
+        };
     }
 };
