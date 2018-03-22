@@ -84,6 +84,9 @@ module.exports = class extends thinkorm {
             notice: {
                 type: 'integer',
                 defaultsTo: 0  
+            },
+            login_list: {
+                type: 'array'
             }
         };
         // 数据验证
