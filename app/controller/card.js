@@ -76,6 +76,9 @@ module.exports = class extends admin_base {
     }
     async getUserCardAction() {
         let data = await this.Model.where({ openid: this._userInfo.openid }).select();
+        data.forEach(value => {
+            value.create_time = helper.datetime(value.create_time, 'yyyy-mm-dd')
+        })
         return this.ok('success', data);
     }
     async curentAction() {
