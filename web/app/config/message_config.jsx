@@ -8,18 +8,22 @@ export default {
     selectUrl: '',
     tableUrl: MESSAGE_TABLE,
     tableUrlDel: MESSAGE_TABLE_DEL,
+    addForm: {
+        curForm: 'MESSAGE_ADD',
+        modalTitle: '群发信息'
+    },
     title: '通知管理',
     columns: [
         {
             title: '通知标题',
-            dataIndex: ' title',
+            dataIndex: 'title',
             key: 'title',
             width: '12%'
         }, {
             title: '通知内容',
             dataIndex: 'content',
             key: 'content',
-            width: '12%'
+            width: '40%'
         }, {
             title: '创建时间',
             dataIndex: 'create_time',

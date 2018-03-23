@@ -85,8 +85,14 @@ module.exports = class extends thinkorm {
                 type: 'integer',
                 defaultsTo: 0  
             },
+            // 登录次数的映射
             login_list: {
                 type: 'array'
+            },
+            // 卡片滑动的映射
+            slider_card: {
+                type: 'integer',
+                defaultsTo: 0  
             }
         };
         // 数据验证

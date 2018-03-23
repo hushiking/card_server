@@ -20,7 +20,7 @@ class MessagePage extends Component {
     }
     render() {
         return (
-            <ModSearchSheet dataConfig={MessageConfig} status={true} />
+            <ModSearchSheet dataConfig={MessageConfig} status={true} btnText={'群发消息'} />
         );
     }
 }

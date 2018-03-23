@@ -123,7 +123,7 @@ class ConDataTable extends Component {
         })
         let delUrl = `${deleteUrl}/id/${curId}`;
         fetchRestful('GET', delUrl, {}, this.props.dispatch).then(res => {
-            this.refreshPage();
+            this.refreshPage({page: this.state.curPage});
             // 获取当前元素字段 进行渲染 表格
             Message.success('删除成功');
         });

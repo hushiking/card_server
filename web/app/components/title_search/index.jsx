@@ -13,15 +13,17 @@ class TitleSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            status: true
+            status: true,
+            btnText: '新增'
         };
     }
     componentWillMount() {
     }
     componentDidMount() {
-        let { status } = this.props;
+        let { status, btnText } = this.props;
         this.setState({
-            status
+            status,
+            btnText
         });
     }
     addAction() {
@@ -37,8 +39,8 @@ class TitleSearch extends Component {
     };
     render() {
         let AddBtnStatus;
-        let { status } = this.state;
-        status ? AddBtnStatus = <Button onClick={() => { this.addAction() }} type="success" icon="plus" className="spaceRight">新增</Button> : null;
+        let { status, btnText } = this.state;
+        status ? AddBtnStatus = <Button onClick={() => { this.addAction() }} type="success" icon="plus" className="spaceRight">{btnText}</Button> : null;
         return (
             <div className="titleSearchContainer">
                 <div className="title">{this.props.data.title}</div>
