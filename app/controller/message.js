@@ -32,7 +32,7 @@ module.exports = class extends admin_base {
         }
         messageList.forEach(item => {
             item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
-        })
+        });
         return this.ok('success', messageList);
     }
 };

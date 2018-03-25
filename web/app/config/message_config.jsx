@@ -40,14 +40,6 @@ export default {
             width: '24%',
             items: [
                 {
-                    id: 1,
-                    type: 'edit',
-                    curForm: 'MESSAGE_EDIT',
-                    text: '编辑',
-                    modalTitle: '编辑',
-                    method: 'modal'
-                },
-                {
                     id: 3,
                     type: 'delete',
                     curForm: 'MESSAGE_DEL',

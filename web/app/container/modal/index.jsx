@@ -55,6 +55,11 @@ class ConModal extends Component {
                 curComponent: <MessageForm id={modalParams.id} />
             });
             break;
+        case 'MESSAGE_ADD':
+            this.setState({
+                curComponent: <MessageForm id={modalParams.id} status={'sendAllUser'} />
+            });
+            break;
         case 'COMMENT_EDIT':
             this.setState({
                 curComponent: <CommentForm curStatus="edit" id={modalParams.id} />

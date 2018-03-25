@@ -53,13 +53,19 @@ class ConMessageForm extends React.Component {
         // const formState = this.props.reducerModal.toJS().data.curForm;
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
+                console.log(111111);
                 let _url;
-                let selectedRows = window.LS.get("selectedRows");
-                selectedRows = JSON.parse(selectedRows);
-                if(selectedRows.length>0){
+                let {status} = this.props;
+                let selectedRows = window.LS.get('selectedRows');
+                if(selectedRows){
+                    selectedRows = JSON.parse(selectedRows);
+                }
+                if (status === 'sendAllUser'){
+                    _url = '/api/messageAdd/id/sendAllUser';
+                } else if (selectedRows && selectedRows.length>0){
                     _url = '/api/messageAdd/id/multiSelect';
                     values.selectedRows = selectedRows;
-                }else{
+                } else {
                     _url = '/api/messageAdd/id/' + this.props.id;
                 }
                 let _method = 'POST';
@@ -69,6 +75,7 @@ class ConMessageForm extends React.Component {
                         dispatch(modalStatusAction({
                             status: false
                         }));
+                        window.LS.set("selectedRows", '')
                         // dispatch(refreshTableAction());
                     } else {
                         Message.error(res.errmsg);
@@ -151,7 +158,8 @@ ConMessageForm.propTypes = {
     reducerSelectList: PropTypes.object,
     form: PropTypes.object,
     id: PropTypes.number,
-    curStatus: PropTypes.string
+    curStatus: PropTypes.string,
+    status: PropTypes.string
     // status: PropTypes.bool,
     // modalTitle: PropTypes.string
 };

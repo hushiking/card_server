@@ -87,13 +87,14 @@ module.exports = class extends controller {
         messageData.title = this.param('title');
         messageData.content = this.param('content');
         let msgId = await this.messageModel.add(messageData);
-        userId = parseInt(userId);
-        // 发送单一 和发送多条
-        if(userId){
-            let userData = await this.userModel.where({ id: userId}).find().catch(e => { });
-            userData.message.push(msgId);
-            await this.userModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
-        }else{
+        if(userId === 'sendAllUser'){
+            let userList = await this.userModel.where().select().catch(e => { });
+            let promiseList = [];
+            userList.forEach((item)=>{
+                item.message.push(msgId);
+                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message}).catch(e => this.error(e.message)));
+            });
+        }else if(userId === 'multiSelect'){
             let selectedRows = this.param('selectedRows');
             let userList = await this.userModel.where({ id: selectedRows}).select().catch(e => { });
             let promiseList = [];
@@ -102,9 +103,14 @@ module.exports = class extends controller {
                 promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message}).catch(e => this.error(e.message)));
             });
             Promise.all(promiseList).then(function(values) {
-                console.log(values);
+                // console.log(values);
             });
             // selectedRows = userData.message.concat(selectedRows);
+            // 发送单一 和发送多条
+        }else{
+            let userData = await this.userModel.where({ id: userId}).find().catch(e => { });
+            userData.message.push(msgId);
+            await this.userModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
         }
         return this.ok('success');    
     }
@@ -124,6 +130,7 @@ module.exports = class extends controller {
     async messageDelAction() {
         let curId = this.param('id');
         await this.messageModel.where({id: parseInt(curId)}).delete();
+        let userList = await this.userModel.where().select();
         return this.ok('delete success');
     }
 
