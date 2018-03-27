@@ -43,31 +43,29 @@ module.exports = class extends admin_base {
     indexAction() {
         return this.ok('success');
     }
-
-    saveCardAction() {
-        let cardData = JSON.parse(this.param('data'));
-        let file = this.file('file');
-        // let _base64file = this.param('_base64file') || '';
-        let imageKey = this._userInfo.nickname + helper.datetime();
-        // const root = path.resolve(__dirname, './images');
-        // let imagesPath = root + '/hah.jpeg';
+    aliyunImg(filePath){
         let that = this;
-        co(function* () {
-            // var result = yield store.put(imageKey, file.path);
-            var result = yield store.put(imageKey, file.path);
-            cardData.img_url = result.url;
-            cardData.support = [];
-            cardData.comment = [];
-            cardData.nickname = that._userInfo.nickname;
-            cardData.avatar_url = that._userInfo.avatar_url;
-            cardData.group = that._userInfo.group;
-            cardData.openid = that._userInfo.openid;
-            echo(cardData.img_url );
-            yield that.Model.add(cardData);
-            return that.ok('success');
+        return co(function* () {
+            let imageKey = that._userInfo.nickname + helper.datetime();
+            let result = yield store.put(imageKey, filePath);
+            return result.url;
         }).catch(function (err) {
             console.log(err);
         });
+    }
+    async saveCardAction() {
+        let cardData = JSON.parse(this.param('data'));
+        let filePath = this.file('file').path;
+        let img_url = await this.aliyunImg(filePath);
+        cardData.img_url = img_url;
+        cardData.support = [];
+        cardData.comment = [];
+        cardData.nickname = this._userInfo.nickname;
+        cardData.avatar_url = this._userInfo.avatar_url;
+        cardData.group = this._userInfo.group;
+        cardData.openid = this._userInfo.openid;
+        await this.Model.add(cardData);
+        return this.ok('success');
     }
     async getListAction() {
         this.Mo.page = this.param('page') || 1;

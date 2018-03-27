@@ -51,6 +51,7 @@ module.exports = class extends controller {
         userData.badge = [];
         userData.message = [];
         userData.card = [];
+        userData.login_list = [];
         await this.userModel.add(userData);
         return this.ok('存储成功');
     }
@@ -92,7 +93,7 @@ module.exports = class extends controller {
             let promiseList = [];
             userList.forEach((item)=>{
                 item.message.push(msgId);
-                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message}).catch(e => this.error(e.message)));
+                promiseList.push( item.update({message: item.message}).catch(e => this.error(e.message)));
             });
         }else if(userId === 'multiSelect'){
             let selectedRows = this.param('selectedRows');
