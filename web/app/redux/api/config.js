@@ -18,4 +18,7 @@ export const FEEDBACK_TAABLE_DEL = '/api/FeedBackDel';
 // 系统通知接口
 export const MESSAGE_TABLE = '/api/getMessageList';
 export const MESSAGE_TABLE_DEL = '/api/messageDel';
+// 卡片接口
+export const CARD_TABLE = '/api/getCardList';
+export const CARD_TABLE_DEL = '/api/cardDel';
 // export const PROVINCE_LIST = '/api/public/provinceList';

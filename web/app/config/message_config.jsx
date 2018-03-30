@@ -46,7 +46,6 @@ export default {
                     modalTitle: '删除',
                     text: '删除',
                     method: 'delete'
-                    
                 }
             ]
         }
@@ -78,4 +77,4 @@ export default {
         Filter.dataFilter(data, this.searchObj);
         return this.searchObj || [];
     }
-}
+};

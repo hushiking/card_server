@@ -1,12 +1,12 @@
-// @comment page
+// @card page
 import './less';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ModSearchSheet from '../../module/search_sheet';
-import { MessageConfig } from '../../config';
+import { CardConfig } from '../../config';
 import { Button, Tabs } from '../../skit_ui';
 const TabPane = Tabs.TabPane;
-class MessagePage extends Component {
+class CardPage extends Component {
     static defaultProps = {
     }
     constructor(props) {
@@ -20,8 +20,8 @@ class MessagePage extends Component {
     }
     render() {
         return (
-            <ModSearchSheet dataConfig={MessageConfig} status={true} btnText={'群发消息'} />
+            <ModSearchSheet dataConfig={CardConfig} status={false} />
         );
     }
 }
-export default MessagePage;
+export default CardPage;

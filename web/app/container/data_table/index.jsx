@@ -132,35 +132,34 @@ class ConDataTable extends Component {
     handleTableRowAction(record, itemIndex, aActionItem) {
         const { dispatch } = this.props;
         switch (aActionItem.method) {
-            case 'redirect':
-                if (aActionItem.redirect === '/home/subject') {
-                    console.log(record.name);
-                    window.LS.set('curProject', record.name);
+        case 'redirect':
+            if (aActionItem.redirect === '/home/subject') {
+                console.log(record.name);
+                window.LS.set('curProject', record.name);
+            }
+            dispatch(push({
+                pathname: aActionItem.redirect,
+                query: {
+                    projectid: record.id
                 }
-                dispatch(push({
-                    pathname: aActionItem.redirect,
-                    query: {
-                        projectid: record.id
-                    }
-                }));
-                break;
-            case 'modal':
-                let modalParams = {};
-                if (record.id) {
-                    modalParams.id = record.id;
-                }
-                dispatch(modalStatusAction({
-                    modalParams: modalParams,
-                    btnIndex: itemIndex,
-                    curForm: aActionItem.curForm,
-                    modalTitle: aActionItem.modalTitle,
-                    status: true,
-                    rodam: Math.random(0, 1)
-                }));
-                break;
-
-            default:
-                break;
+            }));
+            break;
+        case 'modal':
+            let modalParams = {};
+            if (record.id) {
+                modalParams.id = record.id;
+            }
+            dispatch(modalStatusAction({
+                modalParams: modalParams,
+                btnIndex: itemIndex,
+                curForm: aActionItem.curForm,
+                modalTitle: aActionItem.modalTitle,
+                status: true,
+                rodam: Math.random(0, 1)
+            }));
+            break;
+        default:
+            break;
         }
     }
     //生成表格item action
@@ -247,8 +246,7 @@ class ConDataTable extends Component {
                         current: curPage,
                         pageSize: pageSize,
                         total: pageTotal
-                    }}
-                />
+                    }} />
             </div>
 
         )

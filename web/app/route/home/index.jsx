@@ -50,6 +50,14 @@ export default {
             }
         },
         {
+            path: 'card',
+            getComponent(location, cb) {
+                require.ensure([], (require) => {
+                    cb(null, require('../../page/card'));
+                });
+            }
+        },
+        {
             path: 'feedback',
             getComponent(location, cb) {
                 require.ensure([], (require) => {

@@ -25,7 +25,7 @@ class ModSearchSheet extends React.Component {
     // 处理 DataTable Container行为
     handleDataTable(rowIndex, buttonIndex) {
     }
-    
+
     render(){
         let {rowSelectionRow} = this.props;
         const { dataConfig, status, btnText } = this.props;
@@ -33,11 +33,10 @@ class ModSearchSheet extends React.Component {
         return (
             <div>
                 <TitleSearch data={dataConfig} status={status} btnText={btnText} />
-                <DataTable dataColumn={columns} restfulApi={dataConfig.tableUrl} deleteUrl={dataConfig.tableUrlDel} rowSelectionRow={rowSelectionRow}/>
+                <DataTable dataColumn={columns} restfulApi={dataConfig.tableUrl} deleteUrl={dataConfig.tableUrlDel} rowSelectionRow={rowSelectionRow} />
             </div>
-        )
+        );
     }
 }
 
 export default connect()(ModSearchSheet);
-

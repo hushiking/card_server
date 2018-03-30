@@ -63,6 +63,11 @@ class Home extends React.Component {
                     key: '/home/message'
                 },
                 {
+                    text: '卡片管理',
+                    icon: 'profile',
+                    key: '/home/card'
+                },
+                {
                     text: '意见反馈',
                     icon: 'rollback',
                     key: '/home/feedback'
@@ -96,7 +101,7 @@ class Home extends React.Component {
         //     dispatch(savePublicAction({publicData}))
         // })
 
-        //userinfo
+        // userinfo
         // let loginUser = token.getUser();
         // if (loginUser) {
         //     this.setState({userName: loginUser.nickname, userIconUrl: loginUser.icon});
@@ -189,7 +194,6 @@ class Home extends React.Component {
                     <Content style={homeContent}>
                         <ConModal />
                         {this.props.children}
-                    
                     </Content>
                 </Layout>
             </Layout>
@@ -198,7 +202,7 @@ class Home extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        router :state.getIn(['router'])
+        router: state.getIn(['router'])
     };
 };
 export default connect(mapStateToProps)(Home);

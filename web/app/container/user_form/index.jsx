@@ -171,7 +171,6 @@ class ConConsumersForm extends React.Component {
                         <Input placeholder="请输入手机号" />
                     )}
                 </FormItem>
-            
                 {/* <FormItem
                     {...formItemLayout}
                     label="group">
@@ -194,7 +193,7 @@ class ConConsumersForm extends React.Component {
                         </Select>
                     )}
                 </FormItem> */}
-                    <FormItem
+                <FormItem
                     {...formItemLayout}
                     label="用户组编号">
                     {getFieldDecorator('group', {

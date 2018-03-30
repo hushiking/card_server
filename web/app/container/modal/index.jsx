@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon, Button, Row, Col, Tabs, Divider, Modal, Message } from '../../skit_ui';
 // Customer
 // import ConCustomerEditForm from './customer_edit_form';
-import { UserForm, MessageForm, CommentForm, StarForm, FeedbackForm} from '../../container'
+import { UserForm, MessageForm, CardForm, CommentForm, StarForm, FeedbackForm } from '../../container';
 import { modalStatusAction } from '../../redux/actions';
 // // Contact
 // import ConContactForm from './contact_form';
@@ -18,15 +18,13 @@ class ConModal extends Component {
     static defaultProps = {
         reducerModal: {}
     }
-    state = {
-        curComponent: <div></div>
-    }
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             visible: false,
-            modalTitle: ''
-        }
+            modalTitle: '',
+            curComponent: <div />
+        };
     }
     componentWillMount() {
     }
@@ -45,7 +43,7 @@ class ConModal extends Component {
                 curComponent: <UserForm curStatus="add" />
             });
             break;
-        case 'USER_EDIT': 
+        case 'USER_EDIT':
             this.setState({
                 curComponent: <UserForm curStatus="edit" id={modalParams.id} />
             });
@@ -58,6 +56,11 @@ class ConModal extends Component {
         case 'MESSAGE_ADD':
             this.setState({
                 curComponent: <MessageForm id={modalParams.id} status={'sendAllUser'} />
+            });
+            break;
+        case 'CARD_EDIT':
+            this.setState({
+                curComponent: <CardForm curStatus="edit" id={modalParams.id} />
             });
             break;
         case 'COMMENT_EDIT':
@@ -86,7 +89,7 @@ class ConModal extends Component {
     }
     handleOk = (e) => {
         this.setState({
-            visible: false,
+            visible: false
         });
     }
     handleCancel = (e) => {

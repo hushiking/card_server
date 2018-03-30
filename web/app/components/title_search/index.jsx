@@ -54,7 +54,7 @@ class TitleSearch extends Component {
                     {AddBtnStatus}
                 </div>
             </div>
-        )
+        );
     }
 }
 export default connect()(TitleSearch);
