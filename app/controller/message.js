@@ -35,4 +35,10 @@ module.exports = class extends admin_base {
         });
         return this.ok('success', messageList);
     }
+    async changeMessageStatusAction() {
+        await this.userModel.where({ openid: this._userInfo.openid }).update({message_status: 0}).catch(e => {
+            return this.fail('消息状态更改失败！');
+        });
+        return this.ok('success');
+    }
 };

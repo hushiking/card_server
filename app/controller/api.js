@@ -95,7 +95,7 @@ module.exports = class extends controller {
             let promiseList = [];
             userList.forEach((item)=>{
                 item.message.push(msgId);
-                promiseList.push( item.update({message: item.message}).catch(e => this.error(e.message)));
+                promiseList.push( item.update({message: item.message, message_status: 1}).catch(e => this.error(e.message)));
             });
         }else if(userId === 'multiSelect'){
             let selectedRows = this.param('selectedRows');
@@ -103,7 +103,7 @@ module.exports = class extends controller {
             let promiseList = [];
             userList.forEach((item)=>{
                 item.message.push(msgId);
-                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message}).catch(e => this.error(e.message)));
+                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message, message_status: 1}).catch(e => this.error(e.message)));
             });
             Promise.all(promiseList).then(function(values) {
                 // console.log(values);
@@ -113,7 +113,7 @@ module.exports = class extends controller {
         }else{
             let userData = await this.userModel.where({ id: userId}).find().catch(e => { });
             userData.message.push(msgId);
-            await this.userModel.where({ id: userId }).update({message: userData.message}).catch(e => this.error(e.message));
+            await this.userModel.where({ id: userId }).update({message: userData.message, message_status: 1}).catch(e => this.error(e.message));
         }
         return this.ok('success');    
     }

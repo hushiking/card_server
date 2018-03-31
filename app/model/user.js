@@ -85,6 +85,10 @@ module.exports = class extends thinkorm {
                 type: 'integer',
                 defaultsTo: 0  
             },
+            message_status: {
+                type: 'integer',
+                defaultsTo: 0  
+            },
             // 登录次数的映射
             login_list: {
                 type: 'array'
