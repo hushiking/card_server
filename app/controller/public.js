@@ -66,15 +66,15 @@ module.exports = class extends controller {
             // 如果不存在openid 创建user
             let ranStr = await func.getRandomString(32);
             if(!data.openid){
-                // let curTime = helper.datetime();
+                let curTime = helper.datetime();
                 data.avatar_url = userInfo.avatarUrl;
                 data.gender = userInfo.gender;
                 data.nickname = userInfo.nickName;
                 data.real_name = userInfo.nickName;
                 data.card = [];
                 data.message = [];
-                // data.login_list = [];
-                // data.login_list.push(curTime);
+                data.login_list = [];
+                data.login_list.push(curTime);
                 data.badge = [1];
                 data.personal_achivement = 135;
                 data.team_achivement = 9;
@@ -85,27 +85,28 @@ module.exports = class extends controller {
                 return this.ok('success', {session_key: ranStr});
             }else{
                 // 获取今天的 开始时间与结束时间
-                // let curTime = helper.datetime();
-                // let tempTimeString = helper.datetime(curTime, 'yyyy-mm-dd');
-                // let minTime = helper.datetime(tempTimeString);
-                // let maxTime = minTime + 86400;
-                // let lastTime = data.login_list[data.login_list.length-1];
-                // // 超过24小时没有登录
-                // if(curTime - lastTime >= 86400){
-                //     data.login_list = [];
-                //     data.login_list.push(curTime);
-                // }else{
-                //     // 遍历今天没有登录过 则放到数组中
-                //     data.login_list.map((item)=>{
-                //         if(minTime <= item && item <= maxTime){
-                //             return;
-                //         }else{
-                //             data.login_list.push(data.login_list);
-                //         }
-                //     });
-                // }
+                let curTime = helper.datetime();
+                let tempTimeString = helper.datetime(curTime, 'yyyy-mm-dd');
+                let minTime = helper.datetime(tempTimeString);
+                let maxTime = minTime + 86400;
+                let lastTime = data.login_list[data.login_list.length-1];
+                // 超过24小时没有登录
+                echo(curTime);
+                echo(lastTime);
+                echo(curTime - lastTime);
+                if(!lastTime || curTime - lastTime >= 86400){
+                    data.login_list = [];
+                    data.login_list.push(curTime);
+                }else{
+                    // 遍历今天没有登录过 则放到数组中
+                    if(minTime <= lastTime && lastTime <= maxTime){
+                        data.login_list[data.login_list.length-1] = curTime;
+                    }else{
+                        data.login_list.push(data.login_list);
+                    }
+                }
                 // // 修改后 更新数据
-                // await this.Model.where({id: data.id}).update(data).catch(e => this.error(e.message));
+                await this.Model.where({id: data.id}).update(data).catch(e => this.error(e.message));
                 await this.app.cache(ranStr, {openid: result.openid, session_key: result.session_key, nickname: data.nickname, group: data.group, avatar_url: data.avatar_url});
                 return this.ok('success', {session_key: ranStr});
             }

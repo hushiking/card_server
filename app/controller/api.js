@@ -95,7 +95,7 @@ module.exports = class extends controller {
             let promiseList = [];
             userList.forEach((item)=>{
                 item.message.push(msgId);
-                promiseList.push( item.update({message: item.message, message_status: 1}).catch(e => this.error(e.message)));
+                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message, message_status: 1}).catch(e => this.error(e.message)));
             });
         }else if(userId === 'multiSelect'){
             let selectedRows = this.param('selectedRows');
@@ -225,6 +225,8 @@ module.exports = class extends controller {
         let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
+
+
     // badge 的增删改查方法
     async getFeedBackListAction(){
         let result = await this.logicService.list(this.feedbackModel, this.Map, this.Mo);
@@ -252,6 +254,7 @@ module.exports = class extends controller {
     //     let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
     //     return this.ok('success', data);
     // }
+ 
 };
 
 

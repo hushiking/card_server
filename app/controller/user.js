@@ -49,4 +49,9 @@ module.exports = class extends admin_base {
         echo(comment, suport);
         return this.ok('success', {suport, comment});
     }
+    async sliderCardAction(){
+        let data = await this.userModel.where({openid: this._userInfo.openid}).find();
+        await this.userModel.where({openid: this._userInfo.openid}).update({slider_card: data.slider_card + 1});
+        return this.ok('success');
+    }
 };
