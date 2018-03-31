@@ -64,19 +64,21 @@ module.exports = class extends admin_base {
         cardData.avatar_url = this._userInfo.avatar_url;
         cardData.group = this._userInfo.group;
         cardData.openid = this._userInfo.openid;
+        cardData.create_time = helper.datetime();
         await this.Model.add(cardData);
         return this.ok('success');
     }
     async getListAction() {
         this.Mo.page = this.param('page') || 1;
+        this.Map.status = 1;
         let data = await this.logicService.list(this.Model, this.Map, this.Mo);
         return this.ok('success', data);
     }
     async getUserCardAction() {
         let data = await this.Model.where({ openid: this._userInfo.openid }).select();
         data.forEach(value => {
-            value.create_time = helper.datetime(value.create_time, 'yyyy-mm-dd')
-        })
+            value.create_time = helper.datetime(value.create_time, 'yyyy-mm-dd');
+        });
         return this.ok('success', data);
     }
     async curentAction() {

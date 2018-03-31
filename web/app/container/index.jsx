@@ -12,3 +12,5 @@ export {default as CommentForm} from './comment_form';
 export {default as CardForm} from './card_form';
 export {default as StarForm} from './star_form';
 export {default as FeedbackForm} from './feedback_form';
+
+export {default as CardActivation} from './card_activation';

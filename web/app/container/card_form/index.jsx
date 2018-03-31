@@ -26,29 +26,29 @@ class ConCardForm extends React.Component {
         this.state = {
             cardStatus: [
                 {
-                    name: 0,
+                    name: '过期',
                     id: 0
                 },
                 {
-                    name: 1,
+                    name: '未过期',
                     id: 1
                 }
             ],
             cardTagSelect: [
                 {
-                    name: 0,
+                    name: '技能交换',
                     id: 0
                 },
                 {
-                    name: 1,
+                    name: '团队进展',
                     id: 1
                 },
                 {
-                    name: 2,
+                    name: '求助',
                     id: 2
                 },
                 {
-                    name: 3,
+                    name: '资源分享',
                     id: 3
                 }
             ],

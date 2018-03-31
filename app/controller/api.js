@@ -136,7 +136,20 @@ module.exports = class extends controller {
         let userList = await this.userModel.where().select();
         return this.ok('delete success');
     }
-
+    // 激活指定日期的卡片
+    async activateCardListAction(){
+        let start_time = Math.floor(this.param('start_time')/1000);
+        let end_time = Math.floor(this.param('end_time')/1000);
+        let promiseList = [];
+        let cardList = await this.cardModel.where({create_time: { '>=': start_time, '<=': end_time}}).select();
+        echo(cardList);
+        cardList.map((item)=>{
+            promiseList.push( this.cardModel.where({ id: item.id }).update({status: 0}).catch(e => this.error(e.message)));
+        });
+        await Promise.all(promiseList).then(() => {
+        });
+        return this.ok('激活成功');
+    }
     // 卡片增删改查
     async getCardListAction(){
         let result = await this.logicService.list(this.cardModel, this.Map, this.Mo);

@@ -14,42 +14,42 @@ export default {
             title: '卡片主题',
             dataIndex: 'title',
             key: 'title',
-            width: '12%'
+            width: '8%'
         }, {
             title: '卡片内容',
             dataIndex: 'content',
             key: 'content',
-            width: '12%'
+            width: '8%'
         }, {
             title: '卡片类型',
             dataIndex: 'tag',
             key: 'tag',
-            width: '12%'
+            width: '8%'
         }, {
             title: '点赞次数',
             dataIndex: 'support',
             key: 'support',
-            width: '12%'
+            width: '8%'
         }, {
             title: '评论次数',
             dataIndex: 'comment',
             key: 'comment',
-            width: '12%'
+            width: '8%'
         }, {
             title: '群组编号',
             dataIndex: 'group',
             key: 'group',
-            width: '12%'
+            width: '8%'
         }, {
             title: '群组名',
             dataIndex: 'group_name',
             key: 'group_name',
-            width: '12%'
+            width: '8%'
         }, {
             title: '卡片状态',
             dataIndex: 'status',
             key: 'status',
-            width: '12%'
+            width: '8%'
         }, {
             title: '操作',
             key: 'action',
@@ -64,12 +64,20 @@ export default {
                     method: 'modal'
                 },
                 {
-                    id: 3,
+                    id: 2,
                     type: 'delete',
                     curForm: 'CARD_DEL',
                     modalTitle: '删除',
                     text: '删除',
                     method: 'delete'
+                },
+                {
+                    id: 3,
+                    type: 'rocket',
+                    curForm: 'CARD_ACTIVATION',
+                    modalTitle: '激活卡片',
+                    text: '激活',
+                    method: 'modal'
                 }
             ]
         }

@@ -21,4 +21,5 @@ export const MESSAGE_TABLE_DEL = '/api/messageDel';
 // 卡片接口
 export const CARD_TABLE = '/api/getCardList';
 export const CARD_TABLE_DEL = '/api/cardDel';
+export const CARD_ACTAVITION = '/api/activateCardList';
 // export const PROVINCE_LIST = '/api/public/provinceList';
