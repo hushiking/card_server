@@ -44,6 +44,18 @@ module.exports = class extends admin_base {
         loginBadgeList.map((item)=>{
             badgeList.push(item.id);
         });
+        // 评论点赞
+        let commentSupportTimes = curUser.comment_support_num;
+        let commentSupportList = await this.Model.where({ type: '评论点赞', times: { '<=': commentSupportTimes } }).select().catch(e => this.error(e.message));
+        commentSupportList.map((item)=>{
+            badgeList.push(item.id);
+        });
+        // 卡片点赞
+        let cardSupportTimes = curUser.card_support_num;
+        let cardSupportList = await this.Model.where({ type: '卡片点赞', times: { '<=': cardSupportTimes } }).select().catch(e => this.error(e.message));
+        cardSupportList.map((item)=>{
+            badgeList.push(item.id);
+        });
         // 刷卡类徽章获取
         let sliderCardTimes = curUser.slider_card;
         let lsliderCardList = await this.Model.where({ type: '刷卡', times: { '<=': sliderCardTimes } }).select().catch(e => this.error(e.message));

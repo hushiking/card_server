@@ -6,12 +6,27 @@ const { controller, helper } = require('thinkkoa');
 const adminPassport = require('../service/admin/passport');
 const userModel = require('../model/user');
 const messageModel = require('../model/message');
-const cardModel= require('../model/card');
-const roleModel= require('../model/auth_user');
+const cardModel = require('../model/card');
+const roleModel = require('../model/auth_user');
 const commentModel = require('../model/comment');
 const badgeModel = require('../model/badge');
 const logicService = require('../service/common/logic');
 const feedbackModel = require('../model/feed_back');
+
+// 阿里云存储图片
+const fs = require('fs');
+const path = require('path');
+const oss = require('ali-oss');
+const co = require('co');
+
+//构建oss对象
+const store = new oss({
+    accessKeyId: 'LTAISOc0ScI5UBmk',
+    accessKeySecret: 'xL0n36PhdE9i4xsRuHg8kkjzKVhcRT',
+    bucket: 'lzkj-card',
+    region: 'oss-cn-shanghai',
+    endpoint: 'oss-cn-beijing.aliyuncs.com'
+});
 module.exports = class extends controller {
     //构造方法
     init(ctx, app) {
@@ -42,6 +57,7 @@ module.exports = class extends controller {
     indexAction() {
         return this.ok('success');
     }
+
     /**
      * 登录
      * @return {*}
@@ -57,21 +73,21 @@ module.exports = class extends controller {
                 return this.fail('用户名或密码错误');
             } else {
                 //设置token，配置失效时间3600
-                let token = this.ctx.jwtEncode({userid: user.username});
-                return this.ok('登录成功', { access_token: token, nickname: user.username, role: user.role, icon: ''});
+                let token = this.ctx.jwtEncode({ userid: user.username });
+                return this.ok('登录成功', { access_token: token, nickname: user.username, role: user.role, icon: '' });
             }
         } else {
             return this.fail('仅支持post方式');
         }
     }
     // 账户增删改查的方法
-    async roleListAction(){
+    async roleListAction() {
         let data = await this.logicService.list(this.roleModel, this.Map, this.Mo);
         return this.ok('success', data);
     }
     async roleDelAction() {
         let curId = this.param('id');
-        await this.roleModel.where({id: parseInt(curId)}).delete();
+        await this.roleModel.where({ id: parseInt(curId) }).delete();
         return this.ok('delete success');
     }
     async addRoleAction() {
@@ -92,7 +108,7 @@ module.exports = class extends controller {
         ];
         let curRole;
         // upData.auth_role = Number(upData.auth_role);
-        if(helper.isNumber(upData.auth_role)){
+        if (helper.isNumber(upData.auth_role)) {
             curRole = roleList[upData.auth_role - 1];
             upData.auth_role = curRole.id;
             upData.desc = curRole.name;
@@ -120,13 +136,13 @@ module.exports = class extends controller {
         ];
         let curRole;
         // upData.auth_role = Number(upData.auth_role);
-        if(helper.isNumber(upData.auth_role)){
+        if (helper.isNumber(upData.auth_role)) {
             curRole = roleList[upData.auth_role - 1];
             upData.auth_role = curRole.id;
             upData.desc = curRole.name;
-        }else{
-            roleList.map((item)=>{
-                if(item.name === upData.auth_role){
+        } else {
+            roleList.map((item) => {
+                if (item.name === upData.auth_role) {
                     curRole = item;
                     upData.auth_role = curRole.id;
                     upData.desc = curRole.name;
@@ -144,7 +160,7 @@ module.exports = class extends controller {
         return this.ok('success', data);
     }
     // user 的增删改查方法
-    async getUserListAction(){
+    async getUserListAction() {
         let data = await this.logicService.list(this.userModel, this.Map, this.Mo);
         return this.ok('success', data);
     }
@@ -177,7 +193,7 @@ module.exports = class extends controller {
 
     async userDelAction() {
         let curId = this.param('id');
-        await this.userModel.where({id: parseInt(curId)}).delete();
+        await this.userModel.where({ id: parseInt(curId) }).delete();
         return this.ok('delete success');
     }
 
@@ -186,39 +202,39 @@ module.exports = class extends controller {
         let data = await this.logicService.list(this.messageModel, this.Map, this.Mo);
         return this.ok('success', data);
     }
-    async messageAddAction () {
+    async messageAddAction() {
         let messageData = {};
         let userId = this.param('id');
         messageData.create_time = helper.datetime();
         messageData.title = this.param('title');
         messageData.content = this.param('content');
         let msgId = await this.messageModel.add(messageData);
-        if(userId === 'sendAllUser'){
+        if (userId === 'sendAllUser') {
             let userList = await this.userModel.where().select().catch(e => { });
             let promiseList = [];
-            userList.forEach((item)=>{
+            userList.forEach((item) => {
                 item.message.push(msgId);
-                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message, message_status: 1}).catch(e => this.error(e.message)));
+                promiseList.push(this.userModel.where({ id: item.id }).update({ message: item.message, message_status: 1 }).catch(e => this.error(e.message)));
             });
-        }else if(userId === 'multiSelect'){
+        } else if (userId === 'multiSelect') {
             let selectedRows = this.param('selectedRows');
-            let userList = await this.userModel.where({ id: selectedRows}).select().catch(e => { });
+            let userList = await this.userModel.where({ id: selectedRows }).select().catch(e => { });
             let promiseList = [];
-            userList.forEach((item)=>{
+            userList.forEach((item) => {
                 item.message.push(msgId);
-                promiseList.push( this.userModel.where({ id: item.id }).update({message: item.message, message_status: 1}).catch(e => this.error(e.message)));
+                promiseList.push(this.userModel.where({ id: item.id }).update({ message: item.message, message_status: 1 }).catch(e => this.error(e.message)));
             });
-            Promise.all(promiseList).then(function(values) {
+            Promise.all(promiseList).then(function (values) {
                 // console.log(values);
             });
             // selectedRows = userData.message.concat(selectedRows);
             // 发送单一 和发送多条
-        }else{
-            let userData = await this.userModel.where({ id: userId}).find().catch(e => { });
+        } else {
+            let userData = await this.userModel.where({ id: userId }).find().catch(e => { });
             userData.message.push(msgId);
-            await this.userModel.where({ id: userId }).update({message: userData.message, message_status: 1}).catch(e => this.error(e.message));
+            await this.userModel.where({ id: userId }).update({ message: userData.message, message_status: 1 }).catch(e => this.error(e.message));
         }
-        return this.ok('success');    
+        return this.ok('success');
     }
     async editMessageAction() {
         let id = this.param('id');
@@ -235,28 +251,28 @@ module.exports = class extends controller {
     }
     async messageDelAction() {
         let curId = this.param('id');
-        await this.messageModel.where({id: parseInt(curId)}).delete();
+        await this.messageModel.where({ id: parseInt(curId) }).delete();
         let userList = await this.userModel.where().select();
         return this.ok('delete success');
     }
     // 激活指定日期的卡片
-    async activateCardListAction(){
-        let start_time = Math.floor(this.param('start_time')/1000);
-        let end_time = Math.floor(this.param('end_time')/1000);
+    async activateCardListAction() {
+        let start_time = Math.floor(this.param('start_time') / 1000);
+        let end_time = Math.floor(this.param('end_time') / 1000);
         let promiseList = [];
-        let cardList = await this.cardModel.where({create_time: { '>=': start_time, '<=': end_time}}).select();
+        let cardList = await this.cardModel.where({ create_time: { '>=': start_time, '<=': end_time } }).select();
         echo(cardList);
-        cardList.map((item)=>{
-            promiseList.push( this.cardModel.where({ id: item.id }).update({status: 0}).catch(e => this.error(e.message)));
+        cardList.map((item) => {
+            promiseList.push(this.cardModel.where({ id: item.id }).update({ status: 0 }).catch(e => this.error(e.message)));
         });
         await Promise.all(promiseList).then(() => {
         });
         return this.ok('激活成功');
     }
     // 卡片增删改查
-    async getCardListAction(){
+    async getCardListAction() {
         let result = await this.logicService.list(this.cardModel, this.Map, this.Mo);
-        if(result && result.data && result.data.length>0){
+        if (result && result.data && result.data.length > 0) {
             result.data.forEach(item => {
                 item.support = item.support.length;
                 item.comment = item.comment.length;
@@ -267,7 +283,7 @@ module.exports = class extends controller {
     }
     async cardDelAction() {
         let curId = this.param('id');
-        await this.cardModel.where({id: parseInt(curId)}).delete();
+        await this.cardModel.where({ id: parseInt(curId) }).delete();
         return this.ok('delete success');
     }
     async viewCardAction() {
@@ -285,9 +301,9 @@ module.exports = class extends controller {
     }
 
     // comment 的增删改查方法
-    async getCommentListAction(){
+    async getCommentListAction() {
         let result = await this.logicService.list(this.commentModel, this.Map, this.Mo);
-        if(result && result.data && result.data.length>0){
+        if (result && result.data && result.data.length > 0) {
             result.data.forEach(item => {
                 item.support = item.support.length;
                 item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
@@ -297,7 +313,7 @@ module.exports = class extends controller {
     }
     async commentDelAction() {
         let curId = this.param('id');
-        await this.commentModel.where({id: parseInt(curId)}).delete();
+        await this.commentModel.where({ id: parseInt(curId) }).delete();
         return this.ok('delete success');
     }
     async viewCommentAction() {
@@ -314,6 +330,17 @@ module.exports = class extends controller {
         return this.ok('success', data);
     }
     // badge 的增删改查方法
+    aliyunImg(filePath) {
+        let that = this;
+        return co(function* () {
+            let imageKey = 'badge' + helper.datetime();
+            echo(new Buffer('../1.png'));
+            let result = yield store.put('object-key', new Buffer(filePath));
+            return result.url;
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
     async addBadgeAction() {
         echo(this.param());
         let addBadge = this.param();
@@ -322,7 +349,7 @@ module.exports = class extends controller {
         await this.badgeModel.add(addBadge);
         return this.ok('存储成功');
     }
-    async getBadgeListAction(){
+    async getBadgeListAction() {
         let result = await this.logicService.list(this.badgeModel, this.Map, this.Mo);
         return this.ok('success', result);
     }
@@ -337,16 +364,17 @@ module.exports = class extends controller {
         let addBadge = this.post();
         addBadge.team = parseInt(addBadge.team);
         addBadge.personal = parseInt(addBadge.personal);
-        // console.log(upData);
+        addBadge.icon_url = await this.aliyunImg(addBadge.icon_url);
         let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
 
 
-    // badge 的增删改查方法
-    async getFeedBackListAction(){
+    // feedback 的增删改查方法
+
+    async getFeedBackListAction() {
         let result = await this.logicService.list(this.feedbackModel, this.Map, this.Mo);
-        result.data.map((item)=>{
+        result.data.map((item) => {
             item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');
         });
         return this.ok('success', result);
@@ -358,7 +386,7 @@ module.exports = class extends controller {
     }
     async FeedBackDelAction() {
         let id = this.param('id');
-        await this.feedbackModel.where({id: id}).delete();
+        await this.feedbackModel.where({ id: id }).delete();
         return this.ok('delete success');
     }
     // async editBadgeAction() {
@@ -370,7 +398,7 @@ module.exports = class extends controller {
     //     let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
     //     return this.ok('success', data);
     // }
- 
+
 };
 
 

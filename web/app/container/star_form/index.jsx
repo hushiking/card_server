@@ -18,11 +18,7 @@ import { USER_URL } from '../../redux/api/config';
 
 class ConBadgeForm extends React.Component {
     static defaultProps = {
-        reducerSelectList: {
-            typeList: [],
-            imageUrl: '',
-            fileList: []
-        }
+        
     }
     constructor(props) {
         super(props);
@@ -34,8 +30,12 @@ class ConBadgeForm extends React.Component {
                     id: '登录'
                 },
                 {
-                    name: '点赞',
-                    id: '点赞'
+                    name: '评论点赞',
+                    id: '评论点赞'
+                },
+                {
+                    name: '卡片点赞',
+                    id: '卡片点赞'
                 },
                 {
                     name: '刷卡',
@@ -47,7 +47,9 @@ class ConBadgeForm extends React.Component {
                 }
             ],
             commConcatSelect: [],
-            saveBtn: '新建'
+            saveBtn: '新建',
+            icon_url: '',
+            fileList: []
         };
     }
     componentDidMount() {
@@ -71,6 +73,9 @@ class ConBadgeForm extends React.Component {
                     this.props.form.setFieldsValue(
                         curEditObj
                     );
+                    this.setState({
+                        icon_url: res.data.icon_url
+                    })
                 }
             });
         }
@@ -88,7 +93,7 @@ class ConBadgeForm extends React.Component {
         if (info.file.status === 'uploading') {
             // Get this url from response in real world.
             this.getBase64(info.file.originFileObj, imageUrl => this.setState({
-                imageUrl
+                icon_url: imageUrl
             }));
         }
         // 2. read from response and show file link
@@ -122,7 +127,7 @@ class ConBadgeForm extends React.Component {
         // const formState = this.props.reducerModal.toJS().data.curForm;
         const formState = this.props.curStatus;
         this.props.form.validateFieldsAndScroll((err, values) => {
-            values.file = this.state.fileList[0];
+            values.icon_url = this.state.icon_url;
             if (!err) {
                 let _url = '';
                 let _method = '';
@@ -179,7 +184,7 @@ class ConBadgeForm extends React.Component {
                 <div className="ant-upload-text">Upload</div>
             </div>
         );
-        const imageUrl = this.state.imageUrl;
+        const imageUrl = this.state.icon_url ;
         // const reducerSelectList = this.props.reducerSelectList.data;
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {

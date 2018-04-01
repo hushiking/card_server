@@ -9,12 +9,13 @@ const logicService = require('../service/common/logic');
 const admin_base = require('../common/admin_base.js');
 // 阿里云存储图片
 const fs = require('fs');
-const co = require('co');
 const path = require('path');
 const oss = require('ali-oss');
+const co = require('co');
+
 
 //构建oss对象
-const store = oss({
+const store = new oss({
     accessKeyId: 'LTAISOc0ScI5UBmk',
     accessKeySecret: 'xL0n36PhdE9i4xsRuHg8kkjzKVhcRT',
     bucket: 'lzkj-card',
