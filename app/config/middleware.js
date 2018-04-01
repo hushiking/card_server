@@ -3,7 +3,7 @@
  * @return
  */
 module.exports = { 
-    list: ['model', 'cache', 'session', 'view'], //加载的中间件列表
+    list: ['jwt', 'model', 'cache', 'session', 'view'], //加载的中间件列表
     config: { //中间件配置 
         static: {
             cache: false
@@ -49,8 +49,14 @@ module.exports = {
             redis_db: '0',
             redis_timeout: 10, //try connection timeout
         },
+        jwt: {
+            alg: 'HS256', //算法
+            sub: 'jwt', //主题
+            exp: 86400, //过期时间, now() + 86400
+            key: 'oYrnIIlWzaIcp0KyuktgMKSvHM8NlHFO', //Secret,签名密码,请务必根据实际情况修改
+        },
         view: {
-            view_path:  process.env.ROOT_PATH + '/static', //模板目录
+            view_path: process.env.ROOT_PATH + '/static', //模板目录
             engine_config: { cache: false }, //模版引擎配置
             default_theme: '', //默认模板主题
         }

@@ -14,3 +14,4 @@ export {default as StarForm} from './star_form';
 export {default as FeedbackForm} from './feedback_form';
 
 export {default as CardActivation} from './card_activation';
+export {default as RoleForm} from './role_form';

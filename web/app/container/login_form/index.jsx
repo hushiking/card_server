@@ -2,6 +2,9 @@ import React from 'react';
 import { push } from 'react-router-redux';
 import { Form, Input, Button, Message } from '../../skit_ui';
 import { connect } from 'react-redux';
+import { LOGIN_URL } from '../../redux/api/config';
+import { fetchSelf } from '../../redux/api/common';
+import token from '../../utils/token';
 import PropTypes from 'prop-types';
 import './less';
 const FormItem = Form.Item;
@@ -19,15 +22,28 @@ class RegistrationForm extends React.Component {
     componentWillReceiveProps() {
     }
     // 进行提交 发送action
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         const { dispatch } = this.props;
         this.props.form.validateFieldsAndScroll((err, values) => {
-            if (values.account === 'admin' && values.password === 'admin'){
-                dispatch(push('/home'));
-            } else {
-                Message.error('密码不对请重新输入');
-            }
+            // if (values.account === 'admin' && values.password === 'admin'){
+            //     dispatch(push('/home'));
+            // } else {
+            //     Message.error('密码不对请重新输入');
+            // }
+            const { dispatch } = this.props;
+            // dispatch(fetchPost(LOGIN_URL, values));
+            fetchSelf('POST', LOGIN_URL, values).then((res) => {
+                console.log(res);
+                if (res.status == 1) {
+                    token.setToken(res.data.access_token);
+                    token.setUser(res.data);
+                    Message.success(res.errmsg);
+                    dispatch(push('/home'));
+                } else {
+                    Message.error(res.errmsg);
+                }
+            })
         });
     }
     render() {
@@ -39,7 +55,7 @@ class RegistrationForm extends React.Component {
         } : null;
         return (
             <div>
-                <Form layout="vertical" onSubmit={(e)=>{ this.handleSubmit(e); }}>
+                <Form layout="vertical" onSubmit={(e) => { this.handleSubmit(e); }}>
                     <FormItem
                         {...formItemLayout}
                         label="账户">
@@ -72,15 +88,12 @@ function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
-const mapStateToProps = state => {
-    const { reducerLogin } = state;
-    return reducerLogin || {};
-};
+
 
 // 创建表单组件
 const LoginForm = Form.create()(RegistrationForm);
 // 创建联系
-export default connect(mapStateToProps)(LoginForm);
+export default connect()(LoginForm);
 
 // 进行响应式的表格布局
 const tailFormItemLayout = {

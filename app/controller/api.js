@@ -3,10 +3,11 @@
  * @return
  */
 const { controller, helper } = require('thinkkoa');
-// const badgeModel = require('../model/badge');
+const adminPassport = require('../service/admin/passport');
 const userModel = require('../model/user');
 const messageModel = require('../model/message');
 const cardModel= require('../model/card');
+const roleModel= require('../model/auth_user');
 const commentModel = require('../model/comment');
 const badgeModel = require('../model/badge');
 const logicService = require('../service/common/logic');
@@ -18,6 +19,7 @@ module.exports = class extends controller {
         super.init(ctx, app);
         // this.Model = new badgeModel(this.app.config('config.model', 'middleware'));
         this.logicService = new logicService();
+        this.roleModel = new roleModel(this.app.config('config.model', 'middleware'));
         this.userModel = new userModel(this.app.config('config.model', 'middleware'));
         this.messageModel = new messageModel(this.app.config('config.model', 'middleware'));
         this.cardModel = new cardModel(this.app.config('config.model', 'middleware'));
@@ -40,11 +42,112 @@ module.exports = class extends controller {
     indexAction() {
         return this.ok('success');
     }
+    /**
+     * 登录
+     * @return {*}
+     */
+    async loginAction() {
+        if (this.isPost()) {
+            let info = this.param() || {};
+            let user = await new adminPassport(this.app).loginAdmin(info.account, info.password, this.ctx.ip).catch(e => {
+                return this.fail(e.message);
+            });
+            // echo(user);
+            if (helper.isEmpty(user)) {
+                return this.fail('用户名或密码错误');
+            } else {
+                //设置token，配置失效时间3600
+                let token = this.ctx.jwtEncode({userid: user.username});
+                return this.ok('登录成功', { access_token: token, nickname: user.username, role: user.role, icon: ''});
+            }
+        } else {
+            return this.fail('仅支持post方式');
+        }
+    }
+    // 账户增删改查的方法
+    async roleListAction(){
+        let data = await this.logicService.list(this.roleModel, this.Map, this.Mo);
+        return this.ok('success', data);
+    }
+    async roleDelAction() {
+        let curId = this.param('id');
+        await this.roleModel.where({id: parseInt(curId)}).delete();
+        return this.ok('delete success');
+    }
+    async addRoleAction() {
+        let upData = this.param();
+        let roleList = [
+            {
+                name: '超级管理员',
+                id: 1
+            },
+            {
+                name: '管理员',
+                id: 2
+            },
+            {
+                name: '普通用户',
+                id: 3
+            }
+        ];
+        let curRole;
+        // upData.auth_role = Number(upData.auth_role);
+        if(helper.isNumber(upData.auth_role)){
+            curRole = roleList[upData.auth_role - 1];
+            upData.auth_role = curRole.id;
+            upData.desc = curRole.name;
+        }
+        await this.roleModel.add(upData);
+        return this.ok('存储成功');
+    }
+    async editRoleAction() {
+        let id = this.param('id');
+        let upData = this.post();
+        // console.log(upData);
+        let roleList = [
+            {
+                name: '超级管理员',
+                id: 1
+            },
+            {
+                name: '管理员',
+                id: 2
+            },
+            {
+                name: '普通用户',
+                id: 3
+            }
+        ];
+        let curRole;
+        // upData.auth_role = Number(upData.auth_role);
+        if(helper.isNumber(upData.auth_role)){
+            curRole = roleList[upData.auth_role - 1];
+            upData.auth_role = curRole.id;
+            upData.desc = curRole.name;
+        }else{
+            roleList.map((item)=>{
+                if(item.name === upData.auth_role){
+                    curRole = item;
+                    upData.auth_role = curRole.id;
+                    upData.desc = curRole.name;
+                }
+            });
+        }
+        let data = await this.roleModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
+        return this.ok('success', data);
+    }
+
+    async viewRoleAction() {
+        let id = this.param('id');
+        let pk = await this.roleModel.getPk();
+        let data = await this.roleModel.where({ [pk]: id }).rel(this.Mo.rel || false).find().catch(e => { });
+        return this.ok('success', data);
+    }
+    // user 的增删改查方法
     async getUserListAction(){
         let data = await this.logicService.list(this.userModel, this.Map, this.Mo);
         return this.ok('success', data);
     }
-    // user 的增删改查方法
     async addUserAction() {
         echo(this.param());
         let userData = this.param();

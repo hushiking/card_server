@@ -44,7 +44,7 @@ module.exports = class extends admin_base {
             personTotal,
             teamTotal,
             userData
-        })
+        });
     }
     async getDateListAction() {
         //存入过信息的user;

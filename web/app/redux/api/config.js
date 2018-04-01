@@ -3,6 +3,10 @@
  */
 
 // 登录用到的接口
+export const LOGIN_URL = '/api/login';
+// user用到的接口
+export const ROLE_TAABLE = '/api/roleList';
+export const ROLE_TAABLE_DEL = '/api/roleDel';
 // user用到的接口
 export const USER_TAABLE = '/api/getUserList';
 export const USER_TAABLE_DEL = '/api/userDel';

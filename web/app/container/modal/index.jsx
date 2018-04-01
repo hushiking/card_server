@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon, Button, Row, Col, Tabs, Divider, Modal, Message } from '../../skit_ui';
 // Customer
 // import ConCustomerEditForm from './customer_edit_form';
-import { UserForm, MessageForm, CardForm, CommentForm, StarForm, FeedbackForm, CardActivation } from '../../container';
+import { UserForm, MessageForm, CardForm, CommentForm, StarForm, FeedbackForm, CardActivation, RoleForm } from '../../container';
 import { modalStatusAction } from '../../redux/actions';
 // // Contact
 // import ConContactForm from './contact_form';
@@ -86,6 +86,16 @@ class ConModal extends Component {
         case 'CARD_ACTIVATION':
             this.setState({
                 curComponent: <CardActivation />
+            });
+            break;
+        case 'ROLE_ADD':
+            this.setState({
+                curComponent: <RoleForm curStatus="add" />
+            });
+            break;
+        case 'ROLE_EDIT':
+            this.setState({
+                curComponent: <RoleForm curStatus="edit" id={modalParams.id} />
             });
             break;
         default:

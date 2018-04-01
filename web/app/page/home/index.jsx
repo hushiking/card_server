@@ -28,7 +28,7 @@ class Home extends React.Component {
         this.state = {
             menu: <Menu>
                 <Menu.Item key="0">
-                    <div onClick={()=> this.handleSignOut() }>退出</div>
+                    <div onClick={() => this.handleSignOut()}>退出</div>
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="1" disabled><Icon type="user" />  个人中心  </Menu.Item>
@@ -43,7 +43,12 @@ class Home extends React.Component {
             curSelectSlider: '/home/user',
             sliderList: [
                 {
-                    text: '用户管理',
+                    text: '账户管理',
+                    icon: 'book',
+                    key: '/home/role'
+                },
+                {
+                    text: '客户管理',
                     icon: 'user',
                     key: '/home/user'
                 },
@@ -76,10 +81,12 @@ class Home extends React.Component {
         };
     }
     componentDidMount() {
-        let {dispatch} = this.props;
+        let { dispatch } = this.props;
+        
+        let { sliderList } = this.state;
         // 路由判断 进行列表展示
         let routePath = this.props.router.toJS().locationBeforeTransitions.pathname || '';
-        if(!routePath || routePath === '/home/subject' || routePath === '/home'){
+        if (!routePath || routePath === '/home/subject' || routePath === '/home') {
             routePath = '/home/user'
         }
         this.setState({
@@ -88,6 +95,17 @@ class Home extends React.Component {
         // 获取项目需要的公共列表数据
         let publicData = {};
         let apiList = [];
+        // userinfo
+        let loginUser = token.getUser();
+        if (loginUser) {
+            this.setState({ userName: loginUser.nickname, userIconUrl: loginUser.icon });
+        }
+        if (loginUser.role === 1) {
+
+        } else {
+            sliderList.splice(0, 1);
+            this.setState({sliderList});
+        }
         // let getDataList = [PROVINCE_LIST, CITY_LIST, BRAND_LIST, MODEL_LIST];
         // getDataList.map((item) => {
         //     apiList.push(fetchRestful('GET', item, {}, dispatch));
@@ -108,7 +126,7 @@ class Home extends React.Component {
         // }
     }
     // 点击左侧栏更换路由
-    handleClick ({item, key}){
+    handleClick({ item, key }) {
         this.props.dispatch(push(key));
         this.setState({
             curSelectSlider: key
@@ -118,7 +136,7 @@ class Home extends React.Component {
     handleSignOut() {
         token.clearToken();
         token.clearUser();
-        let {dispatch} = this.props;
+        let { dispatch } = this.props;
         dispatch(push('/'));
     }
     handleToggleCollapsed() {
@@ -169,7 +187,7 @@ class Home extends React.Component {
                                 );
                             })}
                         </Menu> */}
-                        
+
                         <Menu
                             selectedKeys={[this.state.curSelectSlider]}
                             defaultOpenKeys={['/home/user']}
@@ -177,7 +195,7 @@ class Home extends React.Component {
                             theme="warm"
                             inlineCollapsed={this.state.collapsed}
                             onClick={
-                                (item, key)=>{
+                                (item, key) => {
                                     this.handleClick(item, key);
                                 }
                             }>
