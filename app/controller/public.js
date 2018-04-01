@@ -102,7 +102,7 @@ module.exports = class extends controller {
                     if(minTime <= lastTime && lastTime <= maxTime){
                         data.login_list[data.login_list.length-1] = curTime;
                     }else{
-                        data.login_list.push(data.login_list);
+                        data.login_list.push(curTime);
                     }
                 }
                 // // 修改后 更新数据

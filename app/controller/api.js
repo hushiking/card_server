@@ -364,7 +364,7 @@ module.exports = class extends controller {
         let addBadge = this.post();
         addBadge.team = parseInt(addBadge.team);
         addBadge.personal = parseInt(addBadge.personal);
-        addBadge.icon_url = await this.aliyunImg(addBadge.icon_url);
+        // addBadge.icon_url = await this.aliyunImg(addBadge.icon_url);
         let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
