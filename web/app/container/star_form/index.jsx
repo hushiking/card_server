@@ -55,7 +55,7 @@ class ConBadgeForm extends React.Component {
         if (formState === 'edit') {
             this.setState({
                 saveBtn: '保存'
-            })
+            });
             const curId = this.props.id;
             fetchSelf('GET', USER_URL + '/viewBadge/id/' + curId).then(res => {
                 console.log(res);
@@ -80,15 +80,14 @@ class ConBadgeForm extends React.Component {
         reader.addEventListener('load', () => callback(reader.result));
         reader.readAsDataURL(img);
     }
-    handleChange = (info) => {
+    handleChange(info) {
         let fileList = info.fileList;
         // 1. Limit the number of uploaded files
         //    Only to show two recent uploaded files, and old ones will be replaced by the new
         console.log(info.file);
-        if (info.file.status === 'done') {
-            console.log(1111);
+        if (info.file.status === 'uploading') {
             // Get this url from response in real world.
-            getBase64(info.file.originFileObj, imageUrl => this.setState({
+            this.getBase64(info.file.originFileObj, imageUrl => this.setState({
                 imageUrl
             }));
         }
@@ -114,7 +113,6 @@ class ConBadgeForm extends React.Component {
         //     }
         //     return true;
         // });
-
         this.setState({ fileList });
     }
 
@@ -124,21 +122,22 @@ class ConBadgeForm extends React.Component {
         // const formState = this.props.reducerModal.toJS().data.curForm;
         const formState = this.props.curStatus;
         this.props.form.validateFieldsAndScroll((err, values) => {
+            values.file = this.state.fileList[0];
             if (!err) {
                 let _url = '';
                 let _method = '';
                 switch (formState) {
-                    case 'edit':
-                        const curId = this.props.id;
-                        _url = USER_URL + '/editBadge/id/' + curId;
-                        _method = 'POST';
-                        break;
-                    case 'add':
-                        _url = USER_URL + '/addBadge';
-                        _method = 'POST';
-                        break;
-                    default:
-                        break;
+                case 'edit':
+                    const curId = this.props.id;
+                    _url = USER_URL + '/editBadge/id/' + curId;
+                    _method = 'POST';
+                    break;
+                case 'add':
+                    _url = USER_URL + '/addBadge';
+                    _method = 'POST';
+                    break;
+                default:
+                    break;
                 }
                 fetchSelf(_method, _url, values, {}).then(res => {
                     if (res.status === 1) {
@@ -156,8 +155,18 @@ class ConBadgeForm extends React.Component {
     }
     render() {
         const props = {
-            beforeUpload: () => { return false },
+            beforeUpload: (file) => {
+                const type = file.type;
+                const typeArr = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'];
+                const isPic = typeArr.indexOf(type) !== -1;
+                if (!isPic) {
+                    Message.error('You can only upload JPG/PNG/GIF/BMP file!');
+                }
+                return isPic;
+            },
+            customRequest: () => { return false; },
             onChange: this.handleChange.bind(this),
+            showUploadList: false,
             multiple: false,
             data: { id: this.props.id }
             // headers: {
@@ -247,14 +256,22 @@ class ConBadgeForm extends React.Component {
                         <Input placeholder="获得次数" />
                     )}
                 </FormItem>
-                <Upload
-                    {...props}
-                    listType="picture-card"
-                    className="avatar-uploader"
-                >
-                    {imageUrl ? <img src={imageUrl} alt="" /> : uploadButton}
-                </Upload>
-
+                <FormItem
+                    {...formItemLayout}
+                    label="徽章图片">
+                    {getFieldDecorator('icon_url', {
+                        rules: [{
+                            required: true, message: '请上传徽章图片'
+                        }]
+                    })(
+                        <Upload
+                            {...props}
+                            listType="picture-card"
+                            className="avatar-uploader">
+                            {imageUrl ? <img className="upload" src={imageUrl} alt="" /> : uploadButton}
+                        </Upload>
+                    )}
+                </FormItem>
                 <FormItem
                     {...formItemLayout}
                     label="个人分数">
