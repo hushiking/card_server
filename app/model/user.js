@@ -97,6 +97,16 @@ module.exports = class extends thinkorm {
             slider_card: {
                 type: 'integer',
                 defaultsTo: 0  
+            },
+            // 评论点赞次数
+            comment_support_num: {
+                type: 'integer',
+                defaultsTo: 0
+            },
+            // 卡片点赞次数
+            card_support_num: {
+                type: 'integer',
+                defaultsTo: 0 
             }
         };
         // 数据验证

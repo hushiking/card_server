@@ -54,4 +54,14 @@ module.exports = class extends admin_base {
         await this.userModel.where({openid: this._userInfo.openid}).update({slider_card: data.slider_card + 1});
         return this.ok('success');
     }
+    async commentSupportAction(){
+        let data = await this.userModel.where({openid: this._userInfo.openid}).find();
+        await this.userModel.where({openid: this._userInfo.openid}).update({comment_support_num: data.comment_support_num + 1});
+        return this.ok('success');
+    }
+    async cardSupportAction(){
+        let data = await this.userModel.where({openid: this._userInfo.openid}).find();
+        await this.userModel.where({openid: this._userInfo.openid}).update({card_support_num: data.card_support_num + 1});
+        return this.ok('success');
+    }
 };
