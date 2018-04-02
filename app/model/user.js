@@ -98,6 +98,11 @@ module.exports = class extends thinkorm {
                 type: 'integer',
                 defaultsTo: 0  
             },
+            // 发卡次数
+            send_card: {
+                type: 'integer',
+                defaultsTo: 0
+            },
             // 评论点赞次数
             comment_support_num: {
                 type: 'integer',
@@ -107,6 +112,16 @@ module.exports = class extends thinkorm {
             card_support_num: {
                 type: 'integer',
                 defaultsTo: 0 
+            },
+            // 发卡权限
+            send_card_power: {
+                type: 'integer',
+                defaultsTo: 1
+            },
+            // 评论点赞权限
+            comment_support_power: {
+                type: 'integer',
+                defaultsTo: 1
             }
         };
         // 数据验证
