@@ -12,13 +12,13 @@ const commentModel = require('../model/comment');
 const badgeModel = require('../model/badge');
 const logicService = require('../service/common/logic');
 const feedbackModel = require('../model/feed_back');
-
+const mime = require('mime-types');
 // 阿里云存储图片
 const fs = require('fs');
 const path = require('path');
 const oss = require('ali-oss');
 const co = require('co');
-
+const projectGroup = require('../service/admin/insert');
 //构建oss对象
 const store = new oss({
     accessKeyId: 'LTAISOc0ScI5UBmk',
@@ -45,6 +45,9 @@ module.exports = class extends controller {
         this.Map = {};
         // index列表分页查询SQL数组参数
         this.Mo = { rel: false, sortby: {}, field: [], ispage: true, pagesize: 5 };
+
+
+        this.projectGroupService = new projectGroup(app);
     }
     //所有该控制器(含子类)方法前置方法
     //indexAction前置方法
@@ -168,7 +171,6 @@ module.exports = class extends controller {
         echo(this.param());
         let userData = this.param();
         userData.nickname = '';
-        // userData.role = parseInt(userData.role);
         userData.badge = [];
         userData.message = [];
         userData.card = [];
@@ -399,6 +401,44 @@ module.exports = class extends controller {
     //     return this.ok('success', data);
     // }
 
+
+    // 用户导入Excel文件
+    async uploadUserAction () {
+        //echo('upload');
+        let file = this.file();
+        let fileData = {};
+        for (let n in file) {
+            fileData = file[n];
+            break;
+        }
+        if (helper.isEmpty(fileData)) {
+            return this.fail('上传文件不存在');
+        }
+
+        /*
+        let mimetype;
+        try {
+            const buffer = readChunk.sync(fileData.path, 0, 4100);
+            const ftype = fileType(buffer);
+            //if file-type not support
+            echo(ftype);
+            if (ftype) {
+                mimetype = ftype.ext;
+            } else {
+                mimetype = mime.extension(mime.lookup(fileData.path));
+            }
+        } catch (e) { }
+        */
+        let mimetype = mime.extension(mime.lookup(fileData.path));
+        if (!mimetype || (mimetype !== 'xls' && mimetype !== 'xlsx')) {
+            return this.fail('请上传xls格式文件');
+        }
+        
+        await this.projectGroupService.importCallGroupUsers(fileData.path).catch(e => {
+            return this.fail(e.message);
+        });
+        return this.ok('导入成功');
+    }
 };
 
 

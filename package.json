@@ -20,6 +20,7 @@
     "co": "^4.6.0",
     "file-type": "^7.6.0",
     "mime-type": "^3.0.5",
+    "mime-types": "^2.1.18",
     "read-chunk": "^2.1.0",
     "redis": "^2.8.0",
     "request": "^2.83.0",
@@ -31,7 +32,8 @@
     "think_view": "^2.0.1",
     "thinkkoa": "^2.x.x",
     "thinkorm": "^2.1.1",
-    "thinkorm_adapter_mysql": "^2.0.1"
+    "thinkorm_adapter_mysql": "^2.0.1",
+    "xlsx": "^0.12.7"
   },
   "devDependencies": {
     "eslint": "^4.11.0",
