@@ -56,6 +56,12 @@ module.exports = class extends admin_base {
         cardSupportList.map((item)=>{
             badgeList.push(item.id);
         });
+        // 发卡次数
+        let sendCardTimes = curUser.send_card;
+        let sendCardList = await this.Model.where({ type: '发卡次数', times: { '<=': sendCardTimes } }).select().catch(e => this.error(e.message));
+        sendCardList.map((item)=>{
+            badgeList.push(item.id);
+        });
         // 刷卡类徽章获取
         let sliderCardTimes = curUser.slider_card;
         let lsliderCardList = await this.Model.where({ type: '刷卡', times: { '<=': sliderCardTimes } }).select().catch(e => this.error(e.message));

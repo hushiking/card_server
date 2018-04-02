@@ -38,6 +38,10 @@ class ConBadgeForm extends React.Component {
                     id: '卡片点赞'
                 },
                 {
+                    name: '发卡次数',
+                    id: '发卡次数'
+                },
+                {
                     name: '刷卡',
                     id: '刷卡'
                 },
