@@ -49,6 +49,8 @@ module.exports = class extends base {
             userData.group_name = item.group_name;
             userData.group = item.group;
             userData.phonenum = item.phonenum;
+            userData.send_card_power = Number(item.send_card_power);
+            userData.comment_support_power = Number(item.comment_support_power);
             promiseList.push(this.userModel.add(Object.assign({}, userData)).catch(e => this.error(e.message)));
         });
         return Promise.all(promiseList);
