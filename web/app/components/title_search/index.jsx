@@ -4,7 +4,8 @@ const Search = Input.Search;
 import './less';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
-import { modalStatusAction } from '../../redux/actions';
+import { modalStatusAction, refrehTableAction } from '../../redux/actions';
+import { fetchGet, fetchSelf, fetchRestful } from '../../redux/api/common';
 class TitleSearch extends Component {
     static proTypes = {
     }
@@ -26,6 +27,10 @@ class TitleSearch extends Component {
             btnText
         });
     }
+    searchUser(value) {
+        let {dispatch} = this.props;
+        dispatch(refrehTableAction({real_name: value}));
+    }
     addAction() {
         const { query } = hashHistory.getCurrentLocation();
         const { dispatch } = this.props;
@@ -38,6 +43,15 @@ class TitleSearch extends Component {
         }));
     };
     render() {
+        let { hasSearch } = this.props;
+        console.log(hasSearch)
+        let searchView;
+        hasSearch ? searchView = <Search
+            placeholder="input search text"
+            onSearch={value => this.searchUser(value)}
+            style={{ width: 200 }}
+            className="spaceRight"
+        /> : searchView = null;
         let AddBtnStatus;
         let { status, btnText } = this.state;
         status ? AddBtnStatus = <Button onClick={() => { this.addAction() }} type="success" icon="plus" className="spaceRight">{btnText}</Button> : null;
@@ -45,12 +59,7 @@ class TitleSearch extends Component {
             <div className="titleSearchContainer">
                 <div className="title">{this.props.data.title}</div>
                 <div className="searchContainer">
-                    {/* <Search
-                            placeholder="input search text"
-                            onSearch={value => console.log(value)}
-                            style={{ width: 200 }}
-                            className="spaceRight"
-                        /> */}
+                    {searchView}
                     {AddBtnStatus}
                 </div>
             </div>

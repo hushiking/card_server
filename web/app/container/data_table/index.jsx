@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchGet, fetchSelf, fetchRestful } from '../../redux/api/common';
 import { Column } from 'rc-table/lib';
 import { ActionTable } from '../../components';
-import { modalStatusAction, reducerRefreshTable } from '../../redux/actions';
+import { modalStatusAction, refrehTableAction } from '../../redux/actions';
 import { hashHistory } from 'react-router';
 import { MONITOR_TABLE, SUBJECT_TAABLE } from '../../redux/api/config';
 import moment from 'moment';
@@ -67,6 +67,7 @@ class ConDataTable extends Component {
         this.setState({
             loading: true
         });
+        console.log(query);
         // 请求数据 重新渲染表格
         fetchSelf('GET', restfulApi, query, dispatch).then(res => {
             if (res.status == 1) {

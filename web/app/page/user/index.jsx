@@ -66,7 +66,7 @@ class UserPage extends Component {
                     <Button type="success" icon="download" onClick={this.handleInsert} >导入</Button>
 
                 </Upload>
-                <ModSearchSheet dataConfig={UserConfig} rowSelectionRow={true} status={true} />
+                <ModSearchSheet dataConfig={UserConfig} hasSearch={true} rowSelectionRow={true} status={true} />
             </div>
 
         );

@@ -164,6 +164,10 @@ module.exports = class extends controller {
     }
     // user 的增删改查方法
     async getUserListAction() {
+        let real_name = this.param('real_name');
+        if(real_name){
+            this.Map.real_name = { 'like': `%${real_name}%` };
+        }
         let data = await this.logicService.list(this.userModel, this.Map, this.Mo);
         return this.ok('success', data);
     }

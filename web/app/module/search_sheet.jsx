@@ -28,11 +28,11 @@ class ModSearchSheet extends React.Component {
 
     render(){
         let {rowSelectionRow} = this.props;
-        const { dataConfig, status, btnText } = this.props;
+        const { dataConfig, status, btnText, hasSearch } = this.props;
         const { columns } = dataConfig;
         return (
             <div>
-                <TitleSearch data={dataConfig} status={status} btnText={btnText} />
+                <TitleSearch data={dataConfig} hasSearch={hasSearch} status={status} btnText={btnText} />
                 <DataTable dataColumn={columns} restfulApi={dataConfig.tableUrl} deleteUrl={dataConfig.tableUrlDel} rowSelectionRow={rowSelectionRow} />
             </div>
         );
