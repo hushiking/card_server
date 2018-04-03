@@ -23,8 +23,7 @@ class ConBadgeForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comm_time: '',
-            commSelect: [
+            badgeSelect: [
                 {
                     name: '登录',
                     id: '登录'
@@ -50,7 +49,6 @@ class ConBadgeForm extends React.Component {
                     id: '评论'
                 }
             ],
-            commConcatSelect: [],
             saveBtn: '新建',
             icon_url: '',
             fileList: []
@@ -237,17 +235,17 @@ class ConBadgeForm extends React.Component {
                     label="徽章类型">
                     {getFieldDecorator('type', {
                         rules: [{
-                            required: true, message: '徽章类型'
+                            required: true, message: '请选择徽章类型'
                         }]
                     })(
                         <Select
                             showSearch
                             style={{ width: '100%' }}
-                            placeholder="徽章类型"
+                            placeholder="请选择徽章类型"
                             optionFilterProp="children"
                             filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                             {
-                                this.state.commSelect.map((item, index) => {
+                                this.state.badgeSelect.map((item, index) => {
                                     return (<Option value={item.id} key={item.name + index}>{item.name}</Option>)
                                 })
                             }
@@ -259,10 +257,10 @@ class ConBadgeForm extends React.Component {
                     label="获得次数">
                     {getFieldDecorator('times', {
                         rules: [{
-                            required: true, message: '获得次数'
+                            required: true, message: '请填写获得次数'
                         }]
                     })(
-                        <Input placeholder="获得次数" />
+                        <Input placeholder="请填写获得次数" />
                     )}
                 </FormItem>
                 <FormItem
@@ -286,10 +284,10 @@ class ConBadgeForm extends React.Component {
                     label="个人分数">
                     {getFieldDecorator('personal', {
                         rules: [{
-                            required: true, message: '个人分数'
+                            required: true, message: '请填写个人分数'
                         }]
                     })(
-                        <Input placeholder="个人分数" />
+                        <Input placeholder="请填写个人分数" />
                     )}
                 </FormItem>
                 <FormItem
@@ -297,10 +295,10 @@ class ConBadgeForm extends React.Component {
                     label="团队分数">
                     {getFieldDecorator('team', {
                         rules: [{
-                            required: true, message: '团队分数'
+                            required: true, message: '请填写团队分数'
                         }]
                     })(
-                        <Input placeholder="团队分数" />
+                        <Input placeholder="请填写团队分数" />
                     )}
                 </FormItem>
                 <FormItem {...tailFormItemLayout}>

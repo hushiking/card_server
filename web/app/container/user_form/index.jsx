@@ -23,36 +23,26 @@ class ConConsumersForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comm_time: '',
-            commSelect: [
+            sendCardPower: [
                 {
-                    name: '第一组',
+                    name: '拥有',
                     id: '1'
                 },
                 {
-                    name: '第二组',
-                    id: '2'
-                },
-                {
-                    name: '第三组',
-                    id: '3'
+                    name: '未拥有',
+                    id: '0'
                 }
             ],
-            roleSelect: [
+            commentSupportPower: [
                 {
-                    name: '学生',
+                    name: '拥有',
                     id: '1'
                 },
                 {
-                    name: '教授',
-                    id: '2'
-                },
-                {
-                    name: '管理员',
-                    id: '3'
+                    name: '未拥有',
+                    id: '0'
                 }
             ],
-            commConcatSelect: [],
             saveBtn: '新建'
         };
     }
@@ -171,28 +161,50 @@ class ConConsumersForm extends React.Component {
                         <Input placeholder="请输入手机号" />
                     )}
                 </FormItem>
-                {/* <FormItem
+                <FormItem
                     {...formItemLayout}
-                    label="group">
-                    {getFieldDecorator('group', {
+                    label="发卡权限">
+                    {getFieldDecorator('send_card_power', {
                         rules: [{
-                            required: true, message: 'please input group'
+                            required: true, message: '请设置用户发卡权限'
                         }]
                     })(
                         <Select
                             showSearch
                             style={{ width: '100%' }}
-                            placeholder="please select group"
+                            placeholder="请设置用户发卡权限"
                             optionFilterProp="children"
                             filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                             {
-                                this.state.commSelect.map((item) => {
+                                this.state.sendCardPower.map((item) => {
                                     return (<Option value={item.id} key={item.id}>{item.name}</Option>)
                                 })
                             }
                         </Select>
                     )}
-                </FormItem> */}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="评论点赞权限">
+                    {getFieldDecorator('send_card_power', {
+                        rules: [{
+                            required: true, message: '请设置用户评论点赞权限'
+                        }]
+                    })(
+                        <Select
+                            showSearch
+                            style={{ width: '100%' }}
+                            placeholder="请设置用户评论点赞权限"
+                            optionFilterProp="children"
+                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                            {
+                                this.state.commentSupportPower.map((item) => {
+                                    return (<Option value={item.id} key={item.id}>{item.name}</Option>)
+                                })
+                            }
+                        </Select>
+                    )}
+                </FormItem>
                 <FormItem
                     {...formItemLayout}
                     label="用户组编号">
