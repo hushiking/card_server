@@ -34,11 +34,11 @@ class ConConsumersForm extends React.Component {
                 {
                     name: '管理员',
                     id: 2
-                },
-                {
-                    name: '普通用户',
-                    id: 3
                 }
+                // {
+                //     name: '普通用户',
+                //     id: 3
+                // }
             ],
             commConcatSelect: [],
             saveBtn: '新建'
