@@ -6,6 +6,7 @@ const { controller, helper } = require('thinkkoa');
 const badgeModel = require('../model/badge');
 const userModel = require('../model/user');
 const commentModel = require('../model/comment');
+const cardModel = require('../model/card');
 const admin_base = require('../common/admin_base.js');
 module.exports = class extends admin_base {
     //构造方法
@@ -14,6 +15,7 @@ module.exports = class extends admin_base {
         super.init(ctx, app);
         this.Model = new badgeModel(this.app.config('config.model', 'middleware'));
         this.userModel = new userModel(this.app.config('config.model', 'middleware'));
+        this.cardModel = new cardModel(this.app.config('config.model', 'middleware'));
         this.commentModel = new commentModel(this.app.config('config.model', 'middleware'));
     }
     //所有该控制器(含子类)方法前置方法
@@ -60,6 +62,30 @@ module.exports = class extends admin_base {
         let sendCardTimes = curUser.send_card;
         let sendCardList = await this.Model.where({ type: '发卡次数', times: { '<=': sendCardTimes } }).select().catch(e => this.error(e.message));
         sendCardList.map((item)=>{
+            badgeList.push(item.id);
+        });
+        // 发卡求助徽章 0
+        let helpCardTimesList = await this.cardModel.where({openid: this._userInfo.openid, tag: 0}).select();
+        let helpCardList = await this.Model.where({ type: '求助', times: { '<=': helpCardTimesList.length } }).select().catch(e => this.error(e.message));
+        helpCardList.map((item)=>{
+            badgeList.push(item.id);
+        });
+        // 发卡求助徽章 1
+        let showCardTimesList = await this.cardModel.where({openid: this._userInfo.openid, tag: 1}).select();
+        let showCardList = await this.Model.where({ type: '展示', times: { '<=': showCardTimesList.length } }).select().catch(e => this.error(e.message));
+        showCardList.map((item)=>{
+            badgeList.push(item.id);
+        });
+        // 发卡求助徽章 2
+        let sourceCardTimesList = await this.cardModel.where({openid: this._userInfo.openid, tag: 2}).select();
+        let sourceCardList = await this.Model.where({ type: '资源', times: { '<=': sourceCardTimesList.length } }).select().catch(e => this.error(e.message));
+        sourceCardList.map((item)=>{
+            badgeList.push(item.id);
+        });
+        // 发卡求助徽章 3
+        let skillCardTimesList = await this.cardModel.where({openid: this._userInfo.openid, tag: 3}).select();
+        let skillCardList = await this.Model.where({ type: '技能', times: { '<=': skillCardTimesList.length } }).select().catch(e => this.error(e.message));
+        skillCardList.map((item)=>{
             badgeList.push(item.id);
         });
         // 刷卡类徽章获取
@@ -112,6 +138,9 @@ module.exports = class extends admin_base {
                 hasLoginUser.push(item);
             }
         });
+        hasLoginUser.sort((a, b)=>{
+            return b.personal_achivement - a.personal_achivement;
+        });
         return this.ok('success', {
             hasLoginUser,
             personTotal: curUser.personal_achivement,
@@ -146,6 +175,7 @@ module.exports = class extends admin_base {
                 groupList[item.group]['sub'] += item.team_achivement;
             }
         });
+        echo(typeof groupList);
         return this.ok('success', {
             personTotal,
             teamTotal,

@@ -47,6 +47,22 @@ class ConBadgeForm extends React.Component {
                 {
                     name: '评论',
                     id: '评论'
+                },
+                {
+                    name: '求助',
+                    id: '求助'
+                },
+                {
+                    name: '展示',
+                    id: '展示'
+                },
+                {
+                    name: '资源',
+                    id: '资源'
+                },
+                {
+                    name: '技能',
+                    id: '技能'
                 }
             ],
             saveBtn: '新建',
