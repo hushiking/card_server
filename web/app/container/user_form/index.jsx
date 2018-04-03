@@ -26,21 +26,21 @@ class ConConsumersForm extends React.Component {
             sendCardPower: [
                 {
                     name: '拥有',
-                    id: '1'
+                    id: 1
                 },
                 {
                     name: '未拥有',
-                    id: '0'
+                    id: 0
                 }
             ],
             commentSupportPower: [
                 {
                     name: '拥有',
-                    id: '1'
+                    id: 1
                 },
                 {
                     name: '未拥有',
-                    id: '0'
+                    id: 0
                 }
             ],
             saveBtn: '新建'
@@ -59,6 +59,8 @@ class ConConsumersForm extends React.Component {
                     let curEditObj = {};
                     curEditObj.real_name = res.data.real_name;
                     curEditObj.phonenum = res.data.phonenum;
+                    curEditObj.send_card_power = res.data.send_card_power;
+                    curEditObj.comment_support_power = res.data.comment_support_power;
                     curEditObj.group = res.data.group;
                     curEditObj.group_name = res.data.group_name;
                     this.props.form.setFieldsValue(
@@ -186,7 +188,7 @@ class ConConsumersForm extends React.Component {
                 <FormItem
                     {...formItemLayout}
                     label="评论点赞权限">
-                    {getFieldDecorator('send_card_power', {
+                    {getFieldDecorator('comment_support_power', {
                         rules: [{
                             required: true, message: '请设置用户评论点赞权限'
                         }]
