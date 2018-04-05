@@ -31,6 +31,13 @@ module.exports = class extends admin_base {
     async hasGetBdageAction(){
         let curUser = await this.userModel.where({ openid: this._userInfo.openid }).find();
         let hasgetBadgeList = await this.Model.where({id: curUser.badge}).select().catch(e => this.error(e.message));
+        let curDateTime = helper.datetime();
+        hasgetBadgeList.map((item)=>{
+            if(item.end_time && item.end_time - curDateTime < 0){
+                item.icon_url = item.old_url;
+            }
+            item.end_time = helper.datetime(item.end_time, 'yyyy-mm-dd');
+        });
         return this.ok('success', hasgetBadgeList);
     }
     // 获取数据
@@ -38,8 +45,18 @@ module.exports = class extends admin_base {
         // 更新用户徽章
         let commentList = await this.commentModel.where({ openid: this._userInfo.openid }).select();
         let curUser = await this.userModel.where({ openid: this._userInfo.openid }).find().catch(e => this.error(e.message));
-        let commentTimes = commentList.length;
+        let otherBadgeList = await this.Model.field(['id']).where({ type: '其他' }).select().catch(e => this.error(e.message));
+        let otherBadgeIdList = [];
+        otherBadgeList.map((badgeId)=>{
+            otherBadgeIdList.push(badgeId.id);
+        });
         let badgeList = [];
+        curUser.badge.map((item)=>{
+            if(item && otherBadgeIdList.indexOf(item) !== -1){
+                badgeList.push(item);
+            }
+        });
+        let commentTimes = commentList.length;
         // 登录类徽章获取
         let loginTimmes = curUser.login_list.length;
         let loginBadgeList = await this.Model.where({ type: '登录', times: { '<=': loginTimmes } }).select().catch(e => this.error(e.message));
@@ -111,9 +128,21 @@ module.exports = class extends admin_base {
         });
         let personTotal = 0;
         let teamTotal = 0;
+        // 获取当前时间
+        let curDateTime = helper.datetime();
+        waitGet.map((item)=>{
+            if(item.end_time && item.end_time - curDateTime < 0){
+                item.icon_url = item.old_url;
+            }
+            item.end_time = helper.datetime(item.end_time, 'yyyy-mm-dd');
+        });
         hasGet.map((item)=>{
             personTotal += item.personal;
             teamTotal += item.team;
+            if(item.end_time && item.end_time - curDateTime < 0){
+                item.icon_url = item.old_url;
+            }
+            item.end_time = helper.datetime(item.end_time, 'yyyy-mm-dd');
         });
         // 更新用户徽章数据
         await this.userModel.where({ openid: this._userInfo.openid }).update({badge: badgeList, personal_achivement: personTotal, team_achivement: teamTotal});
@@ -175,7 +204,6 @@ module.exports = class extends admin_base {
                 groupList[item.group]['sub'] += item.team_achivement;
             }
         });
-        echo(typeof groupList);
         return this.ok('success', {
             personTotal,
             teamTotal,

@@ -28,7 +28,6 @@ module.exports = class extends admin_base {
         let messageList;
         if(curUser && curUser.message.length > 0){
             messageList = await this.Model.where({ id: curUser.message }).select().catch(e => { });
-            echo(messageList);
         }
         messageList.forEach(item => {
             item.create_time = helper.datetime(item.create_time, 'yyyy-mm-dd');

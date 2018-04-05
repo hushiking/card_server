@@ -37,7 +37,7 @@ class ConCardForm extends React.Component {
         const formState = this.props.curStatus;
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log(values);
+                console.log(values, 111111);
                 fetchSelf('GET', CARD_ACTAVITION, values, {}).then(res => {
                     if (res.status === 1) {
                         Message.success(res.errmsg);

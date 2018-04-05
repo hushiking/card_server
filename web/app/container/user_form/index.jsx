@@ -11,7 +11,7 @@ const Option = Select.Option;
 import { modalStatusAction, refrehTableAction } from '../../redux/actions';
 import { connect } from 'react-redux';
 import { fetchSelf, fetchGet, fetchRestful } from '../../redux/api/common';
-import { USER_URL } from '../../redux/api/config';
+import { USER_URL, BADGE_TABLE } from '../../redux/api/config';
 // import token from '../utils/token';
 
 class ConConsumersForm extends React.Component {
@@ -43,16 +43,26 @@ class ConConsumersForm extends React.Component {
                     id: 0
                 }
             ],
+            badgeList: [],
             saveBtn: '新建'
         };
     }
     componentDidMount() {
         const formState = this.props.curStatus;
+        fetchSelf('GET', BADGE_TABLE, {other: true}).then(res => {
+            console.log(res);
+            if (res.status === 1) {
+                this.setState({
+                    badgeList: res.data
+                })
+            }
+        });
         if (formState === 'edit') {
             this.setState({
                 saveBtn: '保存'
             })
             const curId = this.props.id;
+          
             fetchSelf('GET', USER_URL+ '/viewUser/id/' + curId).then(res => {
                 console.log(res);
                 if (res.status === 1) {
@@ -201,6 +211,26 @@ class ConConsumersForm extends React.Component {
                             filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                             {
                                 this.state.commentSupportPower.map((item) => {
+                                    return (<Option value={item.id} key={item.id}>{item.name}</Option>)
+                                })
+                            }
+                        </Select>
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="指定徽章">
+                    {getFieldDecorator('point_badge', {
+                       
+                    })(
+                        <Select
+                            showSearch
+                            style={{ width: '100%' }}
+                            placeholder="请设置用户评论点赞权限"
+                            optionFilterProp="children"
+                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                            {
+                                this.state.badgeList.map((item) => {
                                     return (<Option value={item.id} key={item.id}>{item.name}</Option>)
                                 })
                             }

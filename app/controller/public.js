@@ -91,9 +91,6 @@ module.exports = class extends controller {
                 let maxTime = minTime + 86400;
                 let lastTime = data.login_list[data.login_list.length-1];
                 // 超过24小时没有登录
-                echo(curTime);
-                echo(lastTime);
-                echo(curTime - lastTime);
                 if(!lastTime || curTime - lastTime >= 86400){
                     data.login_list = [];
                     data.login_list.push(curTime);

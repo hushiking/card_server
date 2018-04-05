@@ -172,10 +172,14 @@ module.exports = class extends controller {
         return this.ok('success', data);
     }
     async addUserAction() {
-        echo(this.param());
         let userData = this.param();
+        if(userData.point_badge){
+            userData.badge = [userData.point_badge];
+        }else{
+            userData.badge = [];
+        }
+        delete userData.point_badge;
         userData.nickname = '';
-        userData.badge = [];
         userData.message = [];
         userData.card = [];
         userData.login_list = [];
@@ -184,7 +188,17 @@ module.exports = class extends controller {
     }
     async editUserAction() {
         let id = this.param('id');
+        let addBadgeId;
         let upData = this.post();
+        if(upData.point_badge){
+            addBadgeId = upData.point_badge;
+            let curUser = await this.userModel.where({ id: id }).find();
+            if(curUser.badge.indexOf(addBadgeId) === -1){
+                curUser.badge.push(addBadgeId);
+            }
+            await this.userModel.where({ id: id }).update({'badge': curUser.badge});
+        }
+        delete upData.point_badge;
         // console.log(upData);
         let data = await this.userModel.where({ id: id }).update(upData).catch(e => this.error(e.message));
         return this.ok('success', data);
@@ -267,7 +281,6 @@ module.exports = class extends controller {
         let end_time = Math.floor(this.param('end_time') / 1000);
         let promiseList = [];
         let cardList = await this.cardModel.where({ create_time: { '>=': start_time, '<=': end_time } }).select();
-        echo(cardList);
         cardList.map((item) => {
             promiseList.push(this.cardModel.where({ id: item.id }).update({ status: 0 }).catch(e => this.error(e.message)));
         });
@@ -340,7 +353,7 @@ module.exports = class extends controller {
         let that = this;
         return co(function* () {
             let imageKey = 'badge' + helper.datetime();
-            echo(new Buffer('../1.png'));
+            // echo(new Buffer('../1.png'));
             let result = yield store.put('object-key', new Buffer(filePath));
             return result.url;
         }).catch(function (err) {
@@ -348,7 +361,6 @@ module.exports = class extends controller {
         });
     }
     async addBadgeAction() {
-        echo(this.param());
         let addBadge = this.param();
         addBadge.team = parseInt(addBadge.team);
         addBadge.personal = parseInt(addBadge.personal);
@@ -356,6 +368,10 @@ module.exports = class extends controller {
         return this.ok('存储成功');
     }
     async getBadgeListAction() {
+        if(this.param('other')){
+            let result = await this.badgeModel.where({type: '其他'}).select();
+            return this.ok('success', result);
+        }
         let result = await this.logicService.list(this.badgeModel, this.Map, this.Mo);
         return this.ok('success', result);
     }
@@ -370,7 +386,7 @@ module.exports = class extends controller {
         let addBadge = this.post();
         addBadge.team = parseInt(addBadge.team);
         addBadge.personal = parseInt(addBadge.personal);
-        // addBadge.icon_url = await this.aliyunImg(addBadge.icon_url);
+        // addBadge.badge = await this.aliyunImg(addBadge.badge);
         let data = await this.badgeModel.where({ id: id }).update(addBadge).catch(e => this.error(e.message));
         return this.ok('success', data);
     }
@@ -443,6 +459,7 @@ module.exports = class extends controller {
         });
         return this.ok('导入成功');
     }
+    
 };
 
 

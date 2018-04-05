@@ -1,8 +1,8 @@
 // @star_form container
 import './less';
 import React, { Component, ProTypes } from 'react';
-import { Form, Input, Tooltip, Icon, Select, Upload, Button, AutoComplete, Radio, Message } from '../../skit_ui';
-// import moment from 'moment';
+import { Form, Input, Tooltip, Icon, Select, Upload, Button, AutoComplete, Radio, Message, DatePicker } from '../../skit_ui';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 const FormItem = Form.Item;
 // const { TextArea } = Input;
@@ -18,7 +18,7 @@ import { USER_URL } from '../../redux/api/config';
 
 class ConBadgeForm extends React.Component {
     static defaultProps = {
-        
+
     }
     constructor(props) {
         super(props);
@@ -63,11 +63,17 @@ class ConBadgeForm extends React.Component {
                 {
                     name: '技能',
                     id: '技能'
+                },
+                {
+                    name: '其他',
+                    id: '其他'
                 }
             ],
             saveBtn: '新建',
             icon_url: '',
-            fileList: []
+            oldImageUrl: '',
+            fileList: [],
+            fileOldList: []
         };
     }
     componentDidMount() {
@@ -88,11 +94,16 @@ class ConBadgeForm extends React.Component {
                     curEditObj.type = res.data.type;
                     curEditObj.times = res.data.times;
                     curEditObj.personal = res.data.personal;
+                    if(res.data.end_time){
+                        curEditObj.end_time = moment(res.data.end_time*1000);
+                    }
+                    // curEditObj.icon_url = res.data.icon_url;
                     this.props.form.setFieldsValue(
                         curEditObj
                     );
                     this.setState({
-                        icon_url: res.data.icon_url
+                        icon_url: res.data.icon_url,
+                        oldImageUrl: res.data.old_url
                     })
                 }
             });
@@ -138,30 +149,46 @@ class ConBadgeForm extends React.Component {
         // });
         this.setState({ fileList });
     }
+    handleOldChange(info) {
+        let fileOldList = info.fileList;
+        // 1. Limit the number of uploaded files
+        //    Only to show two recent uploaded files, and old ones will be replaced by the new
+        if (info.file.status === 'uploading') {
+            // Get this url from response in real world.
+            this.getBase64(info.file.originFileObj, imageUrl => this.setState({
+                oldImageUrl: imageUrl
+            }));
+        }
+        this.setState({ fileOldList });
+    }
 
     handleSubmit(e) {
         e.preventDefault();
         const { dispatch } = this.props;
+
         // const formState = this.props.reducerModal.toJS().data.curForm;
         const formState = this.props.curStatus;
         this.props.form.validateFieldsAndScroll((err, values) => {
             values.icon_url = this.state.icon_url;
+            values.old_url = this.state.oldImageUrl;
+            values.end_time = values.end_time.unix();
             if (!err) {
                 let _url = '';
                 let _method = '';
                 switch (formState) {
-                case 'edit':
-                    const curId = this.props.id;
-                    _url = USER_URL + '/editBadge/id/' + curId;
-                    _method = 'POST';
-                    break;
-                case 'add':
-                    _url = USER_URL + '/addBadge';
-                    _method = 'POST';
-                    break;
-                default:
-                    break;
+                    case 'edit':
+                        const curId = this.props.id;
+                        _url = USER_URL + '/editBadge/id/' + curId;
+                        _method = 'POST';
+                        break;
+                    case 'add':
+                        _url = USER_URL + '/addBadge';
+                        _method = 'POST';
+                        break;
+                    default:
+                        break;
                 }
+                console.log(values);
                 fetchSelf(_method, _url, values, {}).then(res => {
                     if (res.status === 1) {
                         Message.success(res.errmsg);
@@ -190,11 +217,22 @@ class ConBadgeForm extends React.Component {
             customRequest: () => { return false; },
             onChange: this.handleChange.bind(this),
             showUploadList: false,
-            multiple: false,
-            data: { id: this.props.id }
-            // headers: {
-            //     'x-access-token': token.getToken()
-            // }
+            multiple: false
+        };
+        const oldProps = {
+            beforeUpload: (file) => {
+                const type = file.type;
+                const typeArr = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'];
+                const isPic = typeArr.indexOf(type) !== -1;
+                if (!isPic) {
+                    Message.error('You can only upload JPG/PNG/GIF/BMP file!');
+                }
+                return isPic;
+            },
+            customRequest: () => { return false; },
+            onChange: this.handleOldChange.bind(this),
+            showUploadList: false,
+            multiple: false
         };
         const uploadButton = (
             <div>
@@ -202,7 +240,8 @@ class ConBadgeForm extends React.Component {
                 <div className="ant-upload-text">Upload</div>
             </div>
         );
-        const imageUrl = this.state.icon_url ;
+        const imageUrl = this.state.icon_url;
+        const oldImageUrl = this.state.oldImageUrl;
         // const reducerSelectList = this.props.reducerSelectList.data;
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
@@ -283,9 +322,9 @@ class ConBadgeForm extends React.Component {
                     {...formItemLayout}
                     label="徽章图片">
                     {getFieldDecorator('icon_url', {
-                        rules: [{
-                            required: true, message: '请上传徽章图片'
-                        }]
+                        // rules: [{
+                        //     required: true, message: '请上传徽章图片'
+                        // }]
                     })(
                         <Upload
                             {...props}
@@ -293,6 +332,38 @@ class ConBadgeForm extends React.Component {
                             className="avatar-uploader">
                             {imageUrl ? <img className="upload" src={imageUrl} alt="" /> : uploadButton}
                         </Upload>
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="过期图片">
+                    {getFieldDecorator('old_url', {
+                        // rules: [{
+                        //     required: true, message: '请上传徽章图片'
+                        // }]
+                    })(
+                        <Upload
+                            {...oldProps}
+                            listType="picture-card"
+                            className="avatar-uploader">
+                            {oldImageUrl ? <img className="upload" src={oldImageUrl} alt="" /> : uploadButton}
+                        </Upload>
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="过期时间"
+                >
+                    {getFieldDecorator('end_time', {
+                        // rules: [{
+                        //     required: true, message: '请上传徽章图片'
+                        // }]
+                    })(
+                        <DatePicker
+                            showTime={false}
+                            format={'YYYY-MM-DD'}
+                            placeholder="Select Time"
+                            style={{ width: '100%' }} />
                     )}
                 </FormItem>
                 <FormItem

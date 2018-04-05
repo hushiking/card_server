@@ -46,7 +46,6 @@ module.exports = class extends admin_base {
             suport += item.support.length;
             suport += item.comment.length;
         });
-        echo(comment, suport);
         return this.ok('success', {suport, comment});
     }
     async sliderCardAction(){

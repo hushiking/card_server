@@ -30,7 +30,6 @@ module.exports = class extends admin_base {
     async addAction(){
         let curId = this.param('user_id');
         let content = this.param('content');
-        echo(curId);
         let feedBackData = {};
         let userData = await this.userModel.where({id: curId}).find();
         feedBackData.name = userData.real_name;
