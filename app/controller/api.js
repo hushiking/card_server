@@ -166,7 +166,12 @@ module.exports = class extends controller {
     async getUserListAction() {
         let real_name = this.param('real_name');
         if(real_name){
-            this.Map.real_name = { 'like': `%${real_name}%` };
+            this.Map =  { or : [
+                { real_name: { 'like': `%${real_name}%` } },
+                { phonenum: { 'like': `%${real_name}%` } },
+                { nickname: { 'like': `%${real_name}%` } },
+                { group_name: { 'like': `%${real_name}%` } },
+            ]};
         }
         let data = await this.logicService.list(this.userModel, this.Map, this.Mo);
         return this.ok('success', data);
