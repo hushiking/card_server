@@ -65,7 +65,7 @@ module.exports = class extends admin_base {
         if(filePath){
             img_url = await this.aliyunImg(filePath);
         }else{
-            img_url = '/asserts/image/home/logo.png';
+            img_url = 'http://lzkj-card.oss-cn-beijing.aliyuncs.com/%E5%88%98%E6%B3%BD%E5%AE%811523377149';
         }
         cardData.img_url = img_url;
         cardData.support = [];
