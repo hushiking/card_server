@@ -1,3 +1,4 @@
+
 /**
  * Controller
  * @return
@@ -178,6 +179,12 @@ module.exports = class extends controller {
     }
     async addUserAction() {
         let userData = this.param();
+        if(userData.send_card_times){
+            userData.send_card_times = Number(userData.send_card_times);
+            if(userData.send_card_times>0){
+                userData.send_card_power = 1;
+            }
+        }
         if(userData.point_badge){
             userData.badge = [userData.point_badge];
         }else{
@@ -195,6 +202,12 @@ module.exports = class extends controller {
         let id = this.param('id');
         let addBadgeId;
         let upData = this.post();
+        if(upData.send_card_times){
+            upData.send_card_times = Number(upData.send_card_times);
+            if(upData.send_card_times>0){
+                upData.send_card_power = 1;
+            }
+        }
         if(upData.point_badge){
             addBadgeId = upData.point_badge;
             let curUser = await this.userModel.where({ id: id }).find();
@@ -291,10 +304,11 @@ module.exports = class extends controller {
         });
         await Promise.all(promiseList).then(() => {
         });
-        return this.ok('激活成功');
+        return this.ok('反激活成功');
     }
     // 卡片增删改查
     async getCardListAction() {
+        this.Mo.sortby = { create_time: 'desc' };
         let result = await this.logicService.list(this.cardModel, this.Map, this.Mo);
         if (result && result.data && result.data.length > 0) {
             result.data.forEach(item => {

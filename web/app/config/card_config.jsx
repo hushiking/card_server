@@ -51,6 +51,12 @@ export default {
             key: 'status',
             width: '8%'
         }, {
+            title: '创建时间',
+            dataIndex: 'create_time',
+            key: 'create_time',
+            width: '8%'
+        },
+         {
             title: '操作',
             key: 'action',
             width: '24%',
@@ -76,7 +82,7 @@ export default {
                     type: 'rocket',
                     curForm: 'CARD_ACTIVATION',
                     modalTitle: '激活卡片',
-                    text: '激活',
+                    text: '反激活',
                     method: 'modal'
                 }
             ]

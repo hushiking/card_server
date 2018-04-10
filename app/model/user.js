@@ -122,6 +122,10 @@ module.exports = class extends thinkorm {
             comment_support_power: {
                 type: 'integer',
                 defaultsTo: 1
+            },
+            send_card_times:{
+                type: 'integer',
+                defaultsTo: 100
             }
         };
         // 数据验证

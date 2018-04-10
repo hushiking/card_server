@@ -56,8 +56,17 @@ module.exports = class extends admin_base {
     }
     async saveCardAction() {
         let cardData = JSON.parse(this.param('data'));
-        let filePath = this.file('file').path;
-        let img_url = await this.aliyunImg(filePath);
+        let filePath;
+        if(this.file()){
+            filePath = this.file('file').path;
+            
+        }
+        let img_url;
+        if(filePath){
+            img_url = await this.aliyunImg(filePath);
+        }else{
+            img_url = '/asserts/image/home/logo.png';
+        }
         cardData.img_url = img_url;
         cardData.support = [];
         cardData.comment = [];
@@ -67,6 +76,14 @@ module.exports = class extends admin_base {
         cardData.openid = this._userInfo.openid;
         cardData.create_time = helper.datetime();
         await this.Model.add(cardData);
+        let curUser = await this.useModel.where({openid: this._userInfo.openid}).find();
+        if(curUser.send_card_times){
+            curUser.send_card_times = --curUser.send_card_times ;
+            if(!curUser.send_card_times){
+                curUser.send_card_power = 0;
+            }
+        }
+        await this.useModel.where({openid: this._userInfo.openid}).update(curUser);
         return this.ok('success');
     }
     async getListAction() {

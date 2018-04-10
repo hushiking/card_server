@@ -72,6 +72,7 @@ class ConConsumersForm extends React.Component {
                     curEditObj.send_card_power = res.data.send_card_power;
                     curEditObj.comment_support_power = res.data.comment_support_power;
                     curEditObj.group = res.data.group;
+                    curEditObj.send_card_times = res.data.send_card_times;
                     curEditObj.group_name = res.data.group_name;
                     this.props.form.setFieldsValue(
                         curEditObj
@@ -257,6 +258,17 @@ class ConConsumersForm extends React.Component {
                         // }]
                     })(
                         <Input placeholder="请输入组名称" />
+                    )}
+                </FormItem>
+                <FormItem
+                    {...formItemLayout}
+                    label="用户发卡剩余数量">
+                    {getFieldDecorator('send_card_times', {
+                        // rules: [{
+                        //     required: true, message: 'please input phonenum'
+                        // }]
+                    })(
+                        <Input placeholder="请输入用户发卡剩余数量" type="number" />
                     )}
                 </FormItem>
                 <FormItem {...tailFormItemLayout}>
