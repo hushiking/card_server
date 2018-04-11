@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ModSearchSheet from '../../module/search_sheet';
 import { UserConfig } from '../../config';
 import { Button, Tabs, Upload, Message } from '../../skit_ui';
+import { modalStatusAction } from '../../redux/actions';
 const TabPane = Tabs.TabPane;
 class UserPage extends Component {
     static defaultProps = {
@@ -51,6 +52,15 @@ class UserPage extends Component {
 
         this.setState({ fileList });
     }
+    handleSendCardTimmes(){
+        const { dispatch } = this.props;
+        dispatch(modalStatusAction({
+            curForm: 'SEND_CARD_TIMMES',
+            modalTitle: '发卡次数',
+            status: true,
+            rodam: Math.random(0, 1)
+        }));
+    }
     render() {
         const props = {
             // beforeUpload: () => { return false },
@@ -63,13 +73,15 @@ class UserPage extends Component {
         return (
             <div>
                 <Upload {...props} fileList={this.state.fileList} >
-                    <Button type="success" icon="download" onClick={this.handleInsert} >导入</Button>
+                    <Button type="success" icon="download"  >导入</Button>
 
                 </Upload>
+                <Button style={{marginTop: 8}} type="info" icon="file-word" onClick={this.handleSendCardTimmes.bind(this)} >设置卡片次数</Button>
                 <ModSearchSheet dataConfig={UserConfig} hasSearch={true} rowSelectionRow={true} status={true} />
             </div>
 
         );
     }
 }
+
 export default UserPage;

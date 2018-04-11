@@ -3,7 +3,7 @@
  * @return
  */
 module.exports = { 
-    list: ['jwt', 'model', 'cache', 'session', 'view'], //加载的中间件列表
+    list: ['jwt', 'model', 'cache', 'session', 'view', 'schedule'], //加载的中间件列表
     config: { //中间件配置 
         static: {
             cache: false

@@ -27,4 +27,6 @@ export const MESSAGE_TABLE_DEL = '/api/messageDel';
 export const CARD_TABLE = '/api/getCardList';
 export const CARD_TABLE_DEL = '/api/cardDel';
 export const CARD_ACTAVITION = '/api/activateCardList';
+
+export const CARD_TIMMES = '/api/sendCardTimes';
 // export const PROVINCE_LIST = '/api/public/provinceList';

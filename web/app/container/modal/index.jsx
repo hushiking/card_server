@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon, Button, Row, Col, Tabs, Divider, Modal, Message } from '../../skit_ui';
 // Customer
 // import ConCustomerEditForm from './customer_edit_form';
-import { UserForm, MessageForm, CardForm, CommentForm, StarForm, FeedbackForm, CardActivation, RoleForm } from '../../container';
+import { UserForm, MessageForm, CardForm, CommentForm, StarForm, FeedbackForm, CardActivation, RoleForm, SendCardTime } from '../../container';
 import { modalStatusAction } from '../../redux/actions';
 // // Contact
 // import ConContactForm from './contact_form';
@@ -96,6 +96,11 @@ class ConModal extends Component {
         case 'ROLE_EDIT':
             this.setState({
                 curComponent: <RoleForm curStatus="edit" id={modalParams.id} />
+            });
+            break;
+        case 'SEND_CARD_TIMMES':
+            this.setState({
+                curComponent: <SendCardTime />
             });
             break;
         default:

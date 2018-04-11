@@ -20,6 +20,7 @@ const path = require('path');
 const oss = require('ali-oss');
 const co = require('co');
 const projectGroup = require('../service/admin/insert');
+const userSendCard = require('../service/common/user_send_card');
 //构建oss对象
 const store = new oss({
     accessKeyId: 'LTAISOc0ScI5UBmk',
@@ -33,6 +34,7 @@ module.exports = class extends controller {
     init(ctx, app) {
         //调用父类构造方法
         super.init(ctx, app);
+        this.userSendCardT = new userSendCard(app);
         // this.Model = new badgeModel(this.app.config('config.model', 'middleware'));
         this.logicService = new logicService();
         this.roleModel = new roleModel(this.app.config('config.model', 'middleware'));
@@ -434,6 +436,17 @@ module.exports = class extends controller {
         let id = this.param('id');
         await this.feedbackModel.where({ id: id }).delete();
         return this.ok('delete success');
+    }
+    async sendCardTimesAction() {
+        let times = this.param('times');
+        let select = this.param('select');
+        times = Number(times);
+        if(!select || select.length <= 0){
+            this.userSendCardT.reSetUserCardTimes(times);
+        }else{
+            this.userSendCardT.reSetUserCardTimes(times, 'multiSelect', select);
+        }
+        return this.ok('设置成功');
     }
     // async editBadgeAction() {
     //     let id = this.param('id');
