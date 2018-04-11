@@ -2,11 +2,12 @@ import React, { Component, ProTypes } from 'react';
 import {Divider} from '../skit_ui';
 import { ActionTable } from '../components';
 import Filter from '../utils/filter';
-import { BADGE_TABLE, COMMENT_TABLE_DEL } from '../redux/api/config';
+import { BADGE_TABLE, BADGE_TAABLE_DEL } from '../redux/api/config';
 
 export default {
     selectUrl: '',
     tableUrl: BADGE_TABLE,
+    tableUrlDel: BADGE_TAABLE_DEL,
     addForm: {
         curForm: 'BADGE_ADD',
         modalTitle: '添加用户'
@@ -57,6 +58,15 @@ export default {
                     text: '编辑',
                     modalTitle: '编辑',
                     method: 'modal'
+                },
+                {
+                    id: 3,
+                    type: 'delete',
+                    curForm: 'USER_DEL',
+                    modalTitle: '删除',
+                    text: '删除',
+                    method: 'delete'
+                    
                 }
             ]
         }

@@ -394,6 +394,11 @@ module.exports = class extends controller {
         let result = await this.logicService.list(this.badgeModel, this.Map, this.Mo);
         return this.ok('success', result);
     }
+    async badgeDelAction() {
+        let curId = this.param('id');
+        await this.badgeModel.where({ id: parseInt(curId) }).delete();
+        return this.ok('delete success');
+    }
     async viewBadgeAction() {
         let id = this.param('id');
         let pk = await this.badgeModel.getPk();
