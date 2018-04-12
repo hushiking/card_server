@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ModSearchSheet from '../../module/search_sheet';
 import { UserConfig } from '../../config';
+import { connect } from 'react-redux';
 import { Button, Tabs, Upload, Message } from '../../skit_ui';
 import { modalStatusAction } from '../../redux/actions';
 const TabPane = Tabs.TabPane;
@@ -83,5 +84,4 @@ class UserPage extends Component {
         );
     }
 }
-
-export default UserPage;
+export default connect()(UserPage);
