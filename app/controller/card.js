@@ -44,7 +44,7 @@ module.exports = class extends admin_base {
     indexAction() {
         return this.ok('success');
     }
-    aliyunImg(filePath){
+    aliyunImg(filePath) {
         let that = this;
         return co(function* () {
             let imageKey = that._userInfo.nickname + helper.datetime();
@@ -57,14 +57,14 @@ module.exports = class extends admin_base {
     async saveCardAction() {
         let cardData = JSON.parse(this.param('data'));
         let filePath;
-        if(this.file()){
+        if (this.file()) {
             filePath = this.file('file').path;
-            
+
         }
         let img_url;
-        if(filePath){
+        if (filePath) {
             img_url = await this.aliyunImg(filePath);
-        }else{
+        } else {
             img_url = 'http://lzkj-card.oss-cn-beijing.aliyuncs.com/%E5%88%98%E6%B3%BD%E5%AE%811523377149';
         }
         cardData.img_url = img_url;
@@ -76,20 +76,154 @@ module.exports = class extends admin_base {
         cardData.openid = this._userInfo.openid;
         cardData.create_time = helper.datetime();
         await this.Model.add(cardData);
-        let curUser = await this.useModel.where({openid: this._userInfo.openid}).find();
-        if(curUser.send_card_times){
-            curUser.send_card_times = --curUser.send_card_times ;
-            if(!curUser.send_card_times){
+        let curUser = await this.useModel.where({ openid: this._userInfo.openid }).find();
+        if (curUser.send_card_times) {
+            curUser.send_card_times = --curUser.send_card_times;
+            if (!curUser.send_card_times) {
                 curUser.send_card_power = 0;
             }
         }
-        await this.useModel.where({openid: this._userInfo.openid}).update(curUser);
+        await this.useModel.where({ openid: this._userInfo.openid }).update(curUser);
         return this.ok('success');
     }
     async getListAction() {
         this.Mo.page = this.param('page') || 1;
         this.Map.status = 1;
-        let data = await this.logicService.list(this.Model, this.Map, this.Mo);
+        let data = [];
+        let cardStatus = this.param('cardStatus');
+        echo(cardStatus);
+        switch (cardStatus) {
+            case '0-0':
+                data = await this.logicService.list(this.Model, this.Map, this.Mo);
+                break;
+            case '0-1':
+                this.Map.tag = 0;
+                data = await this.logicService.list(this.Model, this.Map, this.Mo);
+                break;
+            case '0-2':
+                this.Map.tag = 1;
+                data = await this.logicService.list(this.Model, this.Map, this.Mo);
+                break;
+            case '0-3':
+                this.Map.tag = 2;
+                data = await this.logicService.list(this.Model, this.Map, this.Mo);
+                break;
+            case '0-4':
+                this.Map.tag = 3;
+                data = await this.logicService.list(this.Model, this.Map, this.Mo);
+                break;
+            case '1-0':
+                let hotData = [];
+                let tagone = await this.Model.where({tag: 0, status: 1}).select();
+                tagone.sort((a, b) => {
+                    return b.support.length - a.support.length
+                })
+                if (tagone) {
+                    if (tagone.length > 10) {
+                        data = data.concat(tagone.slice(0, 10));
+                    } else {
+                        data = data.concat(tagone);
+                    }
+                }
+                let tagtwo = await this.Model.where({tag: 1, status: 1}).select();
+                tagtwo.sort((a, b) => {
+                    return b.support.length - a.support.length
+                })
+                if (tagtwo) {
+                    if (tagtwo.length > 10) {
+                        data = data.concat(tagtwo.slice(0, 10));
+                    } else {
+                        data = data.concat(tagtwo);
+                    }
+                }
+                let tagthree = await this.Model.where({tag: 2, status: 1}).select();
+                tagthree.sort((a, b) => {
+                    return b.support.length - a.support.length
+                })
+                if (tagthree) {
+                    if (tagthree.length > 10) {
+                        data = data.concat(tagthree.slice(0, 10));
+                    } else {
+                        data = data.concat(tagthree);
+                    }
+                }
+                let tagfour = await this.Model.where({tag: 3, status: 1}).select();
+                tagfour.sort((a, b) => {
+                    return b.support.length - a.support.length
+                })
+                if (tagfour) {
+                    if (tagfour.length > 10) {
+                        data = data.concat(tagfour.slice(0, 10));
+                    } else {
+                        data = data.concat(tagfour);
+                    }
+                }
+
+                data.slice((this.page - 1) * 5, this.page * 5);
+                break;
+            case '1-1':
+                {
+                    let tagtwo = await this.Model.where({tag: 0, status: 1}).select();
+                    tagtwo.sort((a, b) => {
+                        return b.support.length - a.support.length
+                    })
+                    if (tagtwo) {
+                        if (tagtwo.length > 10) {
+                            data = data.concat(tagtwo.slice(0, 10));
+                        } else {
+                            data = data.concat(tagtwo);
+                        }
+                    }
+                }
+                break;
+            case '1-2':
+                {
+                    let tagtwo = await this.Model.where({tag: 1, status: 1}).select();
+                    tagtwo.sort((a, b) => {
+                        return b.support.length - a.support.length
+                    })
+                    if (tagtwo) {
+                        if (tagtwo.length > 10) {
+                            data = data.concat(tagtwo.slice(0, 10));
+                        } else {
+                            data = data.concat(tagtwo);
+                        }
+                    }
+                }
+            case '1-3':
+                {
+                    let tagtwo = await this.Model.where({tag: 2, status: 1}).select();
+                    tagtwo.sort((a, b) => {
+                        return b.support.length - a.support.length
+                    })
+                    if (tagtwo) {
+                        if (tagtwo.length > 10) {
+                            data = data.concat(tagtwo.slice(0, 10));
+                        } else {
+                            data = data.concat(tagtwo);
+                        }
+                    }
+                }
+                break;
+            case '1-4':
+                {
+                    let tagtwo = await this.Model.where({tag: 3, status: 1}).select();
+                    tagtwo.sort((a, b) => {
+                        return b.support.length - a.support.length
+                    })
+                    if (tagtwo) {
+                        if (tagtwo.length > 10) {
+                            data = data.concat(tagtwo.slice(0, 10));
+                        } else {
+                            data = data.concat(tagtwo);
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        // await this.logicService.list(this.Model, this.Map, this.Mo);
         return this.ok('success', data);
     }
     async getUserCardAction() {
